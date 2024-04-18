@@ -24,6 +24,7 @@ import org.jetbrains.annotations.Range;
 import java.util.HashMap;
 import java.util.Map;
 
+
 /**
  * The Player class extends the Actor class and implements the PlayerScore and InputProcessor interfaces.
  * This class represents a player in the game, handling player movement, interaction with the game map, and input processing.
@@ -196,33 +197,46 @@ public class Player extends Actor implements PlayerScore, InputProcessor {
         // If the BOOST movement is active, the sprite moves twice as fast
         final float amount = (Movement.BOOST.is ? 2 : 1) * mapScale;
 
+        //Check whether a collision has occurred
         // Move the sprite up if the UP movement is active and the sprite is not at the top of the map
         if (Movement.UP.is && (sprite.getY() + sprite.getHeight() < maxHeightScaled)) {
-            sprite.setRegion(SPRITEAWAYREGION);
-            sprite.translateY(amount);
-            setY(sprite.getY());
+            Collision collisionTile = isInCollisionTile();
+            if (collisionTile == null) { //only moves the sprite if no collision has occurred
+                sprite.setRegion(SPRITEAWAYREGION);
+                sprite.translateY(amount);
+                setY(sprite.getY());
+            }
         }
 
         // Move the sprite down if the DOWN movement is active and the sprite is not at the bottom of the map
         if (Movement.DOWN.is && (sprite.getY() > 0)) {
-            sprite.setRegion(SPRITETOWARDSREGION);
-            sprite.translateY(-amount);
-            setY(sprite.getY());
+            Collision collisionTile = isInCollisionTile();
+            if (collisionTile == null) { //only moves the sprite if no collision has occurred
+                sprite.setRegion(SPRITETOWARDSREGION);
+                sprite.translateY(-amount);
+                setY(sprite.getY());
+            }
         }
 
         // Move the sprite left if the LEFT movement is active and the sprite is not at the left edge of the map
         if (Movement.LEFT.is && (sprite.getX() > 0)) {
-            sprite.setRegion(SPRITELEFTREGION);
-            sprite.translateX(-amount);
-            setX(sprite.getX());
+            Collision collisionTile = isInCollisionTile();
+            if (collisionTile == null) { //only moves the sprite if no collision has occurred
+                    sprite.setRegion(SPRITELEFTREGION);
+                    sprite.translateX(-amount);
+                    setX(sprite.getX());
+            }
         }
 
         // Move the sprite right if the RIGHT movement is active and the sprite is not at the right edge of the map
         if (Movement.RIGHT.is && (sprite.getX() + sprite.getWidth() < maxWidthScaled)) {
-            sprite.setRegion(SPRITELEFTREGION);
-            sprite.setFlip(true, false);
-            sprite.translateX(amount);
-            setX(sprite.getX());
+            Collision collisionTile = isInCollisionTile();
+            if (collisionTile == null) { //only moves the sprite if no collision has occurred
+                sprite.setRegion(SPRITELEFTREGION);
+                sprite.setFlip(true, false);
+                sprite.translateX(amount);
+                setX(sprite.getX());
+            }
         }
     }
 
@@ -238,6 +252,55 @@ public class Player extends Actor implements PlayerScore, InputProcessor {
     }
 
     /**
+     * Returns the center position of the player's sprite on the game map if it were to move to the left.
+     * This is calculated as the sprite's position plus half its width and height.
+     *
+     * @return A new Vector2 object representing the center position of the sprite.
+     */
+    @Contract(pure = true)
+    public Vector2 getCenterLeft() {
+        final float amount = (Movement.BOOST.is ? 2 : 1) * mapScale;
+        return new Vector2((sprite.getX() - amount) + sprite.getWidth() / 2, sprite.getY() + sprite.getHeight() / 2);
+    }
+
+    /**
+     * Returns the center position of the player's sprite on the game map if it were to move to the right.
+     * This is calculated as the sprite's position plus half its width and height.
+     *
+     * @return A new Vector2 object representing the center position of the sprite.
+     */
+    @Contract(pure = true)
+    public Vector2 getCenterRight() {
+        final float amount = (Movement.BOOST.is ? 2 : 1) * mapScale;
+        return new Vector2((sprite.getX() + amount) + sprite.getWidth() / 2, sprite.getY() + sprite.getHeight() / 2);
+    }
+
+    /**
+     * Returns the center position of the player's sprite on the game map if it were to move upwards.
+     * This is calculated as the sprite's position plus half its width and height.
+     *
+     * @return A new Vector2 object representing the center position of the sprite.
+     */
+    @Contract(pure = true)
+    public Vector2 getCenterUp() {
+        final float amount = (Movement.BOOST.is ? 2 : 1) * mapScale;
+        return new Vector2(sprite.getX() + sprite.getWidth() / 2, (sprite.getY() + amount) + sprite.getHeight() / 2);
+    }
+
+    /**
+     * Returns the center position of the player's sprite on the game map if it were to move downwards.
+     * This is calculated as the sprite's position plus half its width and height.
+     *
+     * @return A new Vector2 object representing the center position of the sprite.
+     */
+    @Contract(pure = true)
+    public Vector2 getCenterDown() {
+        final float amount = (Movement.BOOST.is ? 2 : 1) * mapScale;
+        return new Vector2(sprite.getX() + sprite.getWidth() / 2, (sprite.getY() - amount) + sprite.getHeight() / 2);
+    }
+
+
+    /**
      * Enum representing the possible transitions for the player.
      * It includes NEW_MAP and ACTIVITY transitions.
      * NEW_MAP is used when the player transitions to a new map.
@@ -245,6 +308,10 @@ public class Player extends Actor implements PlayerScore, InputProcessor {
      */
     public enum Transition {
         NEW_MAP, ACTIVITY
+    }
+
+    public enum Collision {
+        COLLISION
     }
 
     /**
@@ -344,6 +411,32 @@ public class Player extends Actor implements PlayerScore, InputProcessor {
         return null;
     }
 
+    public @Nullable MapObject getFutureMapObject() {
+        Vector2 center = getCenter();
+        // Iterate over each entry in the tileObjectBoundingBoxes HashMap
+        for (Map.Entry<MapObject, BoundingBox> entry : tileObjectBoundingBoxes.entrySet()) {
+            // Get the center position of the player's sprite after a movement
+            if (Movement.UP.is) {
+                center = getCenterUp();
+            } else if (Movement.DOWN.is) {
+                center = getCenterDown();
+            } else if (Movement.LEFT.is) {
+                center = getCenterLeft();
+            }  else if (Movement.RIGHT.is) {
+                center = getCenterRight();
+            }
+
+            // Check if the bounding box of the map object contains the center position of the player's sprite
+            if (entry.getValue().contains(new Vector3(center.x, center.y, 0))) {
+                // If it does, return the map object
+                return entry.getKey();
+            }
+        }
+
+        // If the player's sprite is not on any map object, return null
+        return null;
+    }
+
     /**
      * Sets the position of the player's sprite on the game map.
      * The sprite's position is updated and the player's bounds are set to the new position.
@@ -381,6 +474,22 @@ public class Player extends Actor implements PlayerScore, InputProcessor {
         }
 
         // If the map object does not have either the "isNewMap" or "isActivity" property set to true, return null
+        return null;
+    }
+
+    public @Nullable Collision isInCollisionTile() {
+        // Retrieve the current map object that the player's sprite is on
+        MapObject tileObject = getFutureMapObject();
+
+        // If the player's sprite is not on any map object, return null
+        if (tileObject == null) return null;
+
+        // If the map object has the "isCollision" property set to true, return the COLLISION transition
+        if (Boolean.TRUE.equals(tileObject.getProperties().get("isCollision", Boolean.class))) {
+            return Collision.COLLISION;
+        }
+
+        // If the map object does not have the "isCollision" property set to true, return null
         return null;
     }
 
@@ -491,7 +600,7 @@ public class Player extends Actor implements PlayerScore, InputProcessor {
     }
 
     /**
-     * Handles the touch down event.
+     * Handles the touch-down event.
      * This method is called when the screen is touched.
      * Currently, this method does not perform any action and always returns false.
      *
