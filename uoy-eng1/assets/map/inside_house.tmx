@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="12" height="14" tilewidth="16" tileheight="16" infinite="0" nextlayerid="13" nextobjectid="12">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="12" height="14" tilewidth="16" tileheight="16" infinite="0" nextlayerid="13" nextobjectid="32">
  <tileset firstgid="1" source="interior.tsx"/>
  <layer id="4" name="room" width="12" height="14">
   <data encoding="csv">
@@ -128,7 +128,7 @@
 </data>
  </layer>
  <objectgroup id="12" name="gameObjects">
-  <object id="1" name="cookFood" x="71.057" y="48.193" width="33.625" height="26.375">
+  <object id="1" name="cookFood" x="75.4669" y="48.0516" width="24.1927" height="15.8799">
    <properties>
     <property name="activityStr" value="cook a meal"/>
     <property name="activityTime" type="int" value="2"/>
@@ -137,7 +137,7 @@
     <property name="isActivity" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="2" name="getFood" x="119.389" y="45.614" width="31.25" height="27">
+  <object id="2" name="getFood" x="125.03" y="48.0475" width="22.7366" height="16.3874">
    <properties>
     <property name="activityStr" value="have a snack"/>
     <property name="activityTime" type="int" value="1"/>
@@ -146,7 +146,7 @@
     <property name="isActivity" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="4" name="studyAtDesk" x="16.558" y="159.728" width="32" height="32">
+  <object id="4" name="studyAtDesk" x="34.9216" y="158.406" width="13.6364" height="33.5">
    <properties>
     <property name="activityStr" value="study at your desk"/>
     <property name="activityTime" type="int" value="3"/>
@@ -155,7 +155,7 @@
     <property name="isActivity" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="5" name="watchFish" x="31.693" y="143.278" width="32" height="14">
+  <object id="5" name="watchFish" x="32.2217" y="144.071" width="32" height="14">
    <properties>
     <property name="activityStr" value="watch the fish"/>
     <property name="activityTime" type="int" value="1"/>
@@ -164,7 +164,7 @@
     <property name="isActivity" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="6" name="sleep" x="112.955" y="126.827" width="47.0522" height="44.0333">
+  <object id="6" name="sleep" x="115.334" y="160.066" width="44.1445" height="11.8515">
    <properties>
     <property name="activityStr" value="go to bed"/>
     <property name="activityTime" type="int" value="8"/>
@@ -173,7 +173,7 @@
     <property name="isActivity" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="7" name="nap" x="16.887" y="55.102" width="28.2466" height="41.1265">
+  <object id="7" name="nap" x="31.5485" y="55.0027" width="16.6606" height="41.1265">
    <properties>
     <property name="activityStr" value="have a nap"/>
     <property name="activityTime" type="int" value="4"/>
@@ -188,14 +188,117 @@
     <property name="spawnpoint" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="10" name="goOutside" x="79.937" y="177.851" width="32" height="29.5">
+  <object id="10" name="goOutside" x="79.937" y="176.033" width="32" height="32.2273">
    <properties>
     <property name="isNewMap" type="bool" value="true"/>
     <property name="newMap" value="map"/>
     <property name="newMapStr" value="go outside"/>
    </properties>
   </object>
-  <object id="11" name="daydream" x="164.448" y="184.482" width="16" height="16">
+  <object id="11" name="daydream" x="147.991" y="176.063" width="11.7273" height="23.9091">
+   <properties>
+    <property name="activityStr" value="daydream"/>
+    <property name="activityTime" type="int" value="1"/>
+    <property name="activityType" value="nap"/>
+    <property name="changeAmount" value="0.15"/>
+    <property name="isActivity" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="12" x="16.6533" y="16.389" width="159.487" height="31.5639">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="13" x="16.0085" y="107.057" width="69.2244" height="37.2059">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="14" x="107.139" y="107.156" width="68.9922" height="37.2717">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="15" x="159.924" y="63.953" width="16.1246" height="15.8771">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="16" x="160.115" y="79.8301" width="15.9344" height="16.389">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="17" x="151.08" y="64.1348" width="8.85326" height="15.8938">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="18" x="16.1246" y="54.9571" width="15.175" height="41.2619">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="19" x="131.112" y="143.536" width="27.3429" height="15.8603">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="21" x="159.909" y="176.182" width="16.0909" height="15.8182">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="22" x="16.25" y="159.5" width="18.2273" height="32.5">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="23" x="80" y="208.182" width="100.909" height="4.54545">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="24" x="11.2727" y="208.364" width="68.3636" height="4.36364">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="25" x="75.0909" y="203.455" width="4.54545" height="4.54545">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="26" x="11" y="11" width="5.43182" height="198.182">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="27" x="16" y="11" width="164.75" height="5">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="28" x="175.886" y="16" width="5.11364" height="192.5">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="29" x="112" y="203.091" width="5" height="5.18182">
+   <properties>
+    <property name="isCollision" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="30" name="sleep" x="115.382" y="144.62" width="15.599" height="15.1242">
+   <properties>
+    <property name="activityStr" value="go to bed"/>
+    <property name="activityTime" type="int" value="8"/>
+    <property name="activityType" value="sleep"/>
+    <property name="changeAmount" value="0,0"/>
+    <property name="isActivity" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="31" name="daydream" x="160.318" y="192.591" width="15.7273" height="7.54546">
    <properties>
     <property name="activityStr" value="daydream"/>
     <property name="activityTime" type="int" value="1"/>
