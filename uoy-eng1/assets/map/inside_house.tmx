@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="12" height="14" tilewidth="16" tileheight="16" infinite="0" nextlayerid="13" nextobjectid="12">
+ <tileset firstgid="1" source="interior.tsx"/>
+ <layer id="4" name="room" width="12" height="14">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,5710,5710,5710,5710,5710,5710,5710,5710,5710,5710,0,
+0,8764,8764,8764,8764,8764,8764,8764,8764,8764,8764,0,
+0,5988,5988,5988,5988,5988,5988,5988,5988,5988,5988,0,
+0,5988,5988,5988,5988,5988,5988,5988,5988,5988,5988,0,
+0,5988,5988,5988,5988,5988,5988,5988,5988,5988,5988,0,
+0,5988,5988,5988,5988,5988,5988,5988,5988,5988,5988,0,
+0,5710,5710,5710,5710,5575,5576,5710,5710,5710,5710,0,
+0,5849,5849,5849,5849,5714,5715,5849,5849,5849,5849,0,
+0,4593,4593,4593,4593,4593,4593,4593,4593,4593,4593,0,
+0,4593,4593,4593,4593,4593,4593,4593,4593,4593,4593,0,
+0,4593,4593,4593,4593,4593,4593,4593,4593,4593,4593,0,
+0,4593,4593,4593,4593,4593,4593,4593,4593,4593,4593,0,
+0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="5" name="floor" width="12" height="14">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,5710,5710,5710,5710,5710,5710,5710,5710,5710,1661,0,
+0,5849,5849,5849,5849,5849,5849,5849,5849,5849,1800,0,
+0,5988,5988,5988,5988,5988,5988,5988,5988,5988,5988,0,
+0,5988,5988,5988,5988,5988,5988,5988,5988,5988,5988,0,
+0,5988,5988,5988,5988,5988,5988,5988,5988,5988,5988,0,
+0,5430,5430,5430,5430,5431,5429,5430,5430,5430,5430,0,
+0,5710,5710,5710,5710,5570,5568,5710,5710,5710,5710,0,
+0,5849,5849,5849,5849,5570,5568,5849,5849,5849,5849,0,
+0,5988,5988,5988,5988,5988,5988,5988,5988,5988,5988,0,
+0,5988,5988,5988,5988,5988,5988,5988,5988,5988,5988,0,
+0,5988,5988,5988,5988,5988,5988,5988,5988,5988,5988,0,
+0,5988,5988,5988,5988,5988,5988,5988,5988,5988,5988,0,
+0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="10" name="outline" width="12" height="14">
+  <data encoding="csv">
+5429,5430,5430,5430,5430,5430,5430,5430,5430,5430,5430,5431,
+5568,0,0,0,0,0,0,0,0,0,0,5570,
+5568,0,0,0,0,0,0,0,0,0,0,5570,
+5568,0,0,0,0,0,0,0,0,0,0,5570,
+5568,0,0,0,0,0,0,0,0,0,0,5570,
+5568,0,0,0,0,0,0,0,0,0,0,5570,
+5568,0,0,0,0,0,0,0,0,0,0,5570,
+5568,0,0,0,0,0,0,0,0,0,0,5570,
+5568,0,0,0,0,0,0,0,0,0,0,5570,
+5568,0,0,0,0,0,0,0,0,0,0,5570,
+5568,0,0,0,0,0,0,0,0,0,0,5570,
+5568,0,0,0,0,0,0,0,0,0,0,5570,
+5568,0,0,0,5429,0,0,5431,0,0,0,5570,
+5707,5708,5708,5708,5708,0,0,5708,5708,5708,5708,5709
+</data>
+ </layer>
+ <layer id="7" name="desk" width="12" height="14">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,3952,0,0,0,0,0,0,0,0,0,0,
+0,4091,0,0,0,0,0,0,0,0,0,0,
+0,0,4230,0,0,0,0,0,0,0,0,0,
+0,4227,4369,0,0,0,0,0,0,0,0,0,
+0,4366,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="9" name="posters" width="12" height="14">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,7,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="6" name="furniture" width="12" height="14">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,5571,3920,3921,0,3922,3923,3927,5571,0,0,
+0,0,0,4059,4060,4065,4059,4060,4066,0,0,0,
+0,4328,0,0,0,0,0,0,0,0,0,0,
+0,4467,0,0,0,0,0,0,0,2370,2368,0,
+0,4606,0,0,0,0,0,0,0,0,2372,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,3639,3640,6122,0,0,6125,4743,4749,9,0,
+0,0,3778,3779,6261,0,0,6264,4882,4888,0,0,
+0,0,0,0,0,0,0,0,8216,8217,0,0,
+0,5296,0,0,0,0,0,0,8355,8356,0,0,
+0,5179,0,0,0,0,0,0,0,0,4534,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="8" name="bed" width="12" height="14">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,5888,5889,0,0,
+0,0,0,0,0,0,0,0,6027,6028,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="12" name="gameObjects">
+  <object id="1" name="cookFood" x="71.057" y="48.193" width="33.625" height="26.375">
+   <properties>
+    <property name="activityStr" value="cook a meal"/>
+    <property name="activityTime" type="int" value="2"/>
+    <property name="activityType" value="eat"/>
+    <property name="changeAmount" value="0.3"/>
+    <property name="isActivity" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="2" name="getFood" x="119.389" y="45.614" width="31.25" height="27">
+   <properties>
+    <property name="activityStr" value="have a snack"/>
+    <property name="activityTime" type="int" value="1"/>
+    <property name="activityType" value="eat"/>
+    <property name="changeAmount" value="0.1"/>
+    <property name="isActivity" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="4" name="studyAtDesk" x="16.558" y="159.728" width="32" height="32">
+   <properties>
+    <property name="activityStr" value="study at your desk"/>
+    <property name="activityTime" type="int" value="3"/>
+    <property name="activityType" value="study"/>
+    <property name="changeAmount" value=".2,0.3,0.2"/>
+    <property name="isActivity" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="5" name="watchFish" x="31.693" y="143.278" width="32" height="14">
+   <properties>
+    <property name="activityStr" value="watch the fish"/>
+    <property name="activityTime" type="int" value="1"/>
+    <property name="activityType" value="entertain"/>
+    <property name="changeAmount" value="0.1,0.1"/>
+    <property name="isActivity" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="6" name="sleep" x="112.955" y="126.827" width="47.0522" height="44.0333">
+   <properties>
+    <property name="activityStr" value="go to bed"/>
+    <property name="activityTime" type="int" value="8"/>
+    <property name="activityType" value="sleep"/>
+    <property name="changeAmount" value="0,0"/>
+    <property name="isActivity" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="7" name="nap" x="16.887" y="55.102" width="28.2466" height="41.1265">
+   <properties>
+    <property name="activityStr" value="have a nap"/>
+    <property name="activityTime" type="int" value="4"/>
+    <property name="activityType" value="nap"/>
+    <property name="changeAmount" value="0.3"/>
+    <property name="isActivity" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="9" name="startingPoint" x="87.693" y="191.187" width="16" height="16" visible="0">
+   <properties>
+    <property name="actionable" type="bool" value="false"/>
+    <property name="spawnpoint" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="10" name="goOutside" x="79.937" y="177.851" width="32" height="29.5">
+   <properties>
+    <property name="isNewMap" type="bool" value="true"/>
+    <property name="newMap" value="map"/>
+    <property name="newMapStr" value="go outside"/>
+   </properties>
+  </object>
+  <object id="11" name="daydream" x="164.448" y="184.482" width="16" height="16">
+   <properties>
+    <property name="activityStr" value="daydream"/>
+    <property name="activityTime" type="int" value="1"/>
+    <property name="activityType" value="nap"/>
+    <property name="changeAmount" value="0.15"/>
+    <property name="isActivity" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

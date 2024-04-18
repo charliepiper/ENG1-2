@@ -1,0 +1,77 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "bird_common_black_animations.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "bird_robin_animations.tsx": {
+            "scaleInEditor": 4.8563
+        },
+        "cosy_town_tiles.tsx": {
+            "scaleInDock": 1
+        },
+        "inside_house.tmx": {
+            "scale": 2.3486,
+            "selectedLayer": 6,
+            "viewCenter": {
+                "x": 232.26603082687564,
+                "y": 187.34565272928558
+            }
+        },
+        "items_inventory.tsx": {
+            "scaleInDock": 1.7,
+            "scaleInEditor": 1
+        },
+        "map.tmx": {
+            "scale": 1.4587,
+            "selectedLayer": 7,
+            "viewCenter": {
+                "x": 256.73544937272914,
+                "y": 151.50476451635018
+            }
+        },
+        "rat_white_animations.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 8.0603
+        },
+        "squirrel_animations.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 5.7778
+        },
+        "squirrel_grey_animations.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 5.8798
+        }
+    },
+    "last.externalTilesetPath": "/Users/lucy/Desktop/ENG1Project",
+    "last.imagePath": "/Users/lucy/Downloads/town full/animals",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "openFiles": [
+    ],
+    "project": "letRonCooke.tiled-project",
+    "recentFiles": [
+        "items_inventory.tsx",
+        "bird_common_black_animations.tsx",
+        "bird_robin_animations.tsx",
+        "rat_white_animations.tsx",
+        "squirrel_animations.tsx",
+        "squirrel_grey_animations.tsx",
+        "map.tmx"
+    ],
+    "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}

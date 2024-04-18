@@ -1,0 +1,391 @@
+
+building-sprites.png
+size: 1024, 1024
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+SUPAM_building
+  rotate: false
+  xy: 2, 882
+  size: 176, 128
+  orig: 176, 128
+  offset: 0, 0
+  index: 1
+SUPAM_building
+  rotate: false
+  xy: 2, 752
+  size: 176, 128
+  orig: 176, 128
+  offset: 0, 0
+  index: 2
+SUPAM_building
+  rotate: false
+  xy: 180, 882
+  size: 176, 128
+  orig: 176, 128
+  offset: 0, 0
+  index: 3
+SUPAM_building
+  rotate: false
+  xy: 2, 622
+  size: 176, 128
+  orig: 176, 128
+  offset: 0, 0
+  index: 4
+SUPAM_building
+  rotate: false
+  xy: 180, 752
+  size: 176, 128
+  orig: 176, 128
+  offset: 0, 0
+  index: 5
+arcade
+  rotate: false
+  xy: 2, 264
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 1
+arcade
+  rotate: false
+  xy: 714, 800
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 2
+arcade
+  rotate: false
+  xy: 908, 914
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 3
+bakery
+  rotate: false
+  xy: 164, 410
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 1
+bakery
+  rotate: false
+  xy: 2, 166
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 2
+bakery
+  rotate: false
+  xy: 2, 68
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 3
+blacksmith
+  rotate: false
+  xy: 812, 800
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 1
+blacksmith
+  rotate: false
+  xy: 910, 816
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 2
+blacksmith
+  rotate: false
+  xy: 100, 264
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 3
+cinema_door_opening
+  rotate: false
+  xy: 100, 166
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 1
+cinema_door_opening
+  rotate: false
+  xy: 100, 68
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 2
+cinema_door_opening
+  rotate: false
+  xy: 262, 410
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 3
+cinema_lights_changing
+  rotate: false
+  xy: 198, 312
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 1
+cinema_lights_changing
+  rotate: false
+  xy: 198, 312
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 13
+cinema_lights_changing
+  rotate: false
+  xy: 198, 214
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 2
+cinema_lights_changing
+  rotate: false
+  xy: 198, 214
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 12
+cinema_lights_changing
+  rotate: false
+  xy: 198, 214
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 8
+cinema_lights_changing
+  rotate: false
+  xy: 198, 214
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 4
+cinema_lights_changing
+  rotate: false
+  xy: 198, 214
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 10
+cinema_lights_changing
+  rotate: false
+  xy: 198, 214
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 6
+cinema_lights_changing
+  rotate: false
+  xy: 198, 116
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 3
+cinema_lights_changing
+  rotate: false
+  xy: 198, 116
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 9
+cinema_lights_changing
+  rotate: false
+  xy: 198, 116
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 11
+cinema_lights_changing
+  rotate: false
+  xy: 198, 116
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 5
+cinema_lights_changing
+  rotate: false
+  xy: 198, 116
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 7
+cinema_lights_changing
+  rotate: false
+  xy: 198, 18
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 14
+cinema_lights_changing
+  rotate: false
+  xy: 198, 18
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 20
+cinema_lights_changing
+  rotate: false
+  xy: 296, 312
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 15
+cinema_lights_changing
+  rotate: false
+  xy: 296, 312
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 19
+cinema_lights_changing
+  rotate: false
+  xy: 296, 214
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 16
+cinema_lights_changing
+  rotate: false
+  xy: 296, 214
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 18
+cinema_lights_changing
+  rotate: false
+  xy: 296, 116
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 17
+community_center
+  rotate: false
+  xy: 2, 492
+  size: 160, 128
+  orig: 160, 128
+  offset: 0, 0
+  index: 1
+community_center
+  rotate: false
+  xy: 180, 622
+  size: 160, 128
+  orig: 160, 128
+  offset: 0, 0
+  index: 2
+community_center
+  rotate: false
+  xy: 2, 362
+  size: 160, 128
+  orig: 160, 128
+  offset: 0, 0
+  index: 3
+hippie_building
+  rotate: false
+  xy: 296, 34
+  size: 96, 80
+  orig: 96, 80
+  offset: 0, 0
+  index: 1
+hippie_building
+  rotate: false
+  xy: 358, 702
+  size: 96, 80
+  orig: 96, 80
+  offset: 0, 0
+  index: 2
+hippie_building
+  rotate: false
+  xy: 456, 702
+  size: 96, 80
+  orig: 96, 80
+  offset: 0, 0
+  index: 3
+library
+  rotate: false
+  xy: 552, 784
+  size: 160, 112
+  orig: 160, 112
+  offset: 0, 0
+  index: 1
+library
+  rotate: false
+  xy: 746, 898
+  size: 160, 112
+  orig: 160, 112
+  offset: 0, 0
+  index: 2
+library
+  rotate: false
+  xy: 164, 508
+  size: 160, 112
+  orig: 160, 112
+  offset: 0, 0
+  index: 3
+pub
+  rotate: false
+  xy: 554, 702
+  size: 96, 80
+  orig: 96, 80
+  offset: 0, 0
+  index: 1
+pub
+  rotate: false
+  xy: 342, 620
+  size: 96, 80
+  orig: 96, 80
+  offset: 0, 0
+  index: 2
+pub
+  rotate: false
+  xy: 440, 620
+  size: 96, 80
+  orig: 96, 80
+  offset: 0, 0
+  index: 3
+school
+  rotate: false
+  xy: 358, 898
+  size: 192, 112
+  orig: 192, 112
+  offset: 0, 0
+  index: 1
+school
+  rotate: false
+  xy: 358, 784
+  size: 192, 112
+  orig: 192, 112
+  offset: 0, 0
+  index: 2
+school
+  rotate: false
+  xy: 552, 898
+  size: 192, 112
+  orig: 192, 112
+  offset: 0, 0
+  index: 3
+trailer
+  rotate: false
+  xy: 2, 2
+  size: 96, 64
+  orig: 96, 64
+  offset: 0, 0
+  index: 1
+trailer
+  rotate: false
+  xy: 100, 2
+  size: 96, 64
+  orig: 96, 64
+  offset: 0, 0
+  index: 2
+trailer
+  rotate: false
+  xy: 538, 636
+  size: 96, 64
+  orig: 96, 64
+  offset: 0, 0
+  index: 3
