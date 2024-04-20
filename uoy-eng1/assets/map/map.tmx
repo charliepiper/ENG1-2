@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="13" nextobjectid="30">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="13" nextobjectid="111">
  <tileset firstgid="1" source="cosy_town_tiles.tsx"/>
  <tileset firstgid="3016" source="buildings.tsx"/>
  <tileset firstgid="8488" source="interior.tsx"/>
@@ -203,7 +203,7 @@
     <property name="spawnpoint" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="17" name="enterLibrary" x="64.7519" y="72.3722" width="32" height="40.5">
+  <object id="17" name="enterLibrary" x="64.4792" y="84.8267" width="33.4545" height="28.0455">
    <properties>
     <property name="activityStr" value="study at the library"/>
     <property name="activityTime" type="int" value="2"/>
@@ -219,7 +219,7 @@
     <property name="newMapStr" value="go into your house"/>
    </properties>
   </object>
-  <object id="21" name="enterPub" x="424.988" y="144.159" width="30.5" height="41.75">
+  <object id="21" name="enterPub" x="424.814" y="144.523" width="20.6067" height="31.5682">
    <properties>
     <property name="activityStr" value="go for drinks"/>
     <property name="activityTime" type="int" value="2"/>
@@ -228,7 +228,7 @@
     <property name="isActivity" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="23" name="enterBusStop" x="16.2257" y="230.904" width="62.5791" height="24.9925">
+  <object id="23" name="enterBusStop" x="16.2257" y="230.904" width="63.67" height="24.9925">
    <properties>
     <property name="activityStr" value="head to town"/>
     <property name="activityTime" type="int" value="3"/>
@@ -237,7 +237,7 @@
     <property name="isActivity" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="28" name="feedTheDucks" x="220.551" y="44.9123" width="21.6541" height="35.2882">
+  <object id="28" name="feedTheDucks" x="219.824" y="44.9123" width="25.6541" height="38.6518">
    <properties>
     <property name="activityStr" value="feed the ducks"/>
     <property name="activityTime" type="int" value="1"/>
@@ -253,6 +253,256 @@
     <property name="activityType" value="entertain"/>
     <property name="changeAmount" value="0.1,0.2"/>
     <property name="isActivity" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="52" x="0" y="167" width="160.5" height="33.25">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="53" x="136.75" y="200.5" width="23.5" height="18.3182">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="54" x="128" y="200.25" width="8.6875" height="7.6875">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="56" x="194.375" y="144" width="13.875" height="79.5">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="58" x="160.75" y="144.25" width="12.25" height="79.75">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="59" x="248.333" y="0.666667" width="126" height="22.6667">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="60" x="374.333" y="1" width="15" height="13.6667">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="63" x="256" y="23.5" width="112" height="8.5">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="64" x="263.25" y="33" width="96" height="7.5">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="65" x="263.5" y="41" width="88.25" height="6.75">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="66" x="263.5" y="48.25" width="81.25" height="8.5">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="67" x="264" y="57" width="72.25" height="7">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="68" x="263.5" y="64.5" width="67" height="15">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="69" x="262.75" y="80.25" width="65.25" height="7.75">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="70" x="263.5" y="88.75" width="56.25" height="7.5">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="71" x="262.5" y="96.75" width="52" height="15.25">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="72" x="251.5" y="96.25" width="12.5" height="86.5">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="73" x="264.5" y="112.5" width="46.75" height="7.25">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="74" x="264" y="120.25" width="23.5" height="7.25">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="75" x="264.25" y="127.75" width="16" height="9.25">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="76" x="240.5" y="111.75" width="10.5" height="69.125">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="77" x="240.375" y="100.625" width="10.75" height="11">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="78" x="229.25" y="118.75" width="10.5" height="73">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="79" x="240" y="180.25" width="24" height="8.25">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="80" x="208.5" y="160.125" width="20.75" height="42.875">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="81" x="208.25" y="202.125" width="12" height="5.875">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="82" x="208.5" y="208" width="10.75" height="11.5">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="83" x="16.6667" y="200.394" width="46.3333" height="30.5455">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="84" x="63.6061" y="200.333" width="16.303" height="30.6667">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="85" x="96.6667" y="272.008" width="15.6667" height="15.9924">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="86" x="239.667" y="208.303" width="16.3333" height="31.7273">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="87" x="160" y="101.242" width="16" height="26.4242">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="88" x="64.1458" y="123.939" width="15.9583" height="20.0303">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="89" x="448.333" y="160.03" width="15.6667" height="32.303">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="90" x="304.394" y="160.341" width="37.6061" height="63.4508">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="91" x="362.083" y="152.515" width="30.0985" height="71.5682">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="92" x="342.333" y="163" width="19.3333" height="37.4167">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="94" x="392.125" y="162.75" width="6.125" height="32.25">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="95" x="332.125" y="146.125" width="40.125" height="16.375">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="96" x="393.273" y="75.2727" width="82.9091" height="54.3636">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="97" x="394" y="129.727" width="30.7273" height="30.2727">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="98" x="445.455" y="129.636" width="30.3636" height="29.0909">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="99" x="424.715" y="129.727" width="20.7391" height="14.7596">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="104" x="98.0682" y="6.15909" width="16.9318" height="98.7955">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="105" x="115.125" y="6.40909" width="40.125" height="71.0909">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="106" x="0.5" y="5.86364" width="97.5" height="66.6364">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="107" x="48.25" y="72.6591" width="16" height="39.5909">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="108" x="420.061" y="0.212121" width="59.9697" height="47.6667">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="109" x="64.3523" y="72.625" width="33.5568" height="12.125">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="110" x="264.25" y="137.25" width="7.5" height="6.5625">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>
