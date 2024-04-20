@@ -819,7 +819,7 @@ public class GameScreen extends BaseScreen implements InputProcessor {
             // Check if the current day plus one equals the total number of days
             if (gameTime.isEndOfDays()) {
                 // If it does, transition the screen to the end screen and return true
-                game.transitionScreen(Screens.END, player);
+                game.transitionScreen(Screens.END, player, true, 0.5f);
                 return true;
             } else {
                 // If it doesn't, increment the current day
