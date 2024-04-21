@@ -79,3 +79,22 @@ project(":core") {
         
     }
 }
+
+project(":test") {
+    apply plugin: "java"
+
+    sourceSets.test.java.srcDirs = ["src/"]
+
+    dependencies {
+        implementation project(":desktop")
+        implementation project(":core")
+        testImplementation "junit:junit:4.13.2" // Update JUnit version
+
+        testImplementation "org.mockito:mockito-core:4.2.0"
+
+        // libGDX headless backend and dependencies for testing
+        testImplementation "com.badlogicgames.gdx:gdx-backend-headless:$gdxVersion"
+        testImplementation "com.badlogicgames.gdx:gdx:$gdxVersion"
+        testImplementation "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+    }
+}
