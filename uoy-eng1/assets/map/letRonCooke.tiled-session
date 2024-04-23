@@ -25,6 +25,22 @@
                 "y": 187.34565272928558
             }
         },
+        "inside_pub.tmx": {
+            "scale": 2.3486,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 232.26603082687564,
+                "y": 187.34565272928558
+            }
+        },
+        "inside_library.tmx": {
+            "scale": 2.3486,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 232.26603082687564,
+                "y": 187.34565272928558
+            }
+        },
         "items_inventory.tsx": {
             "scaleInDock": 1.7,
             "scaleInEditor": 1

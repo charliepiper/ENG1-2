@@ -477,6 +477,15 @@ public class Player extends Actor implements PlayerScore, InputProcessor {
         return null;
     }
 
+    /**
+     * Checks if the player's sprite will move into on a collision tile.
+     * A collision tile is a tile that has the "isCollision" property set to true.
+     * If the player's sprite is on a tile with the "isCollision" property set to true, the COLLISION transition is returned.
+     * If the player's sprite is not on any collision tile, null is returned.
+     *
+     * @return The Collision that the player's sprite will be on, or null if the sprite will not be on a collision tile.
+     */
+
     public @Nullable Collision isInCollisionTile() {
         // Retrieve the current map object that the player's sprite is on
         MapObject tileObject = getFutureMapObject();

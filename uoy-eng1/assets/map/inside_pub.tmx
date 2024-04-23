@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="12" height="14" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="43">
+ <tileset firstgid="1" source="interior.tsx"/>
+ <layer id="1" name="Floor" width="12" height="14">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,284,284,284,284,284,284,284,284,284,284,0,
+0,423,423,423,423,423,423,423,423,423,423,0,
+0,562,562,562,562,562,562,562,562,562,562,0,
+0,562,562,562,562,562,562,562,562,562,562,0,
+0,562,562,562,562,562,562,562,562,562,562,0,
+0,562,562,562,562,562,562,562,562,562,562,0,
+0,562,562,562,562,562,562,562,562,562,562,0,
+0,562,562,562,562,562,562,562,562,562,562,0,
+0,562,562,562,562,562,562,562,562,562,562,0,
+0,562,562,562,562,562,562,562,562,562,562,0,
+0,562,562,562,562,562,562,562,562,562,562,0,
+0,562,562,562,562,562,562,562,562,562,562,0,
+0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="5" name="Outline" width="12" height="14">
+  <data encoding="csv">
+3,4,4,4,4,4,4,4,4,4,4,5,
+142,0,0,0,0,0,0,0,0,0,0,144,
+142,0,0,0,0,0,0,0,0,0,0,144,
+142,0,0,0,0,0,0,0,0,0,0,144,
+142,0,0,0,0,0,0,0,0,0,0,144,
+142,0,0,0,0,0,0,0,0,0,0,144,
+142,0,0,0,0,0,0,0,0,0,0,144,
+142,0,0,0,0,0,0,0,0,0,0,144,
+142,0,0,0,0,0,0,0,0,0,0,144,
+142,0,0,0,0,0,0,0,0,0,0,144,
+142,0,0,0,0,0,0,0,0,0,0,144,
+142,0,0,0,0,0,0,0,0,0,0,144,
+142,0,0,0,0,0,0,0,0,0,0,144,
+281,282,282,282,282,283,281,282,282,282,282,283
+</data>
+ </layer>
+ <layer id="2" name="Furniture" width="12" height="14">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,149,149,289,290,0,0,0,0,153,155,0,
+0,288,288,0,0,0,0,0,0,292,294,0,
+0,431,0,0,0,0,0,0,0,0,0,0,
+0,565,566,566,566,566,566,566,566,566,567,0,
+0,425,0,564,0,425,425,0,564,0,564,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,30,31,31,32,0,
+0,0,0,0,0,0,0,33,285,286,34,0,
+0,564,425,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="3" name="Extras" width="12" height="14">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,434,21,21,569,0,161,163,0,
+0,0,0,0,573,0,0,0,0,300,302,0,
+0,2147484081,2147484080,0,0,0,0,0,0,432,433,0,
+0,2147484220,2147484219,0,0,0,0,0,0,571,572,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,39,40,40,41,0,
+0,0,0,0,0,0,0,178,179,179,180,0,
+0,0,315,316,0,0,0,178,179,179,180,0,
+0,0,0,0,0,0,0,317,318,318,319,0,
+0,0,309,310,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="4" name="gameObjects">
+  <object id="1" x="11.0029" y="11.0854" width="170.069" height="4.77486">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="2" x="11.1022" y="64.2341" width="169.969" height="15.3316">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="3" x="175.876" y="79.8301" width="4.93125" height="133.491">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="4" x="85.2303" y="208.034" width="90.8188" height="5.02242">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="5" x="10.912" y="208.034" width="74.2048" height="4.94829">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="6" x="10.8211" y="79.8301" width="5.0392" height="128.221">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="7" x="11.0029" y="16.1246" width="4.32871" height="48.0354">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="8" x="125.196" y="174.595" width="38.8115" height="17.3148">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="9" x="32.2492" y="123.181" width="32.2492" height="20.6184">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="10" x="31.9849" y="155.431" width="32.2492" height="20.6184">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="11" x="16.0169" y="79.549" width="15.7036" height="16.1414">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="12" x="48.0183" y="79.7308" width="16.2158" height="16.2239">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="13" x="79.8301" y="79.8301" width="16.389" height="16.1246">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="14" x="96.1113" y="79.7475" width="15.7861" height="16.2239">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="15" x="128.204" y="79.5657" width="15.5959" height="15.8603">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="16" x="159.924" y="80.0944" width="16.1246" height="15.5959">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="17" x="15.6868" y="47.5724" width="13.8449" height="16.4883">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="18" x="15.5959" y="16.1246" width="160.453" height="32.101">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="19" x="176.578" y="16.1246" width="4.49375" height="48.3738">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="20" x="16.1246" y="186.887" width="31.9849" height="21.6757">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="22" x="29.4545" y="57.4545" width="18.5455" height="6.54545">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="23" x="144.182" y="57.4545" width="32.1819" height="6.54545">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="24" x="112.25" y="160.5" width="12.75" height="31">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="25" x="125.5" y="160.25" width="50" height="14">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="26" x="164.25" y="174" width="11.75" height="18.25">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="30" name="goOutside" x="79.1017" y="171.159" width="31.875" height="36.9545">
+   <properties>
+    <property name="isNewMap" type="bool" value="true"/>
+    <property name="newMap" value="map"/>
+    <property name="newMapStr" value="go outside"/>
+   </properties>
+  </object>
+  <object id="31" name="dance" x="123.273" y="107.273" width="41.8182" height="41.8182">
+   <properties>
+    <property name="activityStr" value="dance"/>
+    <property name="activityTime" type="int" value="1"/>
+    <property name="activityType" value="entertain"/>
+    <property name="changeAmount" value="0.4,0.25"/>
+    <property name="isActivity" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="33" name="getADrink" x="31.875" y="79.6875" width="16" height="32.1875">
+   <properties>
+    <property name="activityStr" value="have a drink"/>
+    <property name="activityTime" type="int" value="1"/>
+    <property name="activityType" value="entertain"/>
+    <property name="changeAmount" value="0.3,0.15"/>
+    <property name="isActivity" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="34" name="getADrink" x="64.25" y="79.75" width="15.75" height="32.3636">
+   <properties>
+    <property name="activityStr" value="have a drink"/>
+    <property name="activityTime" type="int" value="1"/>
+    <property name="activityType" value="entertain"/>
+    <property name="changeAmount" value="0.3,0.15"/>
+    <property name="isActivity" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="35" name="getADrink" x="112.045" y="79.8409" width="16.1364" height="27.3182">
+   <properties>
+    <property name="activityStr" value="have a drink"/>
+    <property name="activityTime" type="int" value="1"/>
+    <property name="activityType" value="entertain"/>
+    <property name="changeAmount" value="0.3,0.15"/>
+    <property name="isActivity" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="36" name="getADrink" x="144.068" y="79.7955" width="15.75" height="27">
+   <properties>
+    <property name="activityStr" value="have a drink"/>
+    <property name="activityTime" type="int" value="1"/>
+    <property name="activityType" value="entertain"/>
+    <property name="changeAmount" value="0.3,0.15"/>
+    <property name="isActivity" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="37" name="playPool" x="64.5455" y="122.909" width="15.4545" height="52.9091">
+   <properties>
+    <property name="activityStr" value="play pool"/>
+    <property name="activityTime" type="int" value="1"/>
+    <property name="activityType" value="entertain"/>
+    <property name="changeAmount" value="0.25,0.2"/>
+    <property name="isActivity" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="38" name="playPool" x="16.1818" y="123.455" width="16" height="52.7273">
+   <properties>
+    <property name="activityStr" value="play pool"/>
+    <property name="activityTime" type="int" value="1"/>
+    <property name="activityType" value="entertain"/>
+    <property name="changeAmount" value="0.25,0.2"/>
+    <property name="isActivity" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="39" name="playPool" x="32.1818" y="144.182" width="32.3636" height="10.9091">
+   <properties>
+    <property name="activityStr" value="play pool"/>
+    <property name="activityTime" type="int" value="1"/>
+    <property name="activityType" value="entertain"/>
+    <property name="changeAmount" value="0.25,0.2"/>
+    <property name="isActivity" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="40" name="startingPoint" x="85.3238" y="186.618" width="21.6798" height="21.1976" visible="0">
+   <properties>
+    <property name="actionable" type="bool" value="false"/>
+    <property name="spawnpoint" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="41" name="playPool" x="29.02" y="176.674" width="39.7651" height="10.9091">
+   <properties>
+    <property name="activityStr" value="play pool"/>
+    <property name="activityTime" type="int" value="1"/>
+    <property name="activityType" value="entertain"/>
+    <property name="changeAmount" value="0.25,0.2"/>
+    <property name="isActivity" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="42" name="playPool" x="31.9277" y="117.463" width="32.3636" height="10.9091">
+   <properties>
+    <property name="activityStr" value="play pool"/>
+    <property name="activityTime" type="int" value="1"/>
+    <property name="activityType" value="entertain"/>
+    <property name="changeAmount" value="0.25,0.2"/>
+    <property name="isActivity" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
