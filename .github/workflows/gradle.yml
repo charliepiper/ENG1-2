@@ -64,34 +64,34 @@ jobs:
     # - name: Build with Gradle 8.5
     #   run: gradle build
 
-  release:
-    runs-on: ubuntu-22.04
-    needs: [ "build" ]
-    if: startsWith(github.ref, 'refs/tags/')
+  # release:
+  #   runs-on: ubuntu-22.04
+  #   needs: [ "build" ]
+  #   if: startsWith(github.ref, 'refs/tags/')
 
-    permissions:
-      contents: write
+  #   permissions:
+  #     contents: write
 
-    steps:
-    - name: Download Ubuntu Build Artifact
-      uses: actions/download-artifact@v4.1.4
-      with:
-        name: lib-ubuntu-22.04.jar
-    - name: Rename Ubuntu Build Artifact
-      run: mv lib.jar lib-ubuntu.jar
-    - name: Download MacOS Build Artifact
-      uses: actions/download-artifact@v4.1.4
-      with:
-        name: lib-macos-12.jar
-    - name: Rename MacOS Build Artifact
-      run: mv lib.jar lib-macos.jar
-    - name: Download Windows Build Artifact
-      uses: actions/download-artifact@v4.1.4
-      with:
-        name: lib-windows-2022.jar
-    - name: Rename Windows Build Artifact
-      run: mv lib.jar lib-windows.jar
-    - name: Release
-      uses: softprops/action-gh-release@9d7c94cfd0a1f3ed45544c887983e9fa900f0564
-      with:
-        files: lib*.jar
+  #   steps:
+  #   - name: Download Ubuntu Build Artifact
+  #     uses: actions/download-artifact@v4.1.4
+  #     with:
+  #       name: lib-ubuntu-22.04.jar
+  #   - name: Rename Ubuntu Build Artifact
+  #     run: mv lib.jar lib-ubuntu.jar
+  #   - name: Download MacOS Build Artifact
+  #     uses: actions/download-artifact@v4.1.4
+  #     with:
+  #       name: lib-macos-12.jar
+  #   - name: Rename MacOS Build Artifact
+  #     run: mv lib.jar lib-macos.jar
+  #   - name: Download Windows Build Artifact
+  #     uses: actions/download-artifact@v4.1.4
+  #     with:
+  #       name: lib-windows-2022.jar
+  #   - name: Rename Windows Build Artifact
+  #     run: mv lib.jar lib-windows.jar
+  #   - name: Release
+  #     uses: softprops/action-gh-release@9d7c94cfd0a1f3ed45544c887983e9fa900f0564
+  #     with:
+  #       files: lib*.jar
