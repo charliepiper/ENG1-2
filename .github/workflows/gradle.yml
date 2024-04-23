@@ -73,28 +73,18 @@ jobs:
       contents: write
 
     steps:
-      - name: Download Ubuntu Build Artifact
-        uses: actions/download-artifact@v4.1.4
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v4
         with:
-          name: lib-ubuntu-22.04.jar
-          path: desktop/build/libs
-      - name: Rename Ubuntu Build Artifact
-        run: mv desktop/build/libs/lib-ubuntu-22.04.jar lib-ubuntu.jar
-      - name: Download MacOS Build Artifact
-        uses: actions/download-artifact@v4.1.4
-        with:
-          name: lib-macos-12.jar
-          path: desktop/build/libs
-      - name: Rename MacOS Build Artifact
-        run: mv desktop/build/libs/lib-macos-12.jar lib-macos.jar
-      - name: Download Windows Build Artifact
-        uses: actions/download-artifact@v4.1.4
-        with:
-          name: lib-windows-2022.jar
-          path: desktop/build/libs
-      - name: Rename Windows Build Artifact
-        run: mv desktop/build/libs/lib-windows-2022.jar lib-windows.jar
+          distribution: 'temurin'
+          java-version: '11'
+
+      - name: Build
+        run: ./gradlew desktop:dist
+
       - name: Release
-        uses: softprops/action-gh-release@9d7c94cfd0a1f3ed45544c887983e9fa900f0564
-        with:
-          files: lib-*.jar
+      uses: softprops/action-gh-release@9d7c94cfd0a1f3ed45544c887983e9fa900f0564
+      with:
+          files: |
+            desktop/build/libs/*.jar
+  
