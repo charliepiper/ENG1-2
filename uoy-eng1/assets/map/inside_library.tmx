@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="12" height="14" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="26">
+ <tileset firstgid="1" source="interior.tsx"/>
+ <layer id="1" name="Floor" width="12" height="14">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,4733,4734,4732,4732,4733,4734,4732,4732,4733,4734,0,
+0,4872,4873,4871,4871,4872,4873,4871,4871,4872,4873,0,
+0,5010,5010,5010,5010,5010,5010,5010,5010,5010,5010,0,
+0,5010,5010,5010,5010,5010,5010,5010,5010,5010,5010,0,
+0,5010,5010,5010,5010,5010,5010,5010,5010,5010,5010,0,
+0,5010,5010,5010,5010,5010,5010,5010,5010,5010,5010,0,
+0,5010,5010,5010,5010,5010,5010,5010,5010,5010,5010,0,
+0,5010,5010,5010,5010,5010,5010,5010,5010,5010,5010,0,
+0,5010,5010,5010,5010,5010,5010,5010,5010,5010,5010,0,
+0,5010,5010,5010,5010,5010,5010,5010,5010,5010,5010,0,
+0,5010,5010,5010,5010,5010,5010,5010,5010,5010,5010,0,
+0,5010,5010,5010,5010,5010,5010,5010,5010,5010,5010,0,
+0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="2" name="Outline" width="12" height="14">
+  <data encoding="csv">
+4729,4730,4730,4730,4730,4730,4730,4730,4730,4730,4730,4731,
+4868,0,0,0,0,0,0,4747,0,0,0,4870,
+4868,0,0,0,0,0,0,4886,0,0,0,4870,
+4868,0,0,0,0,0,0,0,0,0,0,4870,
+4868,0,0,0,0,0,0,0,0,0,0,4870,
+4868,0,0,0,0,0,0,0,0,0,0,4870,
+4868,0,0,0,0,0,0,0,0,0,0,4870,
+4868,0,0,0,0,0,0,0,0,0,0,4870,
+4868,0,0,0,0,0,0,0,0,0,0,4870,
+4868,0,0,0,0,0,0,0,0,0,0,4870,
+4868,0,0,0,0,0,0,0,0,0,0,4870,
+4868,0,0,0,0,0,0,0,0,0,0,4870,
+4868,0,0,0,0,0,0,0,0,0,0,4870,
+5007,5008,5008,5008,5008,5009,5007,5008,5008,5008,5008,5009
+</data>
+ </layer>
+ <layer id="5" name="SubFurntiure" width="12" height="14">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,5028,0,5028,0,0,
+0,0,5028,5028,0,0,0,5167,0,5167,0,0,
+0,0,5167,5167,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,5170,0,5170,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="3" name="Furniture" width="12" height="14">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,4743,4744,4745,4746,0,4749,0,0,0,
+0,0,0,4882,4883,4884,4885,0,4888,0,0,0,
+0,0,0,0,0,0,0,5035,5036,5037,5030,0,
+0,5029,5035,5036,5037,0,0,5174,5175,5176,5169,0,
+0,5168,5174,5175,5176,0,0,5170,0,5170,0,0,
+0,5285,5285,5285,5286,0,0,5286,5285,5285,5285,0,
+0,4732,4732,4732,4732,2094,2095,4732,4732,4732,4732,0,
+0,4871,4871,4871,4871,2233,2234,4871,4871,4871,4871,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,4742,0,0,0,0,0,0,0,
+0,0,5157,5158,5020,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="4" name="Extras" width="12" height="14">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,5021,0,0,0,0,0,0,0,
+0,0,0,0,5161,0,0,0,0,0,0,0,
+0,0,0,0,5161,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,4737,4738,4739,4740,0,0,0,0,5011,0,0,
+0,4876,4877,4878,4879,0,0,0,5023,0,5023,0,
+0,0,0,0,0,0,0,0,5162,0,5162,0,
+0,0,5015,0,0,0,0,0,1073746847,0,1073746847,0,
+0,0,5154,5155,5156,0,0,0,5160,0,5160,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="6" name="gameObjects">
+  <object id="1" name="startingPoint" x="85.25" y="188.625" width="22.125" height="19.125" visible="0">
+   <properties>
+    <property name="actionable" type="bool" value="false"/>
+    <property name="spawnpoint" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="3" x="10.875" y="11" width="169.875" height="36.75">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="4" x="11" y="48" width="7.5" height="164.5">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="5" x="172.5" y="48" width="8.25" height="163.75">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="6" x="112.364" y="105.511" width="60.1818" height="38.125">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="7" x="127.636" y="143.818" width="16.1818" height="48.3636">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="8" x="160.182" y="143.636" width="12.3636" height="48">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="9" x="32.1818" y="167.091" width="47.4545" height="24.7273">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="10" x="64.1818" y="156" width="15.0909" height="10.7273">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="11" x="18.7273" y="107.443" width="61.2727" height="35.6477">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="12" x="64.7273" y="47.8182" width="15.2727" height="15.2727">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="13" x="111.818" y="48" width="48.3636" height="31.6364">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="14" x="32" y="63.2727" width="48.1818" height="32.3636">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="15" x="18.7273" y="72.5455" width="12.5455" height="23.7841">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="16" x="112" y="79.6364" width="15.8182" height="16.5682">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="17" x="144.182" y="79.6364" width="15.6364" height="16">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="18" x="64" y="95.8182" width="16.1818" height="11.6364">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="19" x="32" y="96" width="16.1818" height="11.4545">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="20" x="160.364" y="61.2727" width="12" height="18">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="22" x="18.875" y="206" width="153.25" height="6.875">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="24" name="study" x="80.1818" y="48.1818" width="31.6364" height="48.1818">
+   <properties>
+    <property name="activityStr" value="study at the library"/>
+    <property name="activityTime" type="int" value="2"/>
+    <property name="activityType" value="study"/>
+    <property name="changeAmount" value="0.3,0.2,0.15"/>
+    <property name="isActivity" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="25" name="goOutside" x="80" y="185.091" width="31.6364" height="27.2727">
+   <properties>
+    <property name="isNewMap" type="bool" value="true"/>
+    <property name="newMap" value="map"/>
+    <property name="newMapStr" value="go outside"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

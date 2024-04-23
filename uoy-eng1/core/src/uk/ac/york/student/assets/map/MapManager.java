@@ -29,7 +29,7 @@ public final class MapManager {
 
     public static void onEnable() {
 
-        List<String> maps = List.of("map", "blankMap", "inside_house");
+        List<String> maps = List.of("map", "blankMap", "inside_house", "inside_pub", "inside_library");
         // Create parameters for loading the maps
         TmxMapLoader.Parameters parameter = new TmxMapLoader.Parameters();
         parameter.textureMinFilter = Texture.TextureFilter.Nearest;

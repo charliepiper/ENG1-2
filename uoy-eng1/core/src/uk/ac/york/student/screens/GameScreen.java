@@ -42,6 +42,7 @@ import uk.ac.york.student.utils.StreamUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
@@ -217,16 +218,19 @@ public class GameScreen extends BaseScreen implements InputProcessor {
             MapObjects objects = gameObjectsLayer.getObjects();
             // Iterate over all objects to find the starting point
             for (MapObject object : objects) {
-                if (!object.getName().equals("startingPoint")) continue;
-                MapProperties properties = object.getProperties();
-                if (!properties.containsKey("spawnpoint")) continue;
-                Boolean spawnpoint = properties.get("spawnpoint", Boolean.class);
-                if (spawnpoint == null || Boolean.FALSE.equals(spawnpoint)) continue;
-                RectangleMapObject rectangleObject = (RectangleMapObject) object;
-                Rectangle rectangle = rectangleObject.getRectangle();
-                // Update the starting point based on the found object
-                startingPoint = new Vector2(rectangle.getX() * mapScale, rectangle.getY() * mapScale);
-                break;
+                System.out.println(object.getName());
+                if (object.getName() != null) {
+                    if (!object.getName().equals("startingPoint")) continue;
+                    MapProperties properties = object.getProperties();
+                    if (!properties.containsKey("spawnpoint")) continue;
+                    Boolean spawnpoint = properties.get("spawnpoint", Boolean.class);
+                    if (spawnpoint == null || Boolean.FALSE.equals(spawnpoint)) continue;
+                    RectangleMapObject rectangleObject = (RectangleMapObject) object;
+                    Rectangle rectangle = rectangleObject.getRectangle();
+                    // Update the starting point based on the found object
+                    startingPoint = new Vector2(rectangle.getX() * mapScale, rectangle.getY() * mapScale);
+                    break;
+                }
             }
 
             // Set the new map and starting point for the player

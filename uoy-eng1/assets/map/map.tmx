@@ -205,27 +205,23 @@
   </object>
   <object id="17" name="enterLibrary" x="64.4792" y="84.8267" width="33.4545" height="28.0455">
    <properties>
-    <property name="activityStr" value="study at the library"/>
-    <property name="activityTime" type="int" value="2"/>
-    <property name="activityType" value="study"/>
-    <property name="changeAmount" value="0.3,0.2,0.15"/>
-    <property name="isActivity" type="bool" value="true"/>
+    <property name="isNewMap" type="bool" value="true"/>
+    <property name="newMap" value="inside_library"/>
+    <property name="newMapStr" value="enter the library"/>
    </properties>
   </object>
   <object id="19" name="enterRoom" x="341.987" y="200.325" width="20" height="41">
    <properties>
     <property name="isNewMap" type="bool" value="true"/>
     <property name="newMap" value="inside_house"/>
-    <property name="newMapStr" value="go into your house"/>
+    <property name="newMapStr" value="enter your house"/>
    </properties>
   </object>
   <object id="21" name="enterPub" x="424.814" y="144.523" width="20.6067" height="31.5682">
    <properties>
-    <property name="activityStr" value="go for drinks"/>
-    <property name="activityTime" type="int" value="2"/>
-    <property name="activityType" value="entertain"/>
-    <property name="changeAmount" value="0.4,0.25"/>
-    <property name="isActivity" type="bool" value="true"/>
+    <property name="isNewMap" type="bool" value="true"/>
+    <property name="newMap" value="inside_pub"/>
+    <property name="newMapStr" value="enter the pub"/>
    </properties>
   </object>
   <object id="23" name="enterBusStop" x="16.2257" y="230.904" width="63.67" height="24.9925">
@@ -430,7 +426,7 @@
     <property name="isCollision" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="91" x="362.083" y="152.515" width="30.0985" height="71.5682">
+  <object id="91" x="362.083" y="152.515" width="29.7349" height="71.5682">
    <properties>
     <property name="isCollision" type="bool" value="true"/>
    </properties>
