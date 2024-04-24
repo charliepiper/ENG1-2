@@ -39,10 +39,12 @@ import uk.ac.york.student.player.PlayerMetrics;
 import uk.ac.york.student.utils.MapOfSuppliers;
 import uk.ac.york.student.utils.Pair;
 import uk.ac.york.student.utils.StreamUtils;
+import uk.ac.york.student.utils.Wait;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
@@ -56,7 +58,10 @@ public class GameScreen extends BaseScreen implements InputProcessor {
      * The key code for the action key. This is used to trigger actions in the game.
      */
     private static final int ACTION_KEY = Input.Keys.E;
-
+    /**
+     * The key code for the exit key. This is used to open the game menu.
+     */
+    private static final int EXIT_KEY = Input.Keys.ESCAPE;
     /**
      * The stage for this game screen. This is where all the actors for the game are added.
      */
@@ -717,6 +722,11 @@ public class GameScreen extends BaseScreen implements InputProcessor {
                     throw new IllegalStateException("Unexpected value: " + actionMapObject);
                 }
             }
+        } else if (keycode == EXIT_KEY) {
+            Wait.async(400, TimeUnit.MILLISECONDS)
+                    .thenRun(() -> {
+                        Gdx.app.exit();
+                    });
         }
         return playerKeyDown;
     }
