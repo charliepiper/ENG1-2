@@ -52,10 +52,18 @@ import static com.badlogic.gdx.scenes.scene2d.actions.Actions.fadeIn;
 import java.util.List;
 
 /**
+ * UPDATED FROM ASSESSMENT 1
+ *  Functionality for
+ *  -"A leaderboard with the name and score of the top 10 people who have completed the game successfully."
+ *  -Displaying final score
+ *  April 20, 2024
+ */
+
+/**
  * The EndScreen class extends the BaseScreen class and represents the main menu screen of the game.
  * It contains a Stage object, which is used to handle input events and draw the elements of the screen.
  * The class overrides the methods of the Screen interface, which are called at different points in the game's lifecycle.
- * The MainMenuScreen class also includes several private fields for textures, images, skins, sounds, and settings used in the main menu.
+ * The EndScreen class also includes several private fields for textures, images, skins, sounds, and settings used in the main menu.
  * It provides three constructors that allow for different levels of customization of the fade-in effect when the main menu screen is shown.
  * The class also includes several methods for handling the rendering and animation of the main menu screen, as well as the actions performed when different buttons are clicked.
  */
