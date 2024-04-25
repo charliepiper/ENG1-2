@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="13" nextobjectid="111">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="13" nextobjectid="114">
  <tileset firstgid="1" source="cosy_town_tiles.tsx"/>
  <tileset firstgid="3016" source="buildings.tsx"/>
  <tileset firstgid="8488" source="interior.tsx"/>
@@ -198,7 +198,7 @@
 </data>
  </layer>
  <objectgroup id="11" name="gameObjects">
-  <object id="16" name="startingPoint" x="0.624064" y="255.866" width="16" height="16">
+  <object id="16" name="startingPoint" x="175.934" y="255.788" width="16" height="16">
    <properties>
     <property name="spawnpoint" type="bool" value="true"/>
    </properties>
@@ -224,7 +224,7 @@
     <property name="newMapStr" value="enter the pub"/>
    </properties>
   </object>
-  <object id="23" name="enterBusStop" x="16.2257" y="230.904" width="63.67" height="24.9925">
+  <object id="23" name="enterBusStop" x="32.1007" y="230.904" width="47.795" height="24.9925">
    <properties>
     <property name="activityStr" value="head to town"/>
     <property name="activityTime" type="int" value="3"/>
@@ -233,7 +233,7 @@
     <property name="isActivity" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="28" name="feedTheDucks" x="219.824" y="44.9123" width="25.6541" height="38.6518">
+  <object id="28" name="feedTheDucks" x="216.733" y="41.0941" width="31.2905" height="48.47">
    <properties>
     <property name="activityStr" value="feed the ducks"/>
     <property name="activityTime" type="int" value="1"/>
@@ -499,6 +499,29 @@
   <object id="110" x="264.25" y="137.25" width="7.5" height="6.5625">
    <properties>
     <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="111" name="goforawalk" x="0.922013" y="247.561" width="30.8874" height="32.2705">
+   <properties>
+    <property name="activityStr" value="go for a walk"/>
+    <property name="activityTime" type="int" value="1"/>
+    <property name="activityType" value="exercise"/>
+    <property name="changeAmount" value="0.2,0.1"/>
+    <property name="isActivity" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="112" x="223.588" y="43.8602" width="17.0572" height="37.2769">
+   <properties>
+    <property name="isCollision" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="113" name="enterBusStop" x="16.7275" y="230.879" width="15.42" height="16.6175">
+   <properties>
+    <property name="activityStr" value="head to town"/>
+    <property name="activityTime" type="int" value="3"/>
+    <property name="activityType" value="entertain"/>
+    <property name="changeAmount" value="0.2,0.1"/>
+    <property name="isActivity" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>
