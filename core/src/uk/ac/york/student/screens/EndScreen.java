@@ -5,9 +5,11 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 import uk.ac.york.student.GdxGame;
+import uk.ac.york.student.game.activities.Activity;
 import uk.ac.york.student.player.Player;
 import uk.ac.york.student.player.PlayerMetric;
 import uk.ac.york.student.player.PlayerMetrics;
+import uk.ac.york.student.player.PlayerStreaks;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
@@ -41,6 +43,8 @@ import uk.ac.york.student.settings.GamePreferences;
 import uk.ac.york.student.settings.MainMenuCloudsPreferences;
 import uk.ac.york.student.utils.Wait;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
@@ -52,10 +56,19 @@ import static com.badlogic.gdx.scenes.scene2d.actions.Actions.fadeIn;
 import java.util.List;
 
 /**
+ * UPDATED FROM ASSESSMENT 1
+ *  Functionality for
+ *  -"A leaderboard with the name and score of the top 10 people who have completed the game successfully."
+ *  -Displaying final score
+ *  -Displaying hidden achievements
+ *  April 20, 2024
+ */
+
+/**
  * The EndScreen class extends the BaseScreen class and represents the main menu screen of the game.
  * It contains a Stage object, which is used to handle input events and draw the elements of the screen.
  * The class overrides the methods of the Screen interface, which are called at different points in the game's lifecycle.
- * The MainMenuScreen class also includes several private fields for textures, images, skins, sounds, and settings used in the main menu.
+ * The EndScreen class also includes several private fields for textures, images, skins, sounds, and settings used in the main menu.
  * It provides three constructors that allow for different levels of customization of the fade-in effect when the main menu screen is shown.
  * The class also includes several methods for handling the rendering and animation of the main menu screen, as well as the actions performed when different buttons are clicked.
  */
@@ -77,10 +90,11 @@ public class EndScreen extends BaseScreen {
     private final GameSound buttonClick = SoundManager.getSupplierSounds().getResult(Sounds.BUTTON_CLICK);
     private final boolean cloudsEnabled = ((MainMenuCloudsPreferences) GamePreferences.MAIN_MENU_CLOUDS.getPreference()).isEnabled();
     private final float cloudsSpeed = ((MainMenuCloudsPreferences) GamePreferences.MAIN_MENU_CLOUDS.getPreference()).getSpeed();
+    private PlayerStreaks playerStreaks;
 
 
 
-//    public EndScreen(GdxGame game) {
+    //    public EndScreen(GdxGame game) {
 //        super(game);
 //        throw new UnsupportedOperationException("This constructor is not supported (must pass in object args!)");
 //    }
@@ -111,6 +125,8 @@ public EndScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime) {
         System.out.println(scoreString);
 
         executorService = Executors.newSingleThreadScheduledExecutor();
+
+        playerStreaks = PlayerStreaks.getInstance();
 
 
 
@@ -221,6 +237,8 @@ public EndScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime) {
         Label yourGradeLabel = new Label("Grade: " + scoreString, craftacularSkin);
 
         Label yourHiddenAchievementsLabel = new Label("Hidden Achievements: ", craftacularSkin);
+//        Label streaksLabel = new Label("", craftacularSkin);
+        Label bookworm = new Label("BOOKWORM - studied more than 4x in a row!", craftacularSkin);
 
         Label leaderboardLabel = new Label("Leaderboard", craftacularSkin);
 
@@ -238,10 +256,34 @@ public EndScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime) {
         table.add(yourScoreLabel).uniformX();
         table.row();
         table.add(yourGradeLabel).uniformX();
+        table.row().pad(100, 0, 10, 0);;
+        table.add(yourHiddenAchievementsLabel).uniformX();
         table.row();
-        table.add(yourHiddenAchievementsLabel).uniformX();;
+//        Map<String, Label> streakLabels = new HashMap<>();
+//        for (Activity activity : Activity.values()) {
+//            Label streakLabel = new Label(activity.name() + " Streak: " + playerStreaks.getStreakCount(activity), craftacularSkin);
+//            streakLabels.put(activity.name(), streakLabel);
+//        }
+//        for (Label label : streakLabels.values()) {
+//            table.add(label).uniformX();
+//            table.row();
+//        }
+        if (playerStreaks.getStreakCount(Activity.STUDY) >= 4) {
+            // Award additional points for achieving the study streak
+            table.add(bookworm).uniformX();
+//            System.out.println(playerStreaks.getStreakCount(Activity.SLEEP));
+        }
+
+
+//        table.add(streaksLabel).uniformX();
+//        table.row();;
         table.row().pad(100, 0, 10, 0);
         table.add(exitButton).expandX().uniformX().colspan(2);
+
+
+
+// Add streak count labels to the UI table
+
 
         // Add listeners to the buttons.
         // The exit button disposes the button click sound and exits the application after a delay of 400 milliseconds.

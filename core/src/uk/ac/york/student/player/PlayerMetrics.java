@@ -23,7 +23,8 @@ public final class PlayerMetrics {
     public enum MetricType {
         ENERGY,       // Represents the energy level of the player
         HAPPINESS,    // Represents the happiness level of the player
-        STUDY_LEVEL;  // Represents the study level of the player
+        STUDY_LEVEL,
+//        STREAKS// Represents the study level of the player
     }
 
     /**
@@ -33,7 +34,7 @@ public final class PlayerMetrics {
     public enum MetricEffect {
         INCREASE,    // Represents an increase in a player's metric
         DECREASE,    // Represents a decrease in a player's metric
-        RESET;       // Represents resetting a player's metric to its initial value
+        RESET      // Represents resetting a player's metric to its initial value
     }
 
     /**
@@ -50,6 +51,8 @@ public final class PlayerMetrics {
      * The study level metric of the player.
      */
     private final PlayerStudyLevel studyLevel = new PlayerStudyLevel();
+
+//    private final PlayerStreaks streaks = new PlayerStreaks();
 
     /**
      * Changes the specified player metric based on the given effect and change amount.
