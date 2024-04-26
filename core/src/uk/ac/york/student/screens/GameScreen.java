@@ -36,6 +36,7 @@ import uk.ac.york.student.game.activities.Activity;
 import uk.ac.york.student.player.Player;
 import uk.ac.york.student.player.PlayerMetric;
 import uk.ac.york.student.player.PlayerMetrics;
+import uk.ac.york.student.player.PlayerStreaks;
 import uk.ac.york.student.utils.MapOfSuppliers;
 import uk.ac.york.student.utils.Pair;
 import uk.ac.york.student.utils.StreamUtils;
@@ -139,10 +140,14 @@ public class GameScreen extends BaseScreen implements InputProcessor {
     private Map<Activity, Integer> activitiesPerformedToday = new HashMap<>();
     private Map<Activity, Integer> activityStreakCounts = new HashMap<>();
 
+    private PlayerStreaks playerStreaks;
+
 
 
     public GameScreen(GdxGame game) {
         super(game);
+
+        playerStreaks = PlayerStreaks.getInstance();
 
         // Set up the tilemap
         // Note: cannot extract into a method because class variables are set as final
@@ -775,6 +780,7 @@ public class GameScreen extends BaseScreen implements InputProcessor {
         // Get the type of the activity from the ActivityMapObject
         Activity type = actionMapObject.getType();
 
+
         // Check if the activity has already been performed today
 //        if (activitiesPerformedToday.containsKey(type)) {
 //            // Activity already performed today, return false
@@ -850,6 +856,9 @@ public class GameScreen extends BaseScreen implements InputProcessor {
             // Check streaks after completing the day's activities
             checkForStreaks();
 
+
+//            System.out.println(type);
+
             activitiesPerformedToday.clear();
             updateStreakCount(type);
 
@@ -894,23 +903,24 @@ public class GameScreen extends BaseScreen implements InputProcessor {
     private void updateStreakCount(Activity activity) {
         // Increment streak count for the activity if performed consecutively
         if (activitiesPerformedToday.getOrDefault(activity, 0) == 1) {
-            activityStreakCounts.put(activity, activityStreakCounts.getOrDefault(activity, 0) + 1);
+            playerStreaks.incrementStreak(activity);
+
         }
     }
 
-        private void checkForStreaks() {
-            // Your method implementation here
-            // Ensure to use the instance variables/methods of the GameScreen class
-            if (activityStreakCounts.getOrDefault(Activity.STUDY, 0) >= 4) {
-                // Award additional points for achieving the walking streak
-                System.out.println("study achievement unlocked!");
-            }
-
-            if (activityStreakCounts.getOrDefault(Activity.ENTERTAIN, 0) >= 4) {
-                // Award additional points for achieving the duck feeding streak
-                System.out.println("entertainment achievement unlocked!");
-            }
+    private void checkForStreaks() {
+        // Check for streaks using the PlayerStreaks instance
+        if (playerStreaks.getStreakCount(Activity.SLEEP) >= 4) {
+            // Award additional points for achieving the study streak
+            System.out.println("sleepß achievement unlocked!");
+//            System.out.println(playerStreaks.getStreakCount(Activity.SLEEP));
         }
+
+        if (playerStreaks.getStreakCount(Activity.ENTERTAIN) >= 4) {
+            // Award additional points for achieving the entertainment streak
+            System.out.println("Entertainment achievement unlocked!");
+        }
+    }
 
 
 
