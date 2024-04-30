@@ -5,6 +5,7 @@ import org.jetbrains.annotations.Range;
 import uk.ac.york.student.game.GameTime;
 
 /**
+ * This is a new class which adds a metric, adding additional functionality.
  * The PlayerHealth class implements the PlayerMetric interface.
  * This class is responsible for managing the health level of a player in the game.
  * It includes methods to get, set, increase, and decrease the health level.

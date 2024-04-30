@@ -197,6 +197,8 @@ public class Player extends Actor implements PlayerScore, InputProcessor {
         // If the BOOST movement is active, the sprite moves twice as fast
         final float amount = (Movement.BOOST.is ? 2 : 1) * mapScale;
 
+        //Collision detection has been added before a move can be completed
+        
         //Check whether a collision has occurred
         // Move the sprite up if the UP movement is active and the sprite is not at the top of the map
         if (Movement.UP.is && (sprite.getY() + sprite.getHeight() < maxHeightScaled)) {

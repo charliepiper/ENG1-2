@@ -81,7 +81,7 @@ public final class PlayerMetrics {
             case STUDY_LEVEL:
                 metric = studyLevel;
                 break;
-            case HEALTH:
+            case HEALTH: // new metric adding extra functionality
                 metric = health;
                 break;
             default:
