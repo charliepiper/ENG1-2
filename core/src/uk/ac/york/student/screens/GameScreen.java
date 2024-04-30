@@ -36,6 +36,7 @@ import uk.ac.york.student.game.activities.Activity;
 import uk.ac.york.student.player.Player;
 import uk.ac.york.student.player.PlayerMetric;
 import uk.ac.york.student.player.PlayerMetrics;
+import uk.ac.york.student.player.PlayerStreaks;
 import uk.ac.york.student.utils.MapOfSuppliers;
 import uk.ac.york.student.utils.Pair;
 import uk.ac.york.student.utils.StreamUtils;
@@ -47,6 +48,9 @@ import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * The {@link GameScreen} class extends the {@link BaseScreen} class and implements the {@link InputProcessor} interface.
@@ -127,8 +131,23 @@ public class GameScreen extends BaseScreen implements InputProcessor {
      *
      * @param game The {@link GdxGame} instance that this screen is part of.
      */
+
+    // Define a map to store counts of each activity type done in a day
+//    private Map<Activity, Integer> dailyActivityCounts = new HashMap<>();
+//
+//    private Map<Activity, Integer> activitiesPerformedToday = new HashMap<>();
+
+    private Map<Activity, Integer> activitiesPerformedToday = new HashMap<>();
+    private Map<Activity, Integer> activityStreakCounts = new HashMap<>();
+
+    private PlayerStreaks playerStreaks;
+
+
+
     public GameScreen(GdxGame game) {
         super(game);
+
+        playerStreaks = PlayerStreaks.getInstance();
 
         // Set up the tilemap
         // Note: cannot extract into a method because class variables are set as final
@@ -760,6 +779,17 @@ public class GameScreen extends BaseScreen implements InputProcessor {
         // Get the type of the activity from the ActivityMapObject
         Activity type = actionMapObject.getType();
 
+
+        // Check if the activity has already been performed today
+//        if (activitiesPerformedToday.containsKey(type)) {
+//            // Activity already performed today, return false
+//            return false;
+//        }
+//
+        // Increment the count for the activity in the dailyActivityCounts map
+//        activitiesPerformedToday.put(type, 1);
+        activitiesPerformedToday.put(type, activitiesPerformedToday.getOrDefault(type, 0) + 1);
+
         // Check if the game is at the end of the day and if the activity is not sleeping
         // If it is, return false to indicate that the activity cannot be performed
         if (gameTime.isEndOfDay() && !type.equals(Activity.SLEEP)) return false;
@@ -822,6 +852,15 @@ public class GameScreen extends BaseScreen implements InputProcessor {
         }
         // Check if the activity is sleeping
         if (type.equals(Activity.SLEEP)) {
+            // Check streaks after completing the day's activities
+            checkForStreaks();
+
+
+//            System.out.println(type);
+
+            activitiesPerformedToday.clear();
+            updateStreakCount(type);
+
             // Get all player metrics
             List<PlayerMetric> allMetrics = metrics.getMetrics();
             // Iterate over all player metrics
@@ -854,9 +893,36 @@ public class GameScreen extends BaseScreen implements InputProcessor {
         // Set the text of the timeLabel to the constructed time string
         timeLabel.setText(time);
 
+        updateStreakCount(type);
+
         // Return true indicating the operation was successful
         return true;
     }
+
+    private void updateStreakCount(Activity activity) {
+        // Increment streak count for the activity if performed consecutively
+        if (activitiesPerformedToday.getOrDefault(activity, 0) == 1) {
+            playerStreaks.incrementStreak(activity);
+
+        }
+    }
+
+    private void checkForStreaks() {
+        // Check for streaks using the PlayerStreaks instance
+        if (playerStreaks.getStreakCount(Activity.SLEEP) >= 4) {
+            // Award additional points for achieving the study streak
+            System.out.println("sleepß achievement unlocked!");
+//            System.out.println(playerStreaks.getStreakCount(Activity.SLEEP));
+        }
+
+        if (playerStreaks.getStreakCount(Activity.ENTERTAIN) >= 4) {
+            // Award additional points for achieving the entertainment streak
+            System.out.println("Entertainment achievement unlocked!");
+        }
+    }
+
+
+
 
     /**
      * This method is called when a key is released.
