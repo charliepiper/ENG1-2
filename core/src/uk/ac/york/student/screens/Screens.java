@@ -40,6 +40,11 @@ public final class Screens {
      */
     public static Class<EndScreen> END;
 
+    /**
+     * Holds the class reference to the {@link TutorialScreen}. This is used to dynamically load the {@link PreferencesScreen} when needed.
+     */
+    public static Class<TutorialScreen> TUTORIAL;
+
     static {
         // Get all the fields of the Screens class
         Field[] fields = Screens.class.getFields();

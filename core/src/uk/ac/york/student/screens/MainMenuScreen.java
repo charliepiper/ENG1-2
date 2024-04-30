@@ -283,6 +283,7 @@ public class MainMenuScreen extends BaseScreen {
 
         // Create the buttons and the logo image for the main menu screen.
         TextButton playButton = new TextButton("Let Ron Cooke", craftacularSkin);
+        TextButton tutorialButton = new TextButton("Tutorial", craftacularSkin);
         TextButton preferencesButton = new TextButton("Settings", craftacularSkin);
         TextButton exitButton = new TextButton("Exit", craftacularSkin);
         Image cookeLogoImage = new Image(cookeLogo);
@@ -291,9 +292,11 @@ public class MainMenuScreen extends BaseScreen {
         table.add(cookeLogoImage).fillX().uniformX().pad(0, 0, 150, 0);
         table.row();
         table.add(playButton).fillX().uniformX();
-        table.row().pad(10, 0, 10, 0);
+        table.row().pad(10, 0, 5, 0);
+        table.add(tutorialButton).fillX().uniformX();
+        table.row().pad(10, 0, 5, 0);
         table.add(preferencesButton).fillX().uniformX();
-        table.row();
+        table.row().pad(10, 0, 5, 0);
         table.add(exitButton).fillX().uniformX();
 
         // Add listeners to the buttons.
@@ -337,6 +340,7 @@ public class MainMenuScreen extends BaseScreen {
                 SoundManager.getSounds().get(Sounds.BUTTON_CLICK).play();
                 zoomAndMove(playButton, Direction.DOWN);
                 zoomAndMove(preferencesButton, Direction.DOWN);
+                zoomAndMove(tutorialButton, Direction.DOWN);
                 zoomAndMove(exitButton, Direction.DOWN);
                 zoomAndMove(cookeLogoImage, Direction.UP);
                 fadeOut();
@@ -359,6 +363,23 @@ public class MainMenuScreen extends BaseScreen {
             public void changed(ChangeEvent event, Actor actor) {
                 SoundManager.getSounds().get(Sounds.BUTTON_CLICK).play();
                 game.transitionScreen(Screens.PREFERENCES);
+            }
+        });
+
+        // The tutorial button plays the button click sound and transitions to the preferences screen.
+        tutorialButton.addListener(new ChangeListener() {
+            /**
+             * This method is triggered when a change event occurs on the actor, in this case, when the preferences button is clicked.
+             * It first plays the button click sound.
+             * Then, it transitions the screen to the preferences screen.
+             *
+             * @param event The {@link com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent} triggered by the actor. This is not used in the method.
+             * @param actor The actor that triggered the {@link com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent}. This is not used in the method.
+             */
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                SoundManager.getSounds().get(Sounds.BUTTON_CLICK).play();
+                game.transitionScreen(Screens.TUTORIAL);
             }
         });
 
