@@ -42,7 +42,7 @@ public class PlayerStreaks {
      */
     public int getStreakCount(Activity activity) {
         // Use the activity name as key in the map
-        System.out.println(activityStreakCounts);
+//        System.out.println(activityStreakCounts);
 
         return activityStreakCounts.get(activity.name());
 
