@@ -309,7 +309,11 @@ public class Player extends Actor implements PlayerScore, InputProcessor {
     public enum Transition {
         NEW_MAP, ACTIVITY
     }
-
+    /**
+     * Enum representing the collisions for the player.
+     * It includes COLLISION.
+     * COLLISION is used when the player collides with a collision box.
+     */
     public enum Collision {
         COLLISION
     }
@@ -410,7 +414,13 @@ public class Player extends Actor implements PlayerScore, InputProcessor {
         // If the player's sprite is not on any map object, return null
         return null;
     }
-
+    /**
+     * Returns the future map object that the player's sprite will be in.
+     * This is determined by checking if the player's center position is within the bounding box of each map object.
+     * If the player's sprite is not on any map object, null is returned.
+     *
+     * @return The MapObject that the player's sprite will be on, or null if the sprite will not be on any map object.
+     */
     public @Nullable MapObject getFutureMapObject() {
         Vector2 center = getCenter();
         // Iterate over each entry in the tileObjectBoundingBoxes HashMap
@@ -432,7 +442,6 @@ public class Player extends Actor implements PlayerScore, InputProcessor {
                 return entry.getKey();
             }
         }
-
         // If the player's sprite is not on any map object, return null
         return null;
     }

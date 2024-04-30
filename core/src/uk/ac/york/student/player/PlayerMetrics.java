@@ -24,6 +24,7 @@ public final class PlayerMetrics {
         ENERGY,       // Represents the energy level of the player
         HAPPINESS,    // Represents the happiness level of the player
         STUDY_LEVEL,
+        HEALTH;       // Represents the health level of the player
 //        STREAKS// Represents the study level of the player
     }
 
@@ -55,6 +56,11 @@ public final class PlayerMetrics {
 //    private final PlayerStreaks streaks = new PlayerStreaks();
 
     /**
+     * The health level metric of the player.
+     */
+    private final PlayerHealth health = new PlayerHealth();
+
+    /**
      * Changes the specified player metric based on the given effect and change amount.
      *
      * @param type The type of the player metric to change. This should be one of the values from the {@link MetricType} enum.
@@ -74,6 +80,9 @@ public final class PlayerMetrics {
                 break;
             case STUDY_LEVEL:
                 metric = studyLevel;
+                break;
+            case HEALTH:
+                metric = health;
                 break;
             default:
                 throw new IllegalArgumentException("Invalid metric type: " + type);
@@ -110,6 +119,8 @@ public final class PlayerMetrics {
                 return happiness;
             case STUDY_LEVEL:
                 return studyLevel;
+            case HEALTH:
+                return health;
             default:
                 throw new IllegalArgumentException("Invalid metric type: " + type);
         }
@@ -121,7 +132,7 @@ public final class PlayerMetrics {
      */
     @Contract(value = " -> new", pure = true)
     public @Unmodifiable List<PlayerMetric> getMetrics() {
-        return List.of(energy, happiness, studyLevel);
+        return List.of(energy, happiness, studyLevel, health);
     }
 
     /**
@@ -131,5 +142,6 @@ public final class PlayerMetrics {
         energy.dispose();
         happiness.dispose();
         studyLevel.dispose();
+        health.dispose();
     }
 }

@@ -242,7 +242,6 @@ public class GameScreen extends BaseScreen implements InputProcessor {
             MapObjects objects = gameObjectsLayer.getObjects();
             // Iterate over all objects to find the starting point
             for (MapObject object : objects) {
-                System.out.println(object.getName());
                 if (object.getName() != null) {
                     if (!object.getName().equals("startingPoint")) continue;
                     MapProperties properties = object.getProperties();

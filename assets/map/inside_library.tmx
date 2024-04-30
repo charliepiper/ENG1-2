@@ -196,9 +196,9 @@
   <object id="24" name="study" x="80.1818" y="48.1818" width="31.6364" height="48.1818">
    <properties>
     <property name="activityStr" value="study at the library"/>
-    <property name="activityTime" type="int" value="2"/>
+    <property name="activityTime" type="int" value="3"/>
     <property name="activityType" value="study"/>
-    <property name="changeAmount" value="0.3,0.2,0.15"/>
+    <property name="changeAmount" value="0.3,0.2,0.15,0.2"/>
     <property name="isActivity" type="bool" value="true"/>
    </properties>
   </object>

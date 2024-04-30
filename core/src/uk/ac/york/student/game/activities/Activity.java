@@ -18,30 +18,34 @@ import java.util.List;
 @Getter
 public enum Activity {
     /**
-     * The {@link Activity#STUDY} activity increases the {@link Player}'s {@link PlayerMetrics#getStudyLevel()} and decreases their {@link PlayerMetrics#getEnergy()} and {@link PlayerMetrics#getHappiness()}.
+     * The {@link Activity#STUDY} activity increases the {@link Player}'s {@link PlayerMetrics#getStudyLevel()} and decreases their {@link PlayerMetrics#getEnergy()} and {@link PlayerMetrics#getHappiness()} and {@link PlayerMetrics#getHealth()}.
      */
     STUDY(
         Pair.of(PlayerMetrics.MetricType.STUDY_LEVEL, PlayerMetrics.MetricEffect.INCREASE),
         Pair.of(PlayerMetrics.MetricType.ENERGY, PlayerMetrics.MetricEffect.DECREASE),
-        Pair.of(PlayerMetrics.MetricType.HAPPINESS, PlayerMetrics.MetricEffect.DECREASE)
+        Pair.of(PlayerMetrics.MetricType.HAPPINESS, PlayerMetrics.MetricEffect.DECREASE),
+        Pair.of(PlayerMetrics.MetricType.HEALTH, PlayerMetrics.MetricEffect.DECREASE)
     ),
     /**
-     * The {@link Activity#SLEEP} activity resets the {@link Player}'s {@link PlayerMetrics#getEnergy()} and {@link PlayerMetrics#getStudyLevel()}.
+     * The {@link Activity#SLEEP} activity resets the {@link Player}'s {@link PlayerMetrics#getEnergy()} and {@link PlayerMetrics#getStudyLevel()} and increases their {@link PlayerMetrics#getHealth()}.
      */
     SLEEP(
         Pair.of(PlayerMetrics.MetricType.ENERGY, PlayerMetrics.MetricEffect.RESET),
-        Pair.of(PlayerMetrics.MetricType.STUDY_LEVEL, PlayerMetrics.MetricEffect.RESET)
+        Pair.of(PlayerMetrics.MetricType.STUDY_LEVEL, PlayerMetrics.MetricEffect.RESET),
+        Pair.of(PlayerMetrics.MetricType.HEALTH, PlayerMetrics.MetricEffect.INCREASE)
     ),
     /**
      * The {@link Activity#NAP} activity increases the {@link Player}'s {@link PlayerMetrics#getEnergy()}.
      */
     NAP(
-        Pair.of(PlayerMetrics.MetricType.ENERGY, PlayerMetrics.MetricEffect.INCREASE)
+        Pair.of(PlayerMetrics.MetricType.ENERGY, PlayerMetrics.MetricEffect.INCREASE),
+        Pair.of(PlayerMetrics.MetricType.HEALTH, PlayerMetrics.MetricEffect.INCREASE)
     ),
     /**
      * The {@link Activity#EAT} activity increases the {@link Player}'s {@link PlayerMetrics#getHappiness()}.
      */
     EAT(
+        Pair.of(PlayerMetrics.MetricType.HEALTH, PlayerMetrics.MetricEffect.INCREASE),
         Pair.of(PlayerMetrics.MetricType.ENERGY, PlayerMetrics.MetricEffect.INCREASE)
     ),
     /**
@@ -50,7 +54,14 @@ public enum Activity {
     ENTERTAIN(
         Pair.of(PlayerMetrics.MetricType.HAPPINESS, PlayerMetrics.MetricEffect.INCREASE),
         Pair.of(PlayerMetrics.MetricType.ENERGY, PlayerMetrics.MetricEffect.DECREASE)
-    );
+    ),
+    /**
+     * The {@link Activity#EXERCISE} activity increases the {@link Player}'s {@link PlayerMetrics#getHealth()} and decreases their {@link PlayerMetrics#getEnergy()}.
+     */
+    EXERCISE(
+        Pair.of(PlayerMetrics.MetricType.HEALTH, PlayerMetrics.MetricEffect.INCREASE),
+        Pair.of(PlayerMetrics.MetricType.ENERGY, PlayerMetrics.MetricEffect.DECREASE)
+            );
 
     /**
      * The effects of the activity on the {@link Player}'s metrics.
