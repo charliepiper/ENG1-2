@@ -1,5 +1,16 @@
 package uk.ac.york.student.screens;
 
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import lombok.Getter;
+import org.jetbrains.annotations.NotNull;
+import uk.ac.york.student.GdxGame;
+import uk.ac.york.student.game.activities.Activity;
+import uk.ac.york.student.player.Player;
+import uk.ac.york.student.player.PlayerMetric;
+import uk.ac.york.student.player.PlayerMetrics;
+import uk.ac.york.student.player.PlayerStreaks;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
@@ -13,6 +24,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
@@ -31,6 +43,8 @@ import uk.ac.york.student.settings.GamePreferences;
 import uk.ac.york.student.settings.MainMenuCloudsPreferences;
 import uk.ac.york.student.utils.Wait;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
@@ -39,147 +53,103 @@ import java.util.concurrent.atomic.AtomicReference;
 
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.fadeIn;
 
+import java.util.List;
+
 /**
- * The MainMenuScreen class extends the BaseScreen class and represents the main menu screen of the game.
+ * UPDATED FROM ASSESSMENT 1
+ *  Functionality for
+ *  -"A leaderboard with the name and score of the top 10 people who have completed the game successfully."
+ *  -Displaying final score
+ *  -Displaying hidden achievements
+ *  April 20, 2024
+ */
+
+/**
+ * The EndScreen class extends the BaseScreen class and represents the main menu screen of the game.
  * It contains a Stage object, which is used to handle input events and draw the elements of the screen.
  * The class overrides the methods of the Screen interface, which are called at different points in the game's lifecycle.
- * The MainMenuScreen class also includes several private fields for textures, images, skins, sounds, and settings used in the main menu.
+ * The EndScreen class also includes several private fields for textures, images, skins, sounds, and settings used in the main menu.
  * It provides three constructors that allow for different levels of customization of the fade-in effect when the main menu screen is shown.
  * The class also includes several methods for handling the rendering and animation of the main menu screen, as well as the actions performed when different buttons are clicked.
  */
-public class MainMenuScreen extends BaseScreen {
-    /**
-     * The {@link Stage} instance for the {@link MainMenuScreen} class.
-     * This instance is used to handle input events and draw the elements of the screen.
-     */
-    @Getter
+@Getter
+public class CharacterScreen extends BaseScreen {
+
     private final Stage processor;
 
-    /**
-     * A boolean value that determines whether the screen should fade in when it is shown.
-     * If true, the screen will fade in; if false, it will not.
-     */
     private final boolean shouldFadeIn;
-
-    /**
-     * The time in seconds for the fade-in effect when the screen is shown.
-     * This value is used only if {@link MainMenuScreen#shouldFadeIn} is true.
-     */
     private final float fadeInTime;
 
-    /**
-     * The Texture instance for the background of the {@link MainMenuScreen}.
-     * This texture is loaded from the "images/MapOverview.png" file.
-     */
+
     private final Texture backgroundTexture = new Texture(Gdx.files.internal("images/MapOverview.png"));
-
-    /**
-     * The Texture instance for the vignette effect on the {@link MainMenuScreen}.
-     * This texture is loaded from the "images/Vignette.png" file.
-     */
     private final Texture vignetteTexture = new Texture(Gdx.files.internal("images/Vignette.png"));
-
-    /**
-     * The Texture instance for the logo on the {@link MainMenuScreen}.
-     * This texture is loaded from the "images/logo/b/logo.png" file.
-     * The subfolder is "b" to represent version B of the logo
-     */
     private final Texture cookeLogo = new Texture(Gdx.files.internal("images/logo/b/logo.png"));
-
-    /**
-     * The Texture instance for the clouds on the {@link MainMenuScreen}.
-     * This texture is loaded from the "images/CloudsFormatted.png" file.
-     */
     private final Texture clouds = new Texture(Gdx.files.internal("images/CloudsFormatted.png"));
-
-    /**
-     * The Image instance for the clouds on the {@link MainMenuScreen}.
-     * This image is created from the clouds texture.
-     */
     private final Image cloudsImage = new Image(new TextureRegionDrawable(new TextureRegion(clouds)));
-
-    /**
-     * The Skin instance for the {@link MainMenuScreen}.
-     * This skin is loaded from the {@link SkinManager} using the {@link Skins#CRAFTACULAR} skin.
-     */
     private final Skin craftacularSkin = SkinManager.getSkins().getResult(Skins.CRAFTACULAR);
-
-    /**
-     * The GameSound instance for the button click sound on the {@link MainMenuScreen}.
-     * This sound is loaded from the {@link SoundManager} using the {@link Sounds#BUTTON_CLICK} sound.
-     */
     private final GameSound buttonClick = SoundManager.getSupplierSounds().getResult(Sounds.BUTTON_CLICK);
-
-    /**
-     * A boolean value that determines whether the clouds are enabled on the {@link MainMenuScreen}.
-     * This value is retrieved from the {@link MainMenuCloudsPreferences} in the {@link GamePreferences}.
-     * If true, the clouds will be displayed on the {@link MainMenuScreen}; if false, they will not.
-     */
     private final boolean cloudsEnabled = ((MainMenuCloudsPreferences) GamePreferences.MAIN_MENU_CLOUDS.getPreference()).isEnabled();
-
-    /**
-     * The speed of the clouds on the {@link MainMenuScreen}.
-     * This value is retrieved from the {@link MainMenuCloudsPreferences} in the {@link GamePreferences}.
-     * It represents the speed at which the clouds move across the {@link MainMenuScreen}.
-     */
     private final float cloudsSpeed = ((MainMenuCloudsPreferences) GamePreferences.MAIN_MENU_CLOUDS.getPreference()).getSpeed();
-    /**
-     * Constructor for the {@link MainMenuScreen} class.
-     * This constructor initializes the {@link MainMenuScreen} with the provided game.
-     * It sets {@link MainMenuScreen#shouldFadeIn} to false, meaning the screen will not fade in when shown.
-     * @param game the {@link GdxGame} instance representing the game
-     */
-    public MainMenuScreen(GdxGame game) {
-        this(game, false);
-    }
 
-    /**
-     * Constructor for the {@link MainMenuScreen} class.
-     * This constructor initializes the {@link MainMenuScreen} with the provided game and shouldFadeIn value.
-     * It sets fadeInTime to 0.75 seconds, which is the time for the fade-in effect when the screen is shown.
-     * @param game the {@link GdxGame} instance representing the game
-     * @param shouldFadeIn a boolean value that determines whether the screen should fade in when it is shown
-     */
-    public MainMenuScreen(GdxGame game, boolean shouldFadeIn) {
-        this(game, shouldFadeIn, 0.75f);
-    }
+    // Add fields for character selection
+    private final Texture character1Texture = new Texture(Gdx.files.internal("images/character1.png"));
+    private final Texture character2Texture = new Texture(Gdx.files.internal("images/character2.png"));
+    private final Texture character3Texture = new Texture(Gdx.files.internal("images/character3.png"));
 
-    /**
-     * Constructor for the {@link MainMenuScreen} class.
-     * This constructor initializes the {@link MainMenuScreen} with the provided game, shouldFadeIn value, and fadeInTime.
-     * It also initializes the processor with a new {@link Stage} with a {@link ScreenViewport}, and sets this processor as the input processor for {@link Gdx}.
-     * Additionally, it initializes the {@link MainMenuScreen#executorService} with a new single thread scheduled executor.
-     * @param game the {@link GdxGame} instance representing the game
-     * @param shouldFadeIn a boolean value that determines whether the screen should fade in when it is shown
-     * @param fadeInTime the time in seconds for the fade-in effect when the screen is shown
-     */
-    public MainMenuScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime) {
+    private final Image character1Image = new Image(character1Texture);
+    private final Image character2Image = new Image(character2Texture);
+    private final Image character3Image = new Image(character3Texture);
+
+    private final TextButton selectCharacter1 = new TextButton("Select Character 1", craftacularSkin);
+    private final TextButton selectCharacter2 = new TextButton("Select Character 2", craftacularSkin);
+    private final TextButton selectCharacter3 = new TextButton("Select Character 3", craftacularSkin);
+
+    private int selectedCharacter; // Variable to store the currently selected character
+
+
+        public CharacterScreen(GdxGame game) {
         super(game);
-        this.shouldFadeIn = shouldFadeIn;
-        this.fadeInTime = fadeInTime;
+        throw new UnsupportedOperationException("This constructor is not supported (must pass in object args!)");
+    }
+    public CharacterScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime) {
+        this(game, shouldFadeIn, fadeInTime, new Object[]{}); // Provide an empty array for args
+    }
+
+    public CharacterScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime, Object @NotNull [] args) {
+        super(game);
         processor = new Stage(new ScreenViewport());
         Gdx.input.setInputProcessor(processor);
+
+        this.shouldFadeIn = shouldFadeIn;
+        this.fadeInTime = fadeInTime;
+
+        // Initialize the executorService
         executorService = Executors.newSingleThreadScheduledExecutor();
+
+        selectedCharacter = 1;
+
+
+//        selectButton.addListener(new ChangeListener() {
+//            @Override
+//            public void changed(ChangeEvent event, Actor actor) {
+//                if (selectedCharacter != null) {
+//                    // Implement character selection logic here
+//                    // For example, you can switch to the game screen with the selected character
+//                    // game.setScreen(new GameScreen(game, selectedCharacter));
+//                }
+//            }
+//        });
     }
 
-    /**
-     * The Direction enum represents the four cardinal directions: UP, DOWN, LEFT, and RIGHT.
-     * It is used in the {@link MainMenuScreen} class to specify the direction of certain animations and movements.
-     */
+
+
+
+
     public enum Direction {
         UP, DOWN, LEFT, RIGHT
     }
 
-    /**
-     * This method is used to zoom and move an actor in a specified direction.
-     * The actor is scaled up and moved in the direction specified by the 'direction' parameter.
-     * The scaling and movement are performed simultaneously over a duration of 1 second.
-     * The distance of the movement is 800 units.
-     *
-     * @param actor The actor to be zoomed and moved. This should be an instance of the {@link Actor} class or any of its subclasses.
-     * @param direction The direction in which the actor should be moved. This should be one of the values of the {@link MainMenuScreen.Direction} enum.
-     */
-    public void zoomAndMove(@NotNull Actor actor, @NotNull Direction direction) {
+    public void zoomAndMove(@NotNull Actor actor, @NotNull MainMenuScreen.Direction direction) {
         // Create a new Vector2 instance to store the movement vector.
         Vector2 vector = new Vector2();
 
@@ -213,31 +183,15 @@ public class MainMenuScreen extends BaseScreen {
 
         // Add the zoom and move actions to the actor. These actions will be performed simultaneously.
         actor.addAction(Actions.parallel(
-            Actions.scaleTo(scale, scale, duration),  // Scale the actor to the specified scale factor.
-            Actions.moveBy(vector.x, vector.y, duration)  // Move the actor by the specified vector.
+                Actions.scaleTo(scale, scale, duration),  // Scale the actor to the specified scale factor.
+                Actions.moveBy(vector.x, vector.y, duration)  // Move the actor by the specified vector.
         ));
     }
 
-    /**
-     * An {@link AtomicReference} to a {@link Float} value representing the alpha value for fade effects.
-     * This value is used to control the transparency of certain elements during fade in/out animations.
-     * The initial value is set to 1f, representing full opacity.
-     */
     private final AtomicReference<Float> alpha = new AtomicReference<>(1f);
 
-    /**
-     * A {@link ScheduledExecutorService} instance used for scheduling tasks to be executed after a certain delay, or at fixed intervals.
-     * This is used in the {@link MainMenuScreen} class to schedule tasks such as fade out animations or other time-dependent actions.
-     */
     private final ScheduledExecutorService executorService;
 
-    /**
-     * This method is used to create a fade out effect over a specified duration.
-     * The fade out effect is achieved by gradually reducing the alpha value of the elements to be faded.
-     * The alpha value is updated at fixed intervals until it reaches 0, at which point it is maintained at 0.
-     * The duration of the fade out effect is 1 second.
-     * The method uses a {@link ScheduledExecutorService}, specifically {@link MainMenuScreen#executorService}, to schedule the updates to the alpha value and to cancel the updates after the specified duration.
-     */
     public void fadeOut() {
         // Set the duration of the fade out effect in seconds.
         int duration = 1;
@@ -259,12 +213,6 @@ public class MainMenuScreen extends BaseScreen {
         executorService.schedule(() -> scheduledFuture.cancel(true), duration, timeUnit);
     }
 
-    /**
-     * This method is called when the {@link MainMenuScreen} is shown.
-     * It sets up the UI elements and their actions for the main menu screen.
-     * It also sets up the fade-in effect if {@link MainMenuScreen#shouldFadeIn} is true.
-     */
-    @Override
     public void show() {
         // If shouldFadeIn is true, set the alpha of the root actor to 0 and add a fade-in action to it.
         if (shouldFadeIn) {
@@ -274,6 +222,22 @@ public class MainMenuScreen extends BaseScreen {
 
         // Create a new Table and add it to the stage.
         Table table = new Table();
+        Table characterSelectionTable = new Table();
+        Table SelectionTable = new Table();
+
+        // Add character images to the character selection table
+        characterSelectionTable.add(character1Image).size(200).uniformX();
+        characterSelectionTable.add(character2Image).size(200).uniformX();
+        characterSelectionTable.add(character3Image).size(200).uniformX();
+        characterSelectionTable.row();
+        // Add select button centered below the character images
+
+        SelectionTable.add(selectCharacter1).colspan(1).pad(10);
+        SelectionTable.add(selectCharacter2).colspan(1).pad(20);
+        SelectionTable.add(selectCharacter3).colspan(1).pad(10);
+
+
+
         table.setFillParent(true);
         // If debug screen preferences are enabled, set the table to debug mode.
         if (((DebugScreenPreferences) GamePreferences.DEBUG_SCREEN.getPreference()).isEnabled()) {
@@ -282,19 +246,37 @@ public class MainMenuScreen extends BaseScreen {
         processor.addActor(table);
 
         // Create the buttons and the logo image for the main menu screen.
-        TextButton playButton = new TextButton("Let Ron Cooke", craftacularSkin);
-        TextButton preferencesButton = new TextButton("Settings", craftacularSkin);
+        Label TitleLabel = new Label("Select a character: ", craftacularSkin);
+
+
+        TextButton playButton = new TextButton("Play game", craftacularSkin);
+
         TextButton exitButton = new TextButton("Exit", craftacularSkin);
         Image cookeLogoImage = new Image(cookeLogo);
+
 
         // Add the buttons and the logo image to the table.
         table.add(cookeLogoImage).fillX().uniformX().pad(0, 0, 150, 0);
         table.row();
-        table.add(playButton).fillX().uniformX();
+        table.add(TitleLabel).fillX().uniformX();
         table.row().pad(10, 0, 10, 0);
-        table.add(preferencesButton).fillX().uniformX();
+        // Add character selection UI to the table
+        // Add character selection table to the main table
+        table.add(characterSelectionTable).colspan(3).fillX().row(); // Spanning three columns of the main table
         table.row();
-        table.add(exitButton).fillX().uniformX();
+
+        table.add(SelectionTable).colspan(3).row(); // Spanning three columns of the main table
+        table.row();
+//        table.add(selectButton).padTop(20).center();
+        table.row();
+        table.add(playButton).colspan(3).uniformX();
+        table.row().pad(10, 0, 10, 0);
+        table.add(exitButton).colspan(3).uniformX();
+
+
+
+// Add streak count labels to the UI table
+
 
         // Add listeners to the buttons.
         // The exit button disposes the button click sound and exits the application after a delay of 400 milliseconds.
@@ -312,19 +294,22 @@ public class MainMenuScreen extends BaseScreen {
             public void changed(ChangeEvent event, Actor actor) {
                 buttonClick.play();
                 Wait.async(400, TimeUnit.MILLISECONDS)
-                    .thenRun(() -> {
-                        buttonClick.dispose();
-                        Gdx.app.exit();
-                    });
+                        .thenRun(() -> {
+                            buttonClick.dispose();
+                            Gdx.app.exit();
+                        });
             }
         });
 
         // The play button plays the button click sound, moves all elements, fades out, and then switches to the game screen after a delay of 1500 milliseconds.
         playButton.addListener(new ChangeListener() {
             /**
-             * This method is triggered when a change event occurs on the actor, in this case, when the preferences button is clicked.
+             * This method is triggered when a change event occurs on the actor, in this case, when the play button is clicked.
              * It first plays the button click sound.
-             * Then, it transitions the screen to the preferences screen.
+             * Then, it moves all elements (playButton, preferencesButton, exitButton, cookeLogoImage) in their respective directions.
+             * After that, it initiates a fade out effect.
+             * Finally, it schedules a task to be executed after a delay of 1500 milliseconds.
+             * The scheduled task switches the screen to the game screen.
              *
              * @param event The {@link com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent} triggered by the actor. This is not used in the method.
              * @param actor The actor that triggered the {@link com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent}. This is not used in the method.
@@ -332,26 +317,39 @@ public class MainMenuScreen extends BaseScreen {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 SoundManager.getSounds().get(Sounds.BUTTON_CLICK).play();
-                game.transitionScreen(Screens.CHARACTER,true, 0.5f);
+                zoomAndMove(playButton, MainMenuScreen.Direction.DOWN);
+                zoomAndMove(exitButton, MainMenuScreen.Direction.DOWN);
+                zoomAndMove(cookeLogoImage, MainMenuScreen.Direction.UP);
+                fadeOut();
+                Wait.async(1500, TimeUnit.MILLISECONDS)
+                        .thenRun(() -> Gdx.app.postRunnable(() -> game.setScreen(Screens.GAME)));
+            }
+        });
+
+        selectCharacter1.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                Player.setSelectedCharacter(1); // Set selected character
+                // Change the screen to the main game screen
+            }
+        });
+
+        selectCharacter2.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                Player.setSelectedCharacter(2);
+            }
+        });
+
+        selectCharacter3.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                Player.setSelectedCharacter(3);
             }
         });
 
         // The preferences button plays the button click sound and transitions to the preferences screen.
-        preferencesButton.addListener(new ChangeListener() {
-            /**
-             * This method is triggered when a change event occurs on the actor, in this case, when the preferences button is clicked.
-             * It first plays the button click sound.
-             * Then, it transitions the screen to the preferences screen.
-             *
-             * @param event The {@link com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent} triggered by the actor. This is not used in the method.
-             * @param actor The actor that triggered the {@link com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent}. This is not used in the method.
-             */
-            @Override
-            public void changed(ChangeEvent event, Actor actor) {
-                SoundManager.getSounds().get(Sounds.BUTTON_CLICK).play();
-                game.transitionScreen(Screens.PREFERENCES);
-            }
-        });
+
 
         // Declare variables for width and height
         float width;
@@ -366,16 +364,13 @@ public class MainMenuScreen extends BaseScreen {
 
         // Set the size of the clouds image to the new width and height
         cloudsImage.setSize(width, height);
+
     }
 
-    /**
-     * This method calculates and returns the ratio to maintain the aspect ratio of the background texture.
-     * It first retrieves the width and height of the screen.
-     * Then, it calculates the ratio of the screen width to the background texture width and the ratio of the screen height to the background texture height.
-     * Finally, it returns the maximum of these two ratios to maintain the aspect ratio of the background texture.
-     *
-     * @return the maximum ratio to maintain the aspect ratio of the background texture
-     */
+    public int getCharacterSelection() {
+        return selectedCharacter;
+    }
+
     private float getRatio() {
         // Retrieve the width of the screen
         float screenWidth = Gdx.graphics.getWidth();
@@ -392,28 +387,9 @@ public class MainMenuScreen extends BaseScreen {
         return Math.max(widthRatio, heightRatio);
     }
 
-    /**
-     * A private float variable that represents the cycle of the cloud movement in the {@link MainMenuScreen}.
-     * It is initially set to 0 and is incremented by the speed of the clouds each time the screen is rendered.
-     * When the cycle exceeds the width of the screen, it is reset to 0.
-     * This creates a continuous loop of the cloud movement across the screen.
-     */
     private float cycle = 0;
-    /**
-     * This method is responsible for rendering the {@link MainMenuScreen}
-     * It first clears the screen and sets the clear color to black.
-     * Then, it enables blending and sets the blend function to standard alpha blending.
-     * After that, it retrieves the batch from the stage's processor and begins the batch.
-     * It calculates the ratio to maintain the aspect ratio of the background texture and calculates the new width and height for the background texture based on the ratio.
-     * It then draws the background texture.
-     * If clouds are enabled, it animates the clouds by incrementing the cycle by the speed of the clouds and resetting the cycle to 0 if it exceeds the width of the screen.
-     * It sets the position of the clouds image and the second clouds image and draws them with respect to the fade out alpha.
-     * It then draws the vignette texture over the entire screen and ends the batch.
-     * Finally, it updates the stage's actors and draws the stage.
-     *
-     * @param delta The time in seconds since the last render.
-     */
-    @Override
+
+
     public void render(float delta) {
         // Set the clear color to black and clear the screen.
         Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -465,18 +441,8 @@ public class MainMenuScreen extends BaseScreen {
         processor.draw();
     }
 
-    /**
-     * This method is called when the screen is resized.
-     * It first updates the viewport of the stage's processor with the new width and height, and centers the camera.
-     * Then, it retrieves the width and height of the screen.
-     * It calculates the ratio of the screen width to the background texture width and the ratio of the screen height to the background texture height.
-     * It takes the maximum of these two ratios to maintain the aspect ratio of the background texture.
-     * It calculates the new width and height for the background texture based on the ratio.
-     * Finally, it sets the size of the clouds image to the new width and height.
-     *
-     * @param width  The new width in pixels
-     * @param height The new height in pixels
-     */
+
+
     @Override
     public void resize(int width, int height) {
         // Update the viewport of the stage's processor with the new width and height, and center the camera.
@@ -492,40 +458,21 @@ public class MainMenuScreen extends BaseScreen {
         cloudsImage.setSize(newWidth, newHeight);
     }
 
-    /**
-     * This method is called when the application is paused, typically when it loses focus.
-     * For example, this can happen when the user switches to another application or when a system dialog is shown.
-     */
     @Override
     public void pause() {
 
     }
 
-    /**
-     * This method is called when the application is resumed from a paused state, typically when it regains focus.
-     * For example, this can happen when the user switches back to the application or when a system dialog is dismissed.
-     * The application should resume all processes that were stopped in the pause() method in this method.
-     */
     @Override
     public void resume() {
 
     }
 
-    /**
-     * This method is called when the current screen is being hidden or replaced by another screen.
-     * The application should stop all processes related to the current screen in this method to save resources.
-     */
     @Override
     public void hide() {
 
     }
 
-    /**
-     * This method is called when the {@link MainMenuScreen} is being disposed of.
-     * It is responsible for freeing up resources and stopping any processes that were started in the MainMenuScreen.
-     * It disposes of the {@link MainMenuScreen#processor}, {@link MainMenuScreen#backgroundTexture}, {@link MainMenuScreen#vignetteTexture}, {@link MainMenuScreen#craftacularSkin}, {@link MainMenuScreen#cookeLogo}, {@link MainMenuScreen#clouds}, and {@link MainMenuScreen#buttonClick}.
-     * It also shuts down the {@link MainMenuScreen#executorService}.
-     */
     @Override
     public void dispose() {
         // Dispose of the processor

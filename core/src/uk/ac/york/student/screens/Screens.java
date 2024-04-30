@@ -40,6 +40,8 @@ public final class Screens {
      */
     public static Class<EndScreen> END;
 
+    public static Class<CharacterScreen> CHARACTER;
+
     static {
         // Get all the fields of the Screens class
         Field[] fields = Screens.class.getFields();

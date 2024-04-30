@@ -20,6 +20,7 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
+import uk.ac.york.student.screens.CharacterScreen;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -57,6 +58,10 @@ public class Player extends Actor implements PlayerScore, InputProcessor {
     private final TextureAtlas.AtlasRegion SPRITETOWARDSREGION;
     private final TextureAtlas.AtlasRegion SPRITEAWAYREGION;
     private final TextureAtlas.AtlasRegion SPRITELEFTREGION;
+
+    private CharacterScreen characterScreen;
+
+    private static int selectedCharacter;
     /**
      * TiledMap object representing the current game map.
      */
@@ -86,21 +91,56 @@ public class Player extends Actor implements PlayerScore, InputProcessor {
         // Calculate the scale of the map relative to the screen size
         mapScale = Math.max(Gdx.graphics.getWidth() / maxWidth, Gdx.graphics.getHeight() / maxHeight);
 
+        System.out.println(selectedCharacter);
+
+        switch (selectedCharacter) {
+            case 1:
+                SPRITETOWARDSREGION = textureAtlas.findRegion("char1_towards");
+                SPRITEAWAYREGION = textureAtlas.findRegion("char1_away");
+                SPRITELEFTREGION = textureAtlas.findRegion("char1_left");
+                sprite = textureAtlas.createSprite("char1_towards");
+                break;
+            case 2:
+                SPRITETOWARDSREGION = textureAtlas.findRegion("char2_towards");
+                SPRITEAWAYREGION = textureAtlas.findRegion("char2_away");
+                SPRITELEFTREGION = textureAtlas.findRegion("char2_left");
+                sprite = textureAtlas.createSprite("char2_towards");
+                setBounds(sprite.getX(), sprite.getY(), sprite.getWidth(), sprite.getHeight());
+                break;
+            case 3:
+                SPRITETOWARDSREGION = textureAtlas.findRegion("char3_towards");
+                SPRITEAWAYREGION = textureAtlas.findRegion("char3_away");
+                SPRITELEFTREGION = textureAtlas.findRegion("char3_left");
+                sprite = textureAtlas.createSprite("char3_towards");
+                setBounds(sprite.getX(), sprite.getY(), sprite.getWidth(), sprite.getHeight());
+                break;
+            default:
+                // Handle default case or throw an exception
+                SPRITETOWARDSREGION = textureAtlas.findRegion("char2_towards");
+                SPRITEAWAYREGION = textureAtlas.findRegion("char2_away");
+                SPRITELEFTREGION = textureAtlas.findRegion("char2_left");
+                sprite = textureAtlas.createSprite("char2_towards");
+                sprite.setPosition(startPosition.x, startPosition.y);
+                sprite.setAlpha(1);
+                sprite.setSize(sprite.getWidth() * mapScale, sprite.getHeight() * mapScale);
+                setBounds(sprite.getX(), sprite.getY(), sprite.getWidth(), sprite.getHeight());
+                break;
+        }
+
+
         // Create a sprite for the player and set its position, opacity, and size
-        SPRITETOWARDSREGION = textureAtlas.findRegion("char3_towards");
-        SPRITEAWAYREGION = textureAtlas.findRegion("char3_away");
-        SPRITELEFTREGION = textureAtlas.findRegion("char3_left");
-        sprite = textureAtlas.createSprite("char3_towards");
-        sprite.setPosition(startPosition.x, startPosition.y);
-        sprite.setAlpha(1);
-        sprite.setSize(sprite.getWidth() * mapScale, sprite.getHeight() * mapScale);
+
 
         // Set the bounds of the player
-        setBounds(sprite.getX(), sprite.getY(), sprite.getWidth(), sprite.getHeight());
 
         // Load the bounding boxes of the map objects
         loadMapObjectBoundingBoxes();
     }
+
+    public static void setSelectedCharacter(int character) {
+        selectedCharacter = character;
+    }
+
 
     /**
      * Sets the current game map for the player and updates related properties.
@@ -121,8 +161,26 @@ public class Player extends Actor implements PlayerScore, InputProcessor {
         mapScale = Math.max(Gdx.graphics.getWidth() / maxWidth, Gdx.graphics.getHeight() / maxHeight);
 
         // Create a sprite for the player and set its position, opacity, and size
-        sprite = textureAtlas.createSprite("char3_towards");
-        sprite.setAlpha(1);
+
+
+        switch (selectedCharacter) {
+            case 1:
+                sprite = textureAtlas.createSprite("char1_towards");
+                sprite.setAlpha(1);
+                break;
+            case 2:
+                sprite = textureAtlas.createSprite("char1_towards");
+                sprite.setAlpha(1);
+                break;
+            case 3:
+                sprite = textureAtlas.createSprite("char3_towards");
+                sprite.setAlpha(1);
+                break;
+            default:
+                sprite = textureAtlas.createSprite("char3_towards");
+                sprite.setAlpha(1);
+                break;
+        }
 
         // Scale the sprite according to the map scale
         sprite.setSize(sprite.getWidth() * mapScale, sprite.getHeight() * mapScale);
