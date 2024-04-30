@@ -18,7 +18,7 @@ public class MusicPreferences implements Preference {
     private static final String ENABLED = "enabled";
     private static final boolean DEFAULT_ENABLED = true;
     private static final String VOLUME = "volume";
-    private static final float DEFAULT_VOLUME = 0.5f;
+    private static final float DEFAULT_VOLUME = 0.0f;
 
     /**
      * The constructor for the {@link MusicPreferences} class.

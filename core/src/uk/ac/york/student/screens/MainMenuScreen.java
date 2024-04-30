@@ -325,12 +325,9 @@ public class MainMenuScreen extends BaseScreen {
         // The play button plays the button click sound, moves all elements, fades out, and then switches to the game screen after a delay of 1500 milliseconds.
         playButton.addListener(new ChangeListener() {
             /**
-             * This method is triggered when a change event occurs on the actor, in this case, when the play button is clicked.
+             * This method is triggered when a change event occurs on the actor, in this case, when the preferences button is clicked.
              * It first plays the button click sound.
-             * Then, it moves all elements (playButton, preferencesButton, exitButton, cookeLogoImage) in their respective directions.
-             * After that, it initiates a fade out effect.
-             * Finally, it schedules a task to be executed after a delay of 1500 milliseconds.
-             * The scheduled task switches the screen to the game screen.
+             * Then, it transitions the screen to the preferences screen.
              *
              * @param event The {@link com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent} triggered by the actor. This is not used in the method.
              * @param actor The actor that triggered the {@link com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent}. This is not used in the method.
@@ -338,14 +335,8 @@ public class MainMenuScreen extends BaseScreen {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 SoundManager.getSounds().get(Sounds.BUTTON_CLICK).play();
-                zoomAndMove(playButton, Direction.DOWN);
-                zoomAndMove(preferencesButton, Direction.DOWN);
-                zoomAndMove(tutorialButton, Direction.DOWN);
-                zoomAndMove(exitButton, Direction.DOWN);
-                zoomAndMove(cookeLogoImage, Direction.UP);
-                fadeOut();
-                Wait.async(1500, TimeUnit.MILLISECONDS)
-                    .thenRun(() -> Gdx.app.postRunnable(() -> game.setScreen(Screens.GAME)));
+                game.transitionScreen(Screens.CHARACTER,true, 0.5f);
+
             }
         });
 
