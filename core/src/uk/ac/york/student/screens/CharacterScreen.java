@@ -321,7 +321,7 @@ public class CharacterScreen extends BaseScreen {
                 zoomAndMove(exitButton, MainMenuScreen.Direction.DOWN);
                 zoomAndMove(cookeLogoImage, MainMenuScreen.Direction.UP);
                 fadeOut();
-                Wait.async(1500, TimeUnit.MILLISECONDS)
+                Wait.async(500, TimeUnit.MILLISECONDS)
                         .thenRun(() -> Gdx.app.postRunnable(() -> game.setScreen(Screens.GAME)));
             }
         });

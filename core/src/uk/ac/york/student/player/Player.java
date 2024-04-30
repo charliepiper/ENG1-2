@@ -120,12 +120,13 @@ public class Player extends Actor implements PlayerScore, InputProcessor {
                 SPRITEAWAYREGION = textureAtlas.findRegion("char2_away");
                 SPRITELEFTREGION = textureAtlas.findRegion("char2_left");
                 sprite = textureAtlas.createSprite("char2_towards");
-                sprite.setPosition(startPosition.x, startPosition.y);
-                sprite.setAlpha(1);
-                sprite.setSize(sprite.getWidth() * mapScale, sprite.getHeight() * mapScale);
-                setBounds(sprite.getX(), sprite.getY(), sprite.getWidth(), sprite.getHeight());
+
                 break;
         }
+        sprite.setPosition(startPosition.x, startPosition.y);
+        sprite.setAlpha(1);
+        sprite.setSize(sprite.getWidth() * mapScale, sprite.getHeight() * mapScale);
+        setBounds(sprite.getX(), sprite.getY(), sprite.getWidth(), sprite.getHeight());
 
 
         // Create a sprite for the player and set its position, opacity, and size
