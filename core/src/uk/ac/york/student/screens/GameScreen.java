@@ -790,6 +790,12 @@ public class GameScreen extends BaseScreen implements InputProcessor {
 //        activitiesPerformedToday.put(type, 1);
         activitiesPerformedToday.put(type, activitiesPerformedToday.getOrDefault(type, 0) + 1);
 
+        if (type == Activity.EAT && activitiesPerformedToday.getOrDefault(type, 0) == 3) {
+            // Perform the action for eating three times
+            // For example, trigger a scoring boost or any other action
+            System.out.println("Player has eaten three times today!");
+        }
+
         // Check if the game is at the end of the day and if the activity is not sleeping
         // If it is, return false to indicate that the activity cannot be performed
         if (gameTime.isEndOfDay() && !type.equals(Activity.SLEEP)) return false;
