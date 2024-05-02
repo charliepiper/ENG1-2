@@ -61,7 +61,11 @@ public class Leaderboard {
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
                 String[] info = data.split(" ");
-                leaderboard.put(Integer.parseInt(info[0]), new ScoreSubmission(info[1], Float.parseFloat(info[2])));
+                try {
+                    leaderboard.put(Integer.parseInt(info[0]), new ScoreSubmission(info[1], Float.parseFloat(info[2])));
+                } catch(Exception e) {
+                    System.out.println("Error occurred when reading from the leaderboard");
+                }
             }
             myReader.close();
         } catch (FileNotFoundException e) {
@@ -92,14 +96,22 @@ public class Leaderboard {
         return leaderboardText;
     }
 
-    public static String getNewLeaderboard(String name, float score) {
+
+    public static String getLeaderboard() {
+        createLeaderboard();
+        readLeaderboard();
+        return leaderboardToText();
+    }
+
+    public static void saveScore(String name, float score) {
+        if (name.isEmpty()) {
+            name = "Unknown";
+        }
         createLeaderboard();
         readLeaderboard();
         addScore(new ScoreSubmission(name, score));
         String newLeaderboard = leaderboardToText();
         writeLeaderboard(newLeaderboard);
-
-        return newLeaderboard;
     }
 
     public static void main(String[] args) {

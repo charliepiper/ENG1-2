@@ -219,7 +219,7 @@ public EndScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime) {
         float score = player.calculateScore(energyTotal, energyMax, studyLevelTotal, studyLevelMax, happinessTotal, happinessMax);
         String scoreString = player.convertScoreToString(score);
         //Leaderboard stuff added here - Chris
-        String leaderboard = Leaderboard.getNewLeaderboard("Name", score);
+        String leaderboard = Leaderboard.getLeaderboard();
 
         // Create a new Table and add it to the stage.
         Table table = new Table();
@@ -248,21 +248,20 @@ public EndScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime) {
         // Enter Name
         Label nameLabel = new Label("Please type your name:", craftacularSkin);
         TextField nameField = new TextField("", craftacularSkin);
-        nameField.setWidth(300);
 
         // Add the buttons and the logo image to the table.
         table.add(cookeLogoImage).expandX().pad(0, 0, 150, 0).colspan(2);
         table.row();
 
         table.add(yourStatsLabel).uniformX();
-        //table.add(nameLabel).uniformX();
-        table.add(leaderboardLabel).uniformX();
         table.row();
         table.add(yourScoreLabel).uniformX();
-        //table.add(nameField);
+        table.add(nameLabel).uniformX();
+        table.add(leaderboardLabel).uniformX();
         table.row();
         table.add(yourGradeLabel).uniformX();
-        table.row().pad(100, 0, 10, 0);;
+        table.add(nameField);
+        table.row().pad(100, 0, 10, 0);
         table.add(yourHiddenAchievementsLabel).uniformX();
         table.row();
 //        Map<String, Label> streakLabels = new HashMap<>();
@@ -309,6 +308,7 @@ public EndScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime) {
                 Wait.async(400, TimeUnit.MILLISECONDS)
                         .thenRun(() -> {
                             buttonClick.dispose();
+                            Leaderboard.saveScore(nameField.getText(), score);
                             Gdx.app.exit();
                         });
             }
