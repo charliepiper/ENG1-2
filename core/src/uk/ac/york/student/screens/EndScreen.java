@@ -1,10 +1,12 @@
 package uk.ac.york.student.screens;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 import uk.ac.york.student.GdxGame;
+import uk.ac.york.student.game.Leaderboard;
 import uk.ac.york.student.game.activities.Activity;
 import uk.ac.york.student.player.Player;
 import uk.ac.york.student.player.PlayerMetric;
@@ -21,11 +23,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
@@ -221,6 +218,8 @@ public EndScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime) {
         float happinessMax = metrics.getHappiness().getMaxTotal();
         float score = player.calculateScore(energyTotal, energyMax, studyLevelTotal, studyLevelMax, happinessTotal, happinessMax);
         String scoreString = player.convertScoreToString(score);
+        //Leaderboard stuff added here - Chris
+        String leaderboard = Leaderboard.getNewLeaderboard("Name", score);
 
         // Create a new Table and add it to the stage.
         Table table = new Table();
@@ -240,20 +239,27 @@ public EndScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime) {
 //        Label streaksLabel = new Label("", craftacularSkin);
         Label bookworm = new Label("BOOKWORM - studied more than 4x in a row!", craftacularSkin);
 
-        Label leaderboardLabel = new Label("Leaderboard", craftacularSkin);
+        Label leaderboardLabel = new Label("Leaderboard\n" + leaderboard, craftacularSkin);
 
 
         TextButton exitButton = new TextButton("Exit", craftacularSkin);
         Image cookeLogoImage = new Image(cookeLogo);
+
+        // Enter Name
+        Label nameLabel = new Label("Please type your name:", craftacularSkin);
+        TextField nameField = new TextField("", craftacularSkin);
+        nameField.setWidth(300);
 
         // Add the buttons and the logo image to the table.
         table.add(cookeLogoImage).expandX().pad(0, 0, 150, 0).colspan(2);
         table.row();
 
         table.add(yourStatsLabel).uniformX();
+        //table.add(nameLabel).uniformX();
         table.add(leaderboardLabel).uniformX();
         table.row();
         table.add(yourScoreLabel).uniformX();
+        //table.add(nameField);
         table.row();
         table.add(yourGradeLabel).uniformX();
         table.row().pad(100, 0, 10, 0);;
@@ -307,6 +313,7 @@ public EndScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime) {
                         });
             }
         });
+
 
         // The play button plays the button click sound, moves all elements, fades out, and then switches to the game screen after a delay of 1500 milliseconds.
 
