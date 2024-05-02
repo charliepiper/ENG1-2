@@ -211,7 +211,7 @@
     <property name="activityStr" value="dance"/>
     <property name="activityTime" type="int" value="1"/>
     <property name="activityType" value="entertain"/>
-    <property name="changeAmount" value="0.4,0.25"/>
+    <property name="changeAmount" value="0.4,0.2"/>
     <property name="isActivity" type="bool" value="true"/>
    </properties>
   </object>
@@ -220,7 +220,7 @@
     <property name="activityStr" value="have a drink"/>
     <property name="activityTime" type="int" value="1"/>
     <property name="activityType" value="entertain"/>
-    <property name="changeAmount" value="0.3,0.15"/>
+    <property name="changeAmount" value="0.3,0.05"/>
     <property name="isActivity" type="bool" value="true"/>
    </properties>
   </object>
@@ -229,7 +229,7 @@
     <property name="activityStr" value="have a drink"/>
     <property name="activityTime" type="int" value="1"/>
     <property name="activityType" value="entertain"/>
-    <property name="changeAmount" value="0.3,0.15"/>
+    <property name="changeAmount" value="0.3,0.05"/>
     <property name="isActivity" type="bool" value="true"/>
    </properties>
   </object>
@@ -238,7 +238,7 @@
     <property name="activityStr" value="have a drink"/>
     <property name="activityTime" type="int" value="1"/>
     <property name="activityType" value="entertain"/>
-    <property name="changeAmount" value="0.3,0.15"/>
+    <property name="changeAmount" value="0.3,0.05"/>
     <property name="isActivity" type="bool" value="true"/>
    </properties>
   </object>
@@ -247,7 +247,7 @@
     <property name="activityStr" value="have a drink"/>
     <property name="activityTime" type="int" value="1"/>
     <property name="activityType" value="entertain"/>
-    <property name="changeAmount" value="0.3,0.15"/>
+    <property name="changeAmount" value="0.3,0.05"/>
     <property name="isActivity" type="bool" value="true"/>
    </properties>
   </object>
@@ -256,7 +256,7 @@
     <property name="activityStr" value="play pool"/>
     <property name="activityTime" type="int" value="1"/>
     <property name="activityType" value="entertain"/>
-    <property name="changeAmount" value="0.25,0.2"/>
+    <property name="changeAmount" value="0.25,0.1"/>
     <property name="isActivity" type="bool" value="true"/>
    </properties>
   </object>
@@ -265,7 +265,7 @@
     <property name="activityStr" value="play pool"/>
     <property name="activityTime" type="int" value="1"/>
     <property name="activityType" value="entertain"/>
-    <property name="changeAmount" value="0.25,0.2"/>
+    <property name="changeAmount" value="0.25,0.1"/>
     <property name="isActivity" type="bool" value="true"/>
    </properties>
   </object>
@@ -274,7 +274,7 @@
     <property name="activityStr" value="play pool"/>
     <property name="activityTime" type="int" value="1"/>
     <property name="activityType" value="entertain"/>
-    <property name="changeAmount" value="0.25,0.2"/>
+    <property name="changeAmount" value="0.25,0.1"/>
     <property name="isActivity" type="bool" value="true"/>
    </properties>
   </object>
@@ -289,7 +289,7 @@
     <property name="activityStr" value="play pool"/>
     <property name="activityTime" type="int" value="1"/>
     <property name="activityType" value="entertain"/>
-    <property name="changeAmount" value="0.25,0.2"/>
+    <property name="changeAmount" value="0.25,0.1"/>
     <property name="isActivity" type="bool" value="true"/>
    </properties>
   </object>
@@ -298,7 +298,7 @@
     <property name="activityStr" value="play pool"/>
     <property name="activityTime" type="int" value="1"/>
     <property name="activityType" value="entertain"/>
-    <property name="changeAmount" value="0.25,0.2"/>
+    <property name="changeAmount" value="0.25,0.1"/>
     <property name="isActivity" type="bool" value="true"/>
    </properties>
   </object>

@@ -38,7 +38,6 @@ public enum Activity {
      * The {@link Activity#NAP} activity increases the {@link Player}'s {@link PlayerMetrics#getEnergy()}.
      */
     NAP(
-        Pair.of(PlayerMetrics.MetricType.ENERGY, PlayerMetrics.MetricEffect.DECREASE), //Changed to decrease
         Pair.of(PlayerMetrics.MetricType.HEALTH, PlayerMetrics.MetricEffect.INCREASE)
     ),
     /**

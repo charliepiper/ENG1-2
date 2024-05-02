@@ -229,7 +229,7 @@
     <property name="activityStr" value="head to town"/>
     <property name="activityTime" type="int" value="3"/>
     <property name="activityType" value="entertain"/>
-    <property name="changeAmount" value="0.2,0.1"/>
+    <property name="changeAmount" value="0.2,0.2"/>
     <property name="isActivity" type="bool" value="true"/>
    </properties>
   </object>
@@ -238,7 +238,7 @@
     <property name="activityStr" value="feed the ducks"/>
     <property name="activityTime" type="int" value="1"/>
     <property name="activityType" value="entertain"/>
-    <property name="changeAmount" value="0.1,0.15"/>
+    <property name="changeAmount" value="0.1,0.05"/>
     <property name="isActivity" type="bool" value="true"/>
    </properties>
   </object>
