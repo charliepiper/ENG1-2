@@ -248,9 +248,6 @@ public class CharacterScreen extends BaseScreen {
         // Create the buttons and the logo image for the main menu screen.
         Label TitleLabel = new Label("Select a character: ", craftacularSkin);
 
-
-        TextButton playButton = new TextButton("Play game", craftacularSkin);
-
         TextButton exitButton = new TextButton("Exit", craftacularSkin);
         Image cookeLogoImage = new Image(cookeLogo);
 
@@ -268,9 +265,6 @@ public class CharacterScreen extends BaseScreen {
         table.add(SelectionTable).colspan(3).row(); // Spanning three columns of the main table
         table.row();
 //        table.add(selectButton).padTop(20).center();
-        table.row();
-        table.add(playButton).colspan(3).uniformX();
-        table.row().pad(10, 0, 10, 0);
         table.add(exitButton).colspan(3).uniformX();
 
 
@@ -301,23 +295,19 @@ public class CharacterScreen extends BaseScreen {
             }
         });
 
-        // The play button plays the button click sound, moves all elements, fades out, and then switches to the game screen after a delay of 1500 milliseconds.
-        playButton.addListener(new ChangeListener() {
-            /**
-             * This method is triggered when a change event occurs on the actor, in this case, when the play button is clicked.
-             * It first plays the button click sound.
-             * Then, it moves all elements (playButton, preferencesButton, exitButton, cookeLogoImage) in their respective directions.
-             * After that, it initiates a fade out effect.
-             * Finally, it schedules a task to be executed after a delay of 1500 milliseconds.
-             * The scheduled task switches the screen to the game screen.
-             *
-             * @param event The {@link com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent} triggered by the actor. This is not used in the method.
-             * @param actor The actor that triggered the {@link com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent}. This is not used in the method.
-             */
+
+        selectCharacter1.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
+                Player.setSelectedCharacter(1); // Set selected character
+                // Change the screen to the main game screen
                 SoundManager.getSounds().get(Sounds.BUTTON_CLICK).play();
-                zoomAndMove(playButton, MainMenuScreen.Direction.DOWN);
+                zoomAndMove(character1Image, MainMenuScreen.Direction.UP);
+                zoomAndMove(character2Image, MainMenuScreen.Direction.UP);
+                zoomAndMove(character3Image, MainMenuScreen.Direction.UP);
+                zoomAndMove(selectCharacter1, MainMenuScreen.Direction.DOWN);
+                zoomAndMove(selectCharacter2, MainMenuScreen.Direction.DOWN);
+                zoomAndMove(selectCharacter3, MainMenuScreen.Direction.DOWN);
                 zoomAndMove(exitButton, MainMenuScreen.Direction.DOWN);
                 zoomAndMove(cookeLogoImage, MainMenuScreen.Direction.UP);
                 fadeOut();
@@ -326,18 +316,22 @@ public class CharacterScreen extends BaseScreen {
             }
         });
 
-        selectCharacter1.addListener(new ChangeListener() {
-            @Override
-            public void changed(ChangeEvent event, Actor actor) {
-                Player.setSelectedCharacter(1); // Set selected character
-                // Change the screen to the main game screen
-            }
-        });
-
         selectCharacter2.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 Player.setSelectedCharacter(2);
+                SoundManager.getSounds().get(Sounds.BUTTON_CLICK).play();
+                zoomAndMove(character1Image, MainMenuScreen.Direction.UP);
+                zoomAndMove(character2Image, MainMenuScreen.Direction.UP);
+                zoomAndMove(character3Image, MainMenuScreen.Direction.UP);
+                zoomAndMove(selectCharacter1, MainMenuScreen.Direction.DOWN);
+                zoomAndMove(selectCharacter2, MainMenuScreen.Direction.DOWN);
+                zoomAndMove(selectCharacter3, MainMenuScreen.Direction.DOWN);
+                zoomAndMove(exitButton, MainMenuScreen.Direction.DOWN);
+                zoomAndMove(cookeLogoImage, MainMenuScreen.Direction.UP);
+                fadeOut();
+                Wait.async(500, TimeUnit.MILLISECONDS)
+                        .thenRun(() -> Gdx.app.postRunnable(() -> game.setScreen(Screens.GAME)));
             }
         });
 
@@ -345,6 +339,18 @@ public class CharacterScreen extends BaseScreen {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 Player.setSelectedCharacter(3);
+                SoundManager.getSounds().get(Sounds.BUTTON_CLICK).play();
+                zoomAndMove(character1Image, MainMenuScreen.Direction.UP);
+                zoomAndMove(character2Image, MainMenuScreen.Direction.UP);
+                zoomAndMove(character3Image, MainMenuScreen.Direction.UP);
+                zoomAndMove(selectCharacter1, MainMenuScreen.Direction.DOWN);
+                zoomAndMove(selectCharacter2, MainMenuScreen.Direction.DOWN);
+                zoomAndMove(selectCharacter3, MainMenuScreen.Direction.DOWN);
+                zoomAndMove(exitButton, MainMenuScreen.Direction.DOWN);
+                zoomAndMove(cookeLogoImage, MainMenuScreen.Direction.UP);
+                fadeOut();
+                Wait.async(500, TimeUnit.MILLISECONDS)
+                        .thenRun(() -> Gdx.app.postRunnable(() -> game.setScreen(Screens.GAME)));
             }
         });
 

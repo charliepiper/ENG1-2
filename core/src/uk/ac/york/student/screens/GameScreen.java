@@ -142,7 +142,7 @@ public class GameScreen extends BaseScreen implements InputProcessor {
 
     private PlayerStreaks playerStreaks;
 
-
+    public static int notStudiedCounter = 0;
 
     public GameScreen(GdxGame game) {
         super(game);
@@ -866,6 +866,13 @@ public class GameScreen extends BaseScreen implements InputProcessor {
 
             activitiesPerformedToday.clear();
             updateStreakCount(type);
+
+            if (type == Activity.SLEEP && activitiesPerformedToday.getOrDefault(Activity.STUDY, 0) == 0) {
+                notStudiedCounter += 1;
+                // Perform the action for eating three times
+                // For example, trigger a scoring boost or any other action
+                System.out.println("Player has eaten three times today!");
+            }
 
             // Get all player metrics
             List<PlayerMetric> allMetrics = metrics.getMetrics();

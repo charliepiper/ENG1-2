@@ -89,6 +89,8 @@ public class EndScreen extends BaseScreen {
     private final float cloudsSpeed = ((MainMenuCloudsPreferences) GamePreferences.MAIN_MENU_CLOUDS.getPreference()).getSpeed();
     private PlayerStreaks playerStreaks;
 
+    private boolean scoreSaved = false;
+
 
 
     //    public EndScreen(GdxGame game) {
@@ -240,6 +242,7 @@ public EndScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime) {
         Label bookworm = new Label("BOOKWORM - studied more than 4x in a row!", craftacularSkin);
 
         Label leaderboardLabel = new Label("Leaderboard\n" + leaderboard, craftacularSkin);
+        TextButton saveName = new TextButton("Save Name", craftacularSkin);
 
 
         TextButton exitButton = new TextButton("Exit", craftacularSkin);
@@ -263,6 +266,7 @@ public EndScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime) {
         table.add(nameField);
         table.row().pad(100, 0, 10, 0);
         table.add(yourHiddenAchievementsLabel).uniformX();
+        table.add(saveName).uniformX();
         table.row();
 //        Map<String, Label> streakLabels = new HashMap<>();
 //        for (Activity activity : Activity.values()) {
@@ -314,6 +318,22 @@ public EndScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime) {
             }
         });
 
+        saveName.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent changeEvent, Actor actor) {
+                buttonClick.play();
+                Wait.async(400, TimeUnit.MILLISECONDS)
+                        .thenRun(() -> {
+                            if (!Leaderboard.scoreSaved) {
+                                Leaderboard.saveScore(nameField.getText(), score);
+                                Leaderboard.scoreSaved = true;
+                                game.transitionScreen(Screens.END, player, true, 0.5f);
+                            }
+
+                        });
+
+            }
+        });
 
         // The play button plays the button click sound, moves all elements, fades out, and then switches to the game screen after a delay of 1500 milliseconds.
 

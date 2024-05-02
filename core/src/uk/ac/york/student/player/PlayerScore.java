@@ -2,6 +2,7 @@ package uk.ac.york.student.player;
 
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import uk.ac.york.student.screens.GameScreen;
 
 /**
  * The PlayerScore interface provides methods to calculate and convert a player's score.
@@ -33,6 +34,10 @@ public interface PlayerScore {
 
         float totalScore = energyScore + studyScore + happinessScore;
         float maxPossibleScore = energyWeighting + studyWeighting + happinessWeighting;
+
+        if (GameScreen.notStudiedCounter > 1) {
+            return 39f;
+        }
 
         return (totalScore / maxPossibleScore) * 100;
     }

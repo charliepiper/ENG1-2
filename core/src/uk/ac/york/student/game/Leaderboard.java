@@ -16,6 +16,7 @@ import java.io.FileNotFoundException;
 //position:name:score
 
 public class Leaderboard {
+    public static boolean scoreSaved = false;
     static public class ScoreSubmission {
         String name;
         float score;
