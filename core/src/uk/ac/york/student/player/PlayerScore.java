@@ -24,16 +24,19 @@ public interface PlayerScore {
      * @return The player's score, calculated based on the provided parameters and weightings.
      */
     default float calculateScore(float energy, float maxEnergy, float studyLevel, float maxStudyLevel, float happiness, float maxHappiness) {
-        float energyWeighting = 1.2f;
+        //float energyWeighting = 1.2f;
         float studyWeighting = 2f;
         float happinessWeighting = 1f;
 
-        float energyScore = (energy / maxEnergy) * energyWeighting;
+        //float energyScore = (energy / maxEnergy) * energyWeighting;
         float studyScore = (studyLevel / maxStudyLevel) * studyWeighting;
         float happinessScore = (happiness / maxHappiness) * happinessWeighting;
 
-        float totalScore = energyScore + studyScore + happinessScore;
-        float maxPossibleScore = energyWeighting + studyWeighting + happinessWeighting;
+        //float totalScore = energyScore + studyScore + happinessScore;
+        //float maxPossibleScore = energyWeighting + studyWeighting + happinessWeighting;
+
+        float totalScore = studyScore + happinessScore;
+        float maxPossibleScore = studyWeighting + happinessWeighting;
 
         if (GameScreen.notStudiedCounter > 1) {
             return 39f;

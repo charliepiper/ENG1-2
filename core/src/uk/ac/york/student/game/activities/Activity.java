@@ -38,7 +38,7 @@ public enum Activity {
      * The {@link Activity#NAP} activity increases the {@link Player}'s {@link PlayerMetrics#getEnergy()}.
      */
     NAP(
-        Pair.of(PlayerMetrics.MetricType.ENERGY, PlayerMetrics.MetricEffect.INCREASE),
+        Pair.of(PlayerMetrics.MetricType.ENERGY, PlayerMetrics.MetricEffect.DECREASE), //Changed to decrease
         Pair.of(PlayerMetrics.MetricType.HEALTH, PlayerMetrics.MetricEffect.INCREASE)
     ),
     /**
@@ -46,7 +46,7 @@ public enum Activity {
      */
     EAT(
         Pair.of(PlayerMetrics.MetricType.HEALTH, PlayerMetrics.MetricEffect.INCREASE),
-        Pair.of(PlayerMetrics.MetricType.ENERGY, PlayerMetrics.MetricEffect.INCREASE)
+        Pair.of(PlayerMetrics.MetricType.ENERGY, PlayerMetrics.MetricEffect.DECREASE) //Changed to decrease
     ),
     /**
      * The {@link Activity#ENTERTAIN} activity increases the {@link Player}'s {@link PlayerMetrics#getHappiness()} and decreases their {@link PlayerMetrics#getEnergy()}.
