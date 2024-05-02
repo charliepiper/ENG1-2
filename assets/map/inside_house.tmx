@@ -133,7 +133,7 @@
     <property name="activityStr" value="cook a meal"/>
     <property name="activityTime" type="int" value="2"/>
     <property name="activityType" value="eat"/>
-    <property name="changeAmount" value="0.3,0.3"/>
+    <property name="changeAmount" value="0.3"/>
     <property name="isActivity" type="bool" value="true"/>
    </properties>
   </object>
@@ -142,7 +142,7 @@
     <property name="activityStr" value="have a snack"/>
     <property name="activityTime" type="int" value="1"/>
     <property name="activityType" value="eat"/>
-    <property name="changeAmount" value="0.15,0.1"/>
+    <property name="changeAmount" value="0.15"/>
     <property name="isActivity" type="bool" value="true"/>
    </properties>
   </object>
@@ -151,7 +151,7 @@
     <property name="activityStr" value="study at your desk"/>
     <property name="activityTime" type="int" value="2"/>
     <property name="activityType" value="study"/>
-    <property name="changeAmount" value=".2,0.3,0.2,0.2"/>
+    <property name="changeAmount" value=".2,0.2,0.2,0.2"/>
     <property name="isActivity" type="bool" value="true"/>
    </properties>
   </object>
@@ -169,7 +169,7 @@
     <property name="activityStr" value="have a nap"/>
     <property name="activityTime" type="int" value="4"/>
     <property name="activityType" value="nap"/>
-    <property name="changeAmount" value="0.3,0.1"/>
+    <property name="changeAmount" value="0.1"/>
     <property name="isActivity" type="bool" value="true"/>
    </properties>
   </object>
