@@ -44,8 +44,7 @@ public enum Activity {
      * The {@link Activity#EAT} activity increases the {@link Player}'s {@link PlayerMetrics#getHappiness()}.
      */
     EAT(
-        Pair.of(PlayerMetrics.MetricType.HEALTH, PlayerMetrics.MetricEffect.INCREASE),
-        Pair.of(PlayerMetrics.MetricType.ENERGY, PlayerMetrics.MetricEffect.DECREASE) //Changed to decrease
+        Pair.of(PlayerMetrics.MetricType.HEALTH, PlayerMetrics.MetricEffect.INCREASE)
     ),
     /**
      * The {@link Activity#ENTERTAIN} activity increases the {@link Player}'s {@link PlayerMetrics#getHappiness()} and decreases their {@link PlayerMetrics#getEnergy()}.
