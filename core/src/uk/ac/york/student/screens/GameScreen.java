@@ -864,15 +864,17 @@ public class GameScreen extends BaseScreen implements InputProcessor {
 
 //            System.out.println(type);
 
-            activitiesPerformedToday.clear();
+            //moved above activitiesPerformedToday.clear()
             updateStreakCount(type);
 
-            if (type == Activity.SLEEP && activitiesPerformedToday.getOrDefault(Activity.STUDY, 0) == 0) {
+            if (activitiesPerformedToday.getOrDefault(Activity.STUDY, 0) == 0) {
                 notStudiedCounter += 1;
                 // Perform the action for eating three times
                 // For example, trigger a scoring boost or any other action
-                System.out.println("Player has eaten three times today!");
+                System.out.println("Player hasn't studied!");
             }
+            activitiesPerformedToday.clear();
+
 
             // Get all player metrics
             List<PlayerMetric> allMetrics = metrics.getMetrics();
