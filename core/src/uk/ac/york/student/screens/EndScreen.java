@@ -243,6 +243,9 @@ public EndScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime) {
         Label yourGradeLabel = new Label("Grade: " + scoreString, craftacularSkin);
         Label yourHiddenAchievementsLabel = new Label("Hidden Achievements: ", craftacularSkin);
         Label bookworm = new Label("BOOKWORM - studied more than 4x in a row!", craftacularSkin);
+        Label exercise = new Label("JOGGER - walked more than 4x in a row!", craftacularSkin);
+        Label ducks = new Label("Duck duck go - fed the ducks more than 4x in a row!", craftacularSkin);
+
         TextButton exitButton = new TextButton("Exit", craftacularSkin);
         Image cookeLogoImage = new Image(cookeLogo);
 
@@ -256,8 +259,15 @@ public EndScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime) {
         leftTable.add(yourGradeLabel).uniformX();
         leftTable.row();
         leftTable.add(yourHiddenAchievementsLabel).uniformX();
+        leftTable.row();
         if (playerStreaks.getStreakCount(Activity.STUDY) >= 4) {
             leftTable.add(bookworm).uniformX().row();
+        }
+        if (playerStreaks.getStreakCount(Activity.EXERCISE) >= 4) {
+            leftTable.add(exercise).uniformX().row();
+        }
+        if (playerStreaks.getStreakCount(Activity.FEEDTHEDUCKS) >= 4) {
+            leftTable.add(ducks).uniformX().row();
         }
         leftTable.row();
 
