@@ -308,11 +308,9 @@ public EndScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime) {
              */
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                buttonClick.play();
+                SoundManager.getSounds().get(Sounds.BUTTON_CLICK).play();
                 Wait.async(400, TimeUnit.MILLISECONDS)
                         .thenRun(() -> {
-                            buttonClick.dispose();
-                            Leaderboard.saveScore(nameField.getText(), score);
                             Gdx.app.exit();
                         });
             }
@@ -321,7 +319,7 @@ public EndScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime) {
         saveName.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent changeEvent, Actor actor) {
-                buttonClick.play();
+                SoundManager.getSounds().get(Sounds.BUTTON_CLICK).play();
                 Wait.async(400, TimeUnit.MILLISECONDS)
                         .thenRun(() -> {
                             if (!Leaderboard.scoreSaved) {

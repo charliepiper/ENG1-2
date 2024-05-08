@@ -16,6 +16,7 @@ import java.io.FileNotFoundException;
 //position:name:score
 
 public class Leaderboard {
+    final static String filePath = "leaderboard.txt";
     public static boolean scoreSaved = false;
     static public class ScoreSubmission {
         String name;
@@ -29,7 +30,7 @@ public class Leaderboard {
     static HashMap<Integer, ScoreSubmission> leaderboard;
     public static void createLeaderboard() {
         try {
-            File file = new File("Leaderboard.txt");
+            File file = new File(filePath);
             System.out.println(file.getAbsolutePath());
 
             if (file.createNewFile()) {
@@ -38,18 +39,18 @@ public class Leaderboard {
                 System.out.println("Leaderboard already exists.");
             }
         } catch (IOException e) {
-            System.out.println("An error occurred.");
+            System.out.println("An error occurred when creating the leaderboard.");
         }
     }
 
     public static void writeLeaderboard(String leaderboardText) {
         try {
-            FileWriter myWriter = new FileWriter("leaderboard.txt");
+            FileWriter myWriter = new FileWriter(filePath);
             myWriter.write(leaderboardText);
             myWriter.close();
             System.out.println("Successfully wrote to the file.");
         } catch (IOException e) {
-            System.out.println("An error occurred.");
+            System.out.println("An error occurred when writing to the file.");
         }
     }
 
@@ -57,7 +58,7 @@ public class Leaderboard {
         leaderboard = new HashMap<>();
 
         try {
-            File myObj = new File("Leaderboard.txt");
+            File myObj = new File(filePath);
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
@@ -70,7 +71,7 @@ public class Leaderboard {
             }
             myReader.close();
         } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
+            System.out.println("The file could not be found.");
         }
     }
 
@@ -105,6 +106,8 @@ public class Leaderboard {
     }
 
     public static void saveScore(String name, float score) {
+
+        name = name.replaceAll("\\s", ""); //Remove spaces which mess up the leaderboard system
         if (name.isEmpty()) {
             name = "Unknown";
         }
@@ -115,7 +118,9 @@ public class Leaderboard {
         writeLeaderboard(newLeaderboard);
     }
 
+
     public static void main(String[] args) {
+        createLeaderboard();
     }
 }
 
