@@ -204,6 +204,7 @@ public EndScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime) {
         executorService.schedule(() -> scheduledFuture.cancel(true), duration, timeUnit);
     }
 
+
     public void show() {
         // If shouldFadeIn is true, set the alpha of the root actor to 0 and add a fade-in action to it.
         if (shouldFadeIn) {
@@ -232,80 +233,66 @@ public EndScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime) {
         }
         processor.addActor(table);
 
+        // Create the left side table for other elements
+        Table leftTable = new Table();
+        leftTable.top().left();
+
         // Create the buttons and the logo image for the main menu screen.
         Label yourStatsLabel = new Label("Your stats: ", craftacularSkin);
         Label yourScoreLabel = new Label("Score: " + score, craftacularSkin);
         Label yourGradeLabel = new Label("Grade: " + scoreString, craftacularSkin);
-
         Label yourHiddenAchievementsLabel = new Label("Hidden Achievements: ", craftacularSkin);
-//        Label streaksLabel = new Label("", craftacularSkin);
         Label bookworm = new Label("BOOKWORM - studied more than 4x in a row!", craftacularSkin);
-
-        Label leaderboardLabel = new Label("Leaderboard\n" + leaderboard, craftacularSkin);
-        TextButton saveName = new TextButton("Save Name", craftacularSkin);
-
-
         TextButton exitButton = new TextButton("Exit", craftacularSkin);
         Image cookeLogoImage = new Image(cookeLogo);
 
-        // Enter Name
+        // Add elements to the left table
+        leftTable.add(cookeLogoImage).expandX().pad(0, 0, 150, 0).colspan(2);
+        leftTable.row();
+        leftTable.add(yourStatsLabel).uniformX();
+        leftTable.row();
+        leftTable.add(yourScoreLabel).uniformX();
+        leftTable.row();
+        leftTable.add(yourGradeLabel).uniformX();
+        leftTable.row();
+        leftTable.add(yourHiddenAchievementsLabel).uniformX();
+        if (playerStreaks.getStreakCount(Activity.STUDY) >= 4) {
+            leftTable.add(bookworm).uniformX().row();
+        }
+        leftTable.row();
+
+        // Add left table to main table
+        table.add(leftTable).expand().fill().pad(50);
+
+
+        // Create the right side table for leaderboard and name field
+        Table rightTable = new Table();
+//        rightTable.top().right();
+
+        // Leaderboard label
+        Label leaderboardLabel = new Label("Leaderboard", craftacularSkin);
+        rightTable.add(leaderboardLabel).row();
+
+        // Leaderboard text
+        Label leaderboardText = new Label(leaderboard, craftacularSkin);
+        rightTable.add(leaderboardText).row();
+
+        // Name label and field
         Label nameLabel = new Label("Please type your name:", craftacularSkin);
         TextField nameField = new TextField("", craftacularSkin);
+        TextButton saveName = new TextButton("Save Name", craftacularSkin);
+        rightTable.add(nameLabel).uniformX().padBottom(10).row();
+        rightTable.add(nameField).uniformX().padBottom(10).row();
+        rightTable.add(saveName).uniformX().padBottom(5).row();
+        rightTable.add(exitButton).uniformX();
 
-        // Add the buttons and the logo image to the table.
-        table.add(cookeLogoImage).expandX().pad(0, 0, 150, 0).colspan(2);
+        // Add right table to main table
+        table.add(rightTable).expand().fill().pad(50);
         table.row();
-
-        table.add(yourStatsLabel).uniformX();
-        table.row();
-        table.add(yourScoreLabel).uniformX();
-        table.add(nameLabel).uniformX();
-        table.add(leaderboardLabel).uniformX();
-        table.row();
-        table.add(yourGradeLabel).uniformX();
-        table.add(nameField);
-        table.row().pad(100, 0, 10, 0);
-        table.add(yourHiddenAchievementsLabel).uniformX();
-        table.add(saveName).uniformX();
-        table.row();
-//        Map<String, Label> streakLabels = new HashMap<>();
-//        for (Activity activity : Activity.values()) {
-//            Label streakLabel = new Label(activity.name() + " Streak: " + playerStreaks.getStreakCount(activity), craftacularSkin);
-//            streakLabels.put(activity.name(), streakLabel);
-//        }
-//        for (Label label : streakLabels.values()) {
-//            table.add(label).uniformX();
-//            table.row();
-//        }
-        if (playerStreaks.getStreakCount(Activity.STUDY) >= 4) {
-            // Award additional points for achieving the study streak
-            table.add(bookworm).uniformX();
-//            System.out.println(playerStreaks.getStreakCount(Activity.SLEEP));
-        }
-
-
-//        table.add(streaksLabel).uniformX();
-//        table.row();;
-        table.row().pad(100, 0, 10, 0);
-        table.add(exitButton).expandX().uniformX().colspan(2);
-
-
-
-// Add streak count labels to the UI table
-
+//        table.add(exitButton).center();
 
         // Add listeners to the buttons.
-        // The exit button disposes the button click sound and exits the application after a delay of 400 milliseconds.
         exitButton.addListener(new ChangeListener() {
-            /**
-             * This method is triggered when a change event occurs on the actor, in this case, when the exit button is clicked.
-             * It first plays the button click sound.
-             * Then, it schedules a task to be executed after a delay of 400 milliseconds.
-             * The scheduled task disposes the button click sound and exits the application.
-             *
-             * @param event The {@link com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent} triggered by the actor. This is not used in the method.
-             * @param actor The actor that triggered the {@link com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent}. This is not used in the method.
-             */
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 SoundManager.getSounds().get(Sounds.BUTTON_CLICK).play();
@@ -327,17 +314,9 @@ public EndScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime) {
                                 Leaderboard.scoreSaved = true;
                                 game.transitionScreen(Screens.END, player, true, 0.5f);
                             }
-
                         });
-
             }
         });
-
-        // The play button plays the button click sound, moves all elements, fades out, and then switches to the game screen after a delay of 1500 milliseconds.
-
-
-        // The preferences button plays the button click sound and transitions to the preferences screen.
-
 
         // Declare variables for width and height
         float width;
@@ -353,6 +332,7 @@ public EndScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime) {
         // Set the size of the clouds image to the new width and height
         cloudsImage.setSize(width, height);
     }
+
 
 
 
