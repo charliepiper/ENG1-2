@@ -59,7 +59,11 @@ public enum Activity {
     EXERCISE(
         Pair.of(PlayerMetrics.MetricType.HEALTH, PlayerMetrics.MetricEffect.INCREASE),
         Pair.of(PlayerMetrics.MetricType.ENERGY, PlayerMetrics.MetricEffect.DECREASE)
-            );
+            ),
+    FEEDTHEDUCKS(
+            Pair.of(PlayerMetrics.MetricType.HEALTH, PlayerMetrics.MetricEffect.INCREASE),
+            Pair.of(PlayerMetrics.MetricType.ENERGY, PlayerMetrics.MetricEffect.DECREASE)
+    );
 
     /**
      * The effects of the activity on the {@link Player}'s metrics.
