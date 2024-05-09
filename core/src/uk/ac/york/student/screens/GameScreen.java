@@ -33,15 +33,13 @@ import uk.ac.york.student.assets.map.MapManager;
 import uk.ac.york.student.assets.map.TransitionMapObject;
 import uk.ac.york.student.game.GameTime;
 import uk.ac.york.student.game.activities.Activity;
-import uk.ac.york.student.player.Player;
-import uk.ac.york.student.player.PlayerMetric;
-import uk.ac.york.student.player.PlayerMetrics;
-import uk.ac.york.student.player.PlayerStreaks;
+import uk.ac.york.student.player.*;
 import uk.ac.york.student.utils.MapOfSuppliers;
 import uk.ac.york.student.utils.Pair;
 import uk.ac.york.student.utils.StreamUtils;
 import uk.ac.york.student.utils.Wait;
 
+import javax.annotation.processing.SupportedSourceVersion;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -845,17 +843,7 @@ public class GameScreen extends BaseScreen implements InputProcessor {
             // If the player does not have enough resources to perform the activity, return false
             if (!hasEnough) return false;
         }
-        // Iterate over the effects of the activity
-        for (Pair<PlayerMetrics.MetricType, PlayerMetrics.MetricEffect> effect : effects) {
-            // Get the type of the metric from the effect
-            PlayerMetrics.MetricType metricType = effect.getLeft();
-            // Get the effect on the metric (increase or decrease)
-            PlayerMetrics.MetricEffect metricEffect = effect.getRight();
-            // Get the amount by which the activity changes the metric
-            float changeAmount = actionMapObject.getChangeAmount(metricType);
-            // Apply the effect to the metric
-            metrics.changeMetric(metricType, metricEffect, changeAmount);
-        }
+
         // Check if the activity is sleeping
         if (type.equals(Activity.SLEEP)) {
             // Check streaks after completing the day's activities
@@ -873,8 +861,8 @@ public class GameScreen extends BaseScreen implements InputProcessor {
                 // For example, trigger a scoring boost or any other action
                 System.out.println("Player hasn't studied!");
             }
-            activitiesPerformedToday.clear();
 
+//            activitiesPerformedToday.clear();
 
             // Get all player metrics
             List<PlayerMetric> allMetrics = metrics.getMetrics();
@@ -883,6 +871,8 @@ public class GameScreen extends BaseScreen implements InputProcessor {
                 // Increase the total of each metric by its current value
                 m.increaseTotal(m.get());
             }
+
+
             // Check if the current day plus one equals the total number of days
             if (gameTime.isEndOfDays()) {
                 // If it does, transition the screen to the end screen and return true
@@ -895,6 +885,17 @@ public class GameScreen extends BaseScreen implements InputProcessor {
         } else {
             // If the activity is not sleeping, increment the current hour by the required time for the activity
             gameTime.incrementHour(requiredTime);
+        }
+        // Iterate over the effects of the activity
+        for (Pair<PlayerMetrics.MetricType, PlayerMetrics.MetricEffect> effect : effects) {
+            // Get the type of the metric from the effect
+            PlayerMetrics.MetricType metricType = effect.getLeft();
+            // Get the effect on the metric (increase or decrease)
+            PlayerMetrics.MetricEffect metricEffect = effect.getRight();
+            // Get the amount by which the activity changes the metric
+            float changeAmount = actionMapObject.getChangeAmount(metricType);
+            // Apply the effect to the metric
+            metrics.changeMetric(metricType, metricEffect, changeAmount);
         }
         // Get the current hour as a string using the getCurrentHourString method
         String currentHour = getCurrentHourString();
@@ -926,7 +927,7 @@ public class GameScreen extends BaseScreen implements InputProcessor {
         // Check for streaks using the PlayerStreaks instance
         if (playerStreaks.getStreakCount(Activity.SLEEP) >= 4) {
             // Award additional points for achieving the study streak
-            System.out.println("sleepß achievement unlocked!");
+            System.out.println("Sleep achievement unlocked!");
 //            System.out.println(playerStreaks.getStreakCount(Activity.SLEEP));
         }
 
