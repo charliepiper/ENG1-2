@@ -794,6 +794,8 @@ public class GameScreen extends BaseScreen implements InputProcessor {
             System.out.println("Player has eaten three times today!");
         }
 
+        int currentDayCounter = gameTime.getCurrentDay();
+
         // Check if the game is at the end of the day and if the activity is not sleeping
         // If it is, return false to indicate that the activity cannot be performed
         if (gameTime.isEndOfDay() && !type.equals(Activity.SLEEP)) return false;
@@ -844,16 +846,21 @@ public class GameScreen extends BaseScreen implements InputProcessor {
             if (!hasEnough) return false;
         }
 
+
         // Check if the activity is sleeping
         if (type.equals(Activity.SLEEP)) {
             // Check streaks after completing the day's activities
             checkForStreaks();
 
 
-//            System.out.println(type);
 
-            //moved above activitiesPerformedToday.clear()
-            updateStreakCount(type);
+
+        if (activitiesPerformedToday.get(type) == 1) {
+            playerStreaks.incrementStreak(type, currentDayCounter);
+        }
+
+        // Check if the activity is sleeping
+        if (type.equals(Activity.SLEEP)) {
 
             if (activitiesPerformedToday.getOrDefault(Activity.STUDY, 0) == 0) {
                 notStudiedCounter += 1;
@@ -909,19 +916,21 @@ public class GameScreen extends BaseScreen implements InputProcessor {
         // Set the text of the timeLabel to the constructed time string
         timeLabel.setText(time);
 
-        updateStreakCount(type);
+//        updateStreakCount(type);
+
+
 
         // Return true indicating the operation was successful
         return true;
     }
 
-    private void updateStreakCount(Activity activity) {
-        // Increment streak count for the activity if performed consecutively
-        if (activitiesPerformedToday.getOrDefault(activity, 0) == 1) {
-            playerStreaks.incrementStreak(activity);
-
-        }
-    }
+//    private void updateStreakCount(Activity activity) {
+//        // Increment streak count for the activity if performed consecutively
+//        if (activitiesPerformedToday.getOrDefault(activity, 0) == 1) {
+//            playerStreaks.incrementStreak(activity);
+//
+//        }
+//    }
 
     private void checkForStreaks() {
         // Check for streaks using the PlayerStreaks instance
