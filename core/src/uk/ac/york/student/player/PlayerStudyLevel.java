@@ -78,6 +78,7 @@ public class PlayerStudyLevel implements PlayerMetric {
      */
     public void increaseTotal(float amount) {
         this.totalStudy += amount;
+        System.out.println("Study amount: "+ amount);
     }
 
     /**
