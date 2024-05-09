@@ -845,6 +845,12 @@ public class GameScreen extends BaseScreen implements InputProcessor {
             // If the player does not have enough resources to perform the activity, return false
             if (!hasEnough) return false;
         }
+
+        int currentDayCounter = gameTime.getCurrentDay();
+        if (activitiesPerformedToday.get(type) == 1) {
+            playerStreaks.incrementStreak(type, currentDayCounter);
+        }
+
         if (type.equals(Activity.SLEEP)) {
             // Check streaks after completing the day's activities
             checkForStreaks();
