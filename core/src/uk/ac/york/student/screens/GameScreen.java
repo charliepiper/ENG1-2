@@ -33,13 +33,15 @@ import uk.ac.york.student.assets.map.MapManager;
 import uk.ac.york.student.assets.map.TransitionMapObject;
 import uk.ac.york.student.game.GameTime;
 import uk.ac.york.student.game.activities.Activity;
-import uk.ac.york.student.player.*;
+import uk.ac.york.student.player.Player;
+import uk.ac.york.student.player.PlayerMetric;
+import uk.ac.york.student.player.PlayerMetrics;
+import uk.ac.york.student.player.PlayerStreaks;
 import uk.ac.york.student.utils.MapOfSuppliers;
 import uk.ac.york.student.utils.Pair;
 import uk.ac.york.student.utils.StreamUtils;
 import uk.ac.york.student.utils.Wait;
 
-import javax.annotation.processing.SupportedSourceVersion;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -491,8 +493,8 @@ public class GameScreen extends BaseScreen implements InputProcessor {
             // Get a list of negative effects from the activity's effects
             // Negative effects are those that decrease a player metric
             List<Pair<PlayerMetrics.MetricType, PlayerMetrics.MetricEffect>> negativeEffects = activity.getEffects()
-                .stream().filter(x -> x.getRight().equals(PlayerMetrics.MetricEffect.DECREASE))
-                .collect(Collectors.toList());
+                    .stream().filter(x -> x.getRight().equals(PlayerMetrics.MetricEffect.DECREASE))
+                    .collect(Collectors.toList());
 
             // Initialize a boolean to track if the player has enough resources for the activity
             boolean hasEnough = true;
@@ -794,8 +796,6 @@ public class GameScreen extends BaseScreen implements InputProcessor {
             System.out.println("Player has eaten three times today!");
         }
 
-        int currentDayCounter = gameTime.getCurrentDay();
-
         // Check if the game is at the end of the day and if the activity is not sleeping
         // If it is, return false to indicate that the activity cannot be performed
         if (gameTime.isEndOfDay() && !type.equals(Activity.SLEEP)) return false;
@@ -845,22 +845,15 @@ public class GameScreen extends BaseScreen implements InputProcessor {
             // If the player does not have enough resources to perform the activity, return false
             if (!hasEnough) return false;
         }
-
-
-        // Check if the activity is sleeping
         if (type.equals(Activity.SLEEP)) {
             // Check streaks after completing the day's activities
             checkForStreaks();
 
 
+//            System.out.println(type);
 
-
-        if (activitiesPerformedToday.get(type) == 1) {
-            playerStreaks.incrementStreak(type, currentDayCounter);
-        }
-
-        // Check if the activity is sleeping
-        if (type.equals(Activity.SLEEP)) {
+            //moved above activitiesPerformedToday.clear()
+//            updateStreakCount(type);
 
             if (activitiesPerformedToday.getOrDefault(Activity.STUDY, 0) == 0) {
                 notStudiedCounter += 1;
@@ -868,8 +861,8 @@ public class GameScreen extends BaseScreen implements InputProcessor {
                 // For example, trigger a scoring boost or any other action
                 System.out.println("Player hasn't studied!");
             }
+            activitiesPerformedToday.clear();
 
-//            activitiesPerformedToday.clear();
 
             // Get all player metrics
             List<PlayerMetric> allMetrics = metrics.getMetrics();
@@ -878,8 +871,6 @@ public class GameScreen extends BaseScreen implements InputProcessor {
                 // Increase the total of each metric by its current value
                 m.increaseTotal(m.get());
             }
-
-
             // Check if the current day plus one equals the total number of days
             if (gameTime.isEndOfDays()) {
                 // If it does, transition the screen to the end screen and return true
@@ -904,6 +895,8 @@ public class GameScreen extends BaseScreen implements InputProcessor {
             // Apply the effect to the metric
             metrics.changeMetric(metricType, metricEffect, changeAmount);
         }
+        // Check if the activity is sleeping
+
         // Get the current hour as a string using the getCurrentHourString method
         String currentHour = getCurrentHourString();
 
@@ -917,8 +910,6 @@ public class GameScreen extends BaseScreen implements InputProcessor {
         timeLabel.setText(time);
 
 //        updateStreakCount(type);
-
-
 
         // Return true indicating the operation was successful
         return true;
@@ -936,7 +927,7 @@ public class GameScreen extends BaseScreen implements InputProcessor {
         // Check for streaks using the PlayerStreaks instance
         if (playerStreaks.getStreakCount(Activity.SLEEP) >= 4) {
             // Award additional points for achieving the study streak
-            System.out.println("Sleep achievement unlocked!");
+            System.out.println("sleepß achievement unlocked!");
 //            System.out.println(playerStreaks.getStreakCount(Activity.SLEEP));
         }
 
