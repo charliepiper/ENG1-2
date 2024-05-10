@@ -2,6 +2,7 @@ package uk.ac.york.student.player;
 
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import uk.ac.york.student.game.activities.Activity;
 import uk.ac.york.student.screens.GameScreen;
 
 /**
@@ -23,16 +24,26 @@ public interface PlayerScore {
      * @param maxHappiness The maximum possible happiness level.
      * @return The player's score, calculated based on the provided parameters and weightings.
      */
-    default float calculateScore(float energy, float maxEnergy, float studyLevel, float maxStudyLevel, float happiness, float maxHappiness) {
-        float studyWeighting = 2f;
-        float happinessWeighting = 0f;
+    default float calculateScore(float energy, float maxEnergy, float studyLevel, float maxStudyLevel, float happiness, float maxHappiness, PlayerStreaks streaks) {
+        float studyWeighting = 1f;
+        float happinessWeighting = 0.25f;
+        float streakScore = 0;
 
-        System.out.println("Study score: "+studyLevel);
-        System.out.println(("Max study level: "+maxStudyLevel));
         float studyScore = (studyLevel / maxStudyLevel) * studyWeighting;
         float happinessScore = (happiness / maxHappiness) * happinessWeighting;
 
-        float totalScore = studyScore + happinessScore;
+        if (streaks.getStreakCount(Activity.STUDY) >= 4) {
+            streakScore += 0.05f;
+        }
+        if (streaks.getStreakCount(Activity.EXERCISE) >= 4) {
+            streakScore += 0.05f;
+        }
+        if (streaks.getStreakCount(Activity.FEEDTHEDUCKS) >= 4) {
+            streakScore += 0.05f;
+        }
+
+
+        float totalScore = studyScore + happinessScore + streakScore;
         float maxPossibleScore = studyWeighting + happinessWeighting;
 
         if (GameScreen.notStudiedCounter > 1) {
@@ -40,9 +51,7 @@ public interface PlayerScore {
             System.out.println("Study fail");
         }
 
-        System.out.println("Max possible score: " +maxPossibleScore);
-        System.out.println("Total score: " +totalScore);
-        return (totalScore / maxPossibleScore) * 100;
+        return Math.min((totalScore / maxPossibleScore) * 100, 100f);
     }
 
 

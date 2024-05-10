@@ -48,6 +48,8 @@ public class PlayerStreaks {
 
         // Update the last performed day to the current day
         lastPerformedDay.put(activityName, currentDay);
+
+        System.out.print(activityName + " streak " + getStreakCount(activity) + " days");
     }
 
     /**

@@ -118,11 +118,6 @@ public EndScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime) {
         float studyLevelMax = metrics.getStudyLevel().getMaxTotal();
         float happinessMax = metrics.getHappiness().getMaxTotal();
 
-        float score = player.calculateScore(energyTotal, energyMax, studyLevelTotal, studyLevelMax, happinessTotal, happinessMax);
-        System.out.println(score);
-        String scoreString = player.convertScoreToString(score);
-        System.out.println(scoreString);
-
         executorService = Executors.newSingleThreadScheduledExecutor();
 
         playerStreaks = PlayerStreaks.getInstance();
@@ -219,7 +214,7 @@ public EndScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime) {
         float energyMax = metrics.getEnergy().getMaxTotal();
         float studyLevelMax = metrics.getStudyLevel().getMaxTotal();
         float happinessMax = metrics.getHappiness().getMaxTotal();
-        float score = player.calculateScore(energyTotal, energyMax, studyLevelTotal, studyLevelMax, happinessTotal, happinessMax);
+        float score = player.calculateScore(energyTotal, energyMax, studyLevelTotal, studyLevelMax, happinessTotal, happinessMax, playerStreaks);
         String scoreString = player.convertScoreToString(score);
         //Leaderboard stuff added here - Chris
         String leaderboard = Leaderboard.getLeaderboard();
