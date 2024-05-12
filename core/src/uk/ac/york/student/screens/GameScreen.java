@@ -58,6 +58,11 @@ import java.util.Map;
  * It includes methods for rendering the game screen, handling user inputs, managing game activities, and more.
  */
 public class GameScreen extends BaseScreen implements InputProcessor {
+
+    private static Vector2 prevPos = new Vector2();
+    private static String currentMapName = "map";
+
+
     /**
      * The key code for the action key. This is used to trigger actions in the game.
      */
@@ -254,6 +259,10 @@ public class GameScreen extends BaseScreen implements InputProcessor {
                     startingPoint = new Vector2(rectangle.getX() * mapScale, rectangle.getY() * mapScale);
                     break;
                 }
+            }
+            //Changes starting point to prev map position
+            if (mapName.equals("map")) {
+                startingPoint = prevPos;
             }
 
             // Set the new map and starting point for the player
@@ -758,7 +767,13 @@ public class GameScreen extends BaseScreen implements InputProcessor {
      * @return A boolean indicating whether the map change was successful.
      */
     private boolean doMapChange(@NotNull TransitionMapObject actionMapObject) {
-        changeMap(actionMapObject.getType());
+        String mapName = actionMapObject.getType();
+        if (currentMapName.equals("map")) {
+            prevPos.x = player.getX();
+            prevPos.y = player.getY();
+        }
+        changeMap(mapName);
+        currentMapName = mapName;
         return true;
     }
 
