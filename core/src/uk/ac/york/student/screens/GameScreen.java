@@ -68,7 +68,7 @@ public class GameScreen extends BaseScreen implements InputProcessor {
      */
     private static final int ACTION_KEY = Input.Keys.E;
     /**
-     * The key code for the exit key. This is used to open the game menu.
+     * The key code for the exit key. This is used to open the game menu
      */
     private static final int EXIT_KEY = Input.Keys.ESCAPE;
     /**
