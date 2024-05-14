@@ -25,6 +25,13 @@ import java.util.function.Supplier;
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.fadeIn;
 
 /**
+ * UPDATED FROM ASSESSMENT 1
+ *  Functionality for
+ *  -Tutorial screen to explain the game to a new user
+ *  May 30, 2024
+ */
+
+/**
  * This is a new class which explains the game to a new user.
  * It explains all movement options and how to interact with the game.
  * The screen also provides a back button for the user to return to the main menu.
