@@ -57,7 +57,7 @@ import java.util.Map;
  *  Functionality for
  *  -"Achieving streaks. For example if the student goes for a walk every day during the week, they get additional points (on top of those they would get anyway for doing this activity). "
  *  - When doActivity is called -> adds to a streak count if done on consecutive days.
- *  -
+ *  
  *  26 April, 2024
  */
 
