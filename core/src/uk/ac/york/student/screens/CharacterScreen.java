@@ -58,19 +58,15 @@ import java.util.List;
 /**
  * UPDATED FROM ASSESSMENT 1
  *  Functionality for
- *  -"A leaderboard with the name and score of the top 10 people who have completed the game successfully."
- *  -Displaying final score
- *  -Displaying hidden achievements
- *  April 20, 2024
+ *  -Allowing a user to select a character to play with
+ *  -Changes associated sprite to selected
+ *  May 30, 2024
  */
 
 /**
- * The EndScreen class extends the BaseScreen class and represents the main menu screen of the game.
- * It contains a Stage object, which is used to handle input events and draw the elements of the screen.
- * The class overrides the methods of the Screen interface, which are called at different points in the game's lifecycle.
- * The EndScreen class also includes several private fields for textures, images, skins, sounds, and settings used in the main menu.
- * It provides three constructors that allow for different levels of customization of the fade-in effect when the main menu screen is shown.
- * The class also includes several methods for handling the rendering and animation of the main menu screen, as well as the actions performed when different buttons are clicked.
+ * The Character class extends the BaseScreen class and represents the main menu screen of the game.
+ * Represents the character selection screen in the game.
+ * This screen allows players to select a character and provides various visual elements and animations.
  */
 @Getter
 public class CharacterScreen extends BaseScreen {
@@ -115,6 +111,16 @@ public class CharacterScreen extends BaseScreen {
         this(game, shouldFadeIn, fadeInTime, new Object[]{}); // Provide an empty array for args
     }
 
+    /**
+     * Constructs a CharacterScreen with the specified game, fade-in settings, and arguments.
+     * Initializes the stage processor, input processor, fade-in settings, and executor service.
+     * Sets the default selected character to 1.
+     *
+     * @param game The game instance.
+     * @param shouldFadeIn Determines if the screen should fade in on display.
+     * @param fadeInTime The duration of the fade-in animation in seconds.
+     * @param args The arguments passed to the character screen (currently not used).
+     */
     public CharacterScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime, Object @NotNull [] args) {
         super(game);
         processor = new Stage(new ScreenViewport());
@@ -128,27 +134,25 @@ public class CharacterScreen extends BaseScreen {
 
         selectedCharacter = 1;
 
-
-//        selectButton.addListener(new ChangeListener() {
-//            @Override
-//            public void changed(ChangeEvent event, Actor actor) {
-//                if (selectedCharacter != null) {
-//                    // Implement character selection logic here
-//                    // For example, you can switch to the game screen with the selected character
-//                    // game.setScreen(new GameScreen(game, selectedCharacter));
-//                }
-//            }
-//        });
     }
 
 
 
 
-
+    /**
+     * This method is currently not used.
+     */
     public enum Direction {
         UP, DOWN, LEFT, RIGHT
     }
 
+    /**
+     * Applies a zoom and move action to the specified actor based on the given direction.
+     * The actor will zoom to twice its original size and move in the specified direction over a duration of one second.
+     *
+     * @param actor The actor to which the zoom and move actions will be applied.
+     * @param direction The direction in which the actor will move. Must be one of the directions defined in MainMenuScreen.Direction.
+     */
     public void zoomAndMove(@NotNull Actor actor, @NotNull MainMenuScreen.Direction direction) {
         // Create a new Vector2 instance to store the movement vector.
         Vector2 vector = new Vector2();
@@ -192,6 +196,10 @@ public class CharacterScreen extends BaseScreen {
 
     private final ScheduledExecutorService executorService;
 
+    /**
+     * Applies a fade-out effect by gradually reducing the alpha value over a specified duration.
+     * The alpha value is reduced in small increments at fixed intervals until it reaches zero.
+     */
     public void fadeOut() {
         // Set the duration of the fade out effect in seconds.
         int duration = 1;
@@ -213,6 +221,13 @@ public class CharacterScreen extends BaseScreen {
         executorService.schedule(() -> scheduledFuture.cancel(true), duration, timeUnit);
     }
 
+    /**
+     * Sets up and displays the character selection screen.
+     * If fade-in is enabled, it sets the initial alpha of the root actor to 0 and adds a fade-in action.
+     * Adds character selection images and buttons to the stage, along with the Cooke logo and exit button.
+     * Adds listeners to handle button clicks for selecting characters and exiting the application.
+     * Adjusts the size of the background and cloud images based on the screen size.
+     */
     public void show() {
         // If shouldFadeIn is true, set the alpha of the root actor to 0 and add a fade-in action to it.
         if (shouldFadeIn) {
@@ -264,12 +279,7 @@ public class CharacterScreen extends BaseScreen {
 
         table.add(SelectionTable).colspan(3).row(); // Spanning three columns of the main table
         table.row();
-//        table.add(selectButton).padTop(20).center();
         table.add(exitButton).colspan(3).uniformX();
-
-
-
-// Add streak count labels to the UI table
 
 
         // Add listeners to the buttons.
@@ -295,7 +305,7 @@ public class CharacterScreen extends BaseScreen {
             }
         });
 
-
+        // Sets character choice to 1, also adds zooming and moving effect when screen closes
         selectCharacter1.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
@@ -316,6 +326,7 @@ public class CharacterScreen extends BaseScreen {
             }
         });
 
+        // Sets character choice to 2, also adds zooming and moving effect when screen closes
         selectCharacter2.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
@@ -335,6 +346,7 @@ public class CharacterScreen extends BaseScreen {
             }
         });
 
+        // Sets character choice to 3, also adds zooming and moving effect when screen closes
         selectCharacter3.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
@@ -377,6 +389,14 @@ public class CharacterScreen extends BaseScreen {
         return selectedCharacter;
     }
 
+    /**
+     * Calculates and returns the ratio to scale the background texture to fit the screen while maintaining its aspect ratio.
+     * It retrieves the width and height of the screen and the background texture,
+     * then calculates the ratio of the screen dimensions to the texture dimensions,
+     * and returns the maximum of these ratios to ensure the texture covers the screen without distortion.
+     *
+     * @return The maximum ratio of screen dimensions to background texture dimensions.
+     */
     private float getRatio() {
         // Retrieve the width of the screen
         float screenWidth = Gdx.graphics.getWidth();
@@ -395,7 +415,20 @@ public class CharacterScreen extends BaseScreen {
 
     private float cycle = 0;
 
-
+    /**
+     * Renders the character screen, including the background texture, animated clouds, and vignette effect.
+     * Clears the screen with a black color, enables blending for alpha transparency, and draws various elements in order.
+     * Rendering steps include:
+     *      Clearing the screen to a black color.
+     *      Enabling alpha blending.
+     *      Drawing the background texture while maintaining its aspect ratio.
+     *      If clouds are enabled, animating and drawing them.
+     *      Drawing the vignette texture over the entire screen.
+     *      Updating and drawing the stage's actors.
+     *
+     *
+     * @param delta The time in seconds since the last render.
+     */
     public void render(float delta) {
         // Set the clear color to black and clear the screen.
         Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -448,7 +481,16 @@ public class CharacterScreen extends BaseScreen {
     }
 
 
-
+    /**
+     * Handles the resizing of the character screen. Updates the stage's viewport and adjusts the size of background and cloud images.
+     * Steps include:
+     * - Updating the viewport of the stage's processor with the new width and height, and centering the camera.
+     * - Calculating the ratio to maintain the aspect ratio of the background texture.
+     * - Adjusting the width and height of the background texture and clouds image based on the calculated ratio.
+     *
+     * @param width The new width of the screen.
+     * @param height The new height of the screen.
+     */
     @Override
     public void resize(int width, int height) {
         // Update the viewport of the stage's processor with the new width and height, and center the camera.
@@ -464,21 +506,43 @@ public class CharacterScreen extends BaseScreen {
         cloudsImage.setSize(newWidth, newHeight);
     }
 
+    /**
+     * This method is currently not used.
+     */
     @Override
     public void pause() {
 
     }
 
+    /**
+     * This method is currently not used.
+     */
     @Override
     public void resume() {
 
     }
 
+    /**
+     * This method is currently not used.
+     */
     @Override
     public void hide() {
 
     }
 
+    /**
+     * Disposes of the resources used by the game to free up memory.
+     * This includes textures, skins, sounds, and shutting down the executor service.
+     * Resources disposed:
+     * - Stage processor
+     * - Background texture
+     * - Vignette texture
+     * - Craftacular skin
+     * - Cooke logo texture
+     * - Clouds texture
+     * - Button click sound
+     * - Executor service
+     */
     @Override
     public void dispose() {
         // Dispose of the processor

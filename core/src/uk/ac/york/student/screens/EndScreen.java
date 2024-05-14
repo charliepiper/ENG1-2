@@ -392,7 +392,7 @@ public class EndScreen extends BaseScreen {
     private float cycle = 0;
 
     /**
-     * Renders the main screen, including the background texture, animated clouds, and vignette effect.
+     * Renders the end screen, including the background texture, animated clouds, and vignette effect.
      * Clears the screen with a black color, enables blending for alpha transparency, and draws various elements in order.
      * Rendering steps include:
      *      Clearing the screen to a black color.
@@ -458,7 +458,7 @@ public class EndScreen extends BaseScreen {
 
 
     /**
-     * Handles the resizing of the game screen. Updates the stage's viewport and adjusts the size of background and cloud images.
+     * Handles the resizing of the end screen. Updates the stage's viewport and adjusts the size of background and cloud images.
      * Steps include:
      * - Updating the viewport of the stage's processor with the new width and height, and centering the camera.
      * - Calculating the ratio to maintain the aspect ratio of the background texture.

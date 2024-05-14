@@ -962,7 +962,7 @@ public class GameScreen extends BaseScreen implements InputProcessor {
     }
 
     /**
-     * NOT USED 
+     * NOT USED
      */
     private void checkForStreaks() {
         // Check for streaks using the PlayerStreaks instance
