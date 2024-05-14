@@ -53,6 +53,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * UPDATED FROM ASSESSMENT 1
+ *  Functionality for
+ *  -"Achieving streaks. For example if the student goes for a walk every day during the week, they get additional points (on top of those they would get anyway for doing this activity). "
+ *  - When doActivity is called -> adds to a streak count if done on consecutive days.
+ *  
+ *  26 April, 2024
+ */
+
+
+/**
  * The {@link GameScreen} class extends the {@link BaseScreen} class and implements the {@link InputProcessor} interface.
  * This class is responsible for handling the game screen and its related functionalities.
  * It includes methods for rendering the game screen, handling user inputs, managing game activities, and more.
@@ -142,11 +152,21 @@ public class GameScreen extends BaseScreen implements InputProcessor {
 //
 //    private Map<Activity, Integer> activitiesPerformedToday = new HashMap<>();
 
+    /**
+     * A map tracking the number of times each activity has been performed today.
+     * The keys are activities and the values are the counts of performances.
+     */
     private Map<Activity, Integer> activitiesPerformedToday = new HashMap<>();
-    private Map<Activity, Integer> activityStreakCounts = new HashMap<>();
 
+    /**
+     * An instance of PlayerStreaks that tracks the player's streaks for various activities.
+     */
     private PlayerStreaks playerStreaks;
 
+    /**
+     * A counter tracking the number of days the player has not studied.
+     * This counter is public and static, meaning it is shared across all instances of the class.
+     */
     public static int notStudiedCounter = 0;
 
     public GameScreen(GdxGame game) {
@@ -778,6 +798,14 @@ public class GameScreen extends BaseScreen implements InputProcessor {
     }
 
     /**
+     * UPDATED FROM ASSESSMENT 1
+     *  Functionality for
+     *  -"Achieving streaks. For example if the student goes for a walk every day during the week, they get additional points (on top of those they would get anyway for doing this activity). "
+     *  - When doActivity is called -> adds to a streak count if done on consecutive days.
+     *  -
+     *  26 April, 2024
+     */
+    /**
      * This method is used to perform an activity in the game.
      * The activity is specified by the provided {@link ActivityMapObject}.
      * It first checks if the game is at the end of the day and if the activity is not sleeping, if so it returns false.
@@ -789,7 +817,9 @@ public class GameScreen extends BaseScreen implements InputProcessor {
      *
      * @param actionMapObject The {@link ActivityMapObject} that represents the activity to be performed.
      * @return A boolean indicating whether the activity was performed successfully.
+     *
      */
+
     private boolean doActivity(@NotNull ActivityMapObject actionMapObject) {
         // Get the type of the activity from the ActivityMapObject
         Activity type = actionMapObject.getType();
@@ -871,11 +901,6 @@ public class GameScreen extends BaseScreen implements InputProcessor {
             checkForStreaks();
 
 
-//            System.out.println(type);
-
-            //moved above activitiesPerformedToday.clear()
-//            updateStreakCount(type);
-
             if (activitiesPerformedToday.getOrDefault(Activity.STUDY, 0) == 0) {
                 notStudiedCounter += 1;
                 // Perform the action for eating three times
@@ -936,14 +961,9 @@ public class GameScreen extends BaseScreen implements InputProcessor {
         return true;
     }
 
-//    private void updateStreakCount(Activity activity) {
-//        // Increment streak count for the activity if performed consecutively
-//        if (activitiesPerformedToday.getOrDefault(activity, 0) == 1) {
-//            playerStreaks.incrementStreak(activity);
-//
-//        }
-//    }
-
+    /**
+     * NOT USED
+     */
     private void checkForStreaks() {
         // Check for streaks using the PlayerStreaks instance
         if (playerStreaks.getStreakCount(Activity.SLEEP) >= 4) {

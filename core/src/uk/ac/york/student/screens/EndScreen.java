@@ -58,7 +58,7 @@ import java.util.List;
  *  -"A leaderboard with the name and score of the top 10 people who have completed the game successfully."
  *  -Displaying final score
  *  -Displaying hidden achievements
- *  April 20, 2024
+ *  14 May, 2024
  */
 
 /**
@@ -92,15 +92,16 @@ public class EndScreen extends BaseScreen {
     private boolean scoreSaved = false;
 
 
-
-    //    public EndScreen(GdxGame game) {
-//        super(game);
-//        throw new UnsupportedOperationException("This constructor is not supported (must pass in object args!)");
-//    }
-public EndScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime) {
-    this(game, shouldFadeIn, fadeInTime, new Object[]{}); // Provide an empty array for args
-}
-
+    /**
+     * Constructs the EndScreen with the specified game, fade-in settings, and arguments.
+     * Initializes the stage processor, player, and input processor.
+     * Retrieves player metrics and initializes the executor service and player streaks.
+     *
+     * @param game The game instance.
+     * @param shouldFadeIn Determines if the screen should fade in.
+     * @param fadeInTime The duration of the fade-in animation.
+     * @param args The arguments passed to the end screen, where the first argument is expected to be a Player object.
+     */
     public EndScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime, Object @NotNull [] args) {
         super(game);
         processor = new Stage(new ScreenViewport());
@@ -111,6 +112,8 @@ public EndScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime) {
         this.fadeInTime = fadeInTime;
 
         PlayerMetrics metrics = player.getMetrics();
+
+        //OBSOLETE FOR NOW
         float energyTotal = metrics.getEnergy().getTotal();
         float studyLevelTotal = metrics.getStudyLevel().getTotal();
         float happinessTotal = metrics.getHappiness().getTotal();
@@ -119,22 +122,23 @@ public EndScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime) {
         float happinessMax = metrics.getHappiness().getMaxTotal();
 
         executorService = Executors.newSingleThreadScheduledExecutor();
-
         playerStreaks = PlayerStreaks.getInstance();
-
-
-
 
     }
 
 
 
 
-
+    /**
+     * This method is currently not used.
+     */
     public enum Direction {
         UP, DOWN, LEFT, RIGHT
     }
 
+    /**
+     * This method is currently not used.
+     */
     public void zoomAndMove(@NotNull Actor actor, @NotNull MainMenuScreen.Direction direction) {
         // Create a new Vector2 instance to store the movement vector.
         Vector2 vector = new Vector2();
@@ -178,6 +182,9 @@ public EndScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime) {
 
     private final ScheduledExecutorService executorService;
 
+    /**
+     * This method is currently not used.
+     */
     public void fadeOut() {
         // Set the duration of the fade out effect in seconds.
         int duration = 1;
@@ -199,7 +206,27 @@ public EndScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime) {
         executorService.schedule(() -> scheduledFuture.cancel(true), duration, timeUnit);
     }
 
-
+    /**
+     * Displays the main screen with player statistics, achievements, leaderboard, and options to save the player's name or exit the application.
+     * If the screen should fade in, it sets the alpha of the root actor to 0 and adds a fade-in action.
+     * Retrieves player metrics and calculates the player's score and grade.
+     * Displays the player's statistics, hidden achievements, and a leaderboard.
+     * Provides input fields and buttons for player interaction, including saving the player's name and exiting the application.
+     *
+     * The screen layout includes two main sections:
+     *
+     *   Left side: Player statistics, achievements, and a logo.
+     *   Right side: Leaderboard, name input field, and exit button.
+     *
+     * @see GamePreferences
+     * @see DebugScreenPreferences
+     * @see PlayerMetrics
+     * @see Leaderboard
+     * @see SoundManager
+     * @see Wait
+     * @see Activity
+     * @see Screens
+     */
     public void show() {
         // If shouldFadeIn is true, set the alpha of the root actor to 0 and add a fade-in action to it.
         if (shouldFadeIn) {
@@ -272,7 +299,6 @@ public EndScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime) {
 
         // Create the right side table for leaderboard and name field
         Table rightTable = new Table();
-//        rightTable.top().right();
 
         // Leaderboard label
         Label leaderboardLabel = new Label("Leaderboard", craftacularSkin);
@@ -294,7 +320,6 @@ public EndScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime) {
         // Add right table to main table
         table.add(rightTable).expand().fill().pad(50);
         table.row();
-//        table.add(exitButton).center();
 
         // Add listeners to the buttons.
         exitButton.addListener(new ChangeListener() {
@@ -340,7 +365,14 @@ public EndScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime) {
 
 
 
-
+    /**
+     * Calculates and returns the ratio to scale the background texture to fit the screen while maintaining its aspect ratio.
+     * It retrieves the width and height of the screen and the background texture,
+     * then calculates the ratio of the screen dimensions to the texture dimensions,
+     * and returns the maximum of these ratios to ensure the texture covers the screen without distortion.
+     *
+     * @return the maximum ratio of screen dimensions to background texture dimensions.
+     */
     private float getRatio() {
         // Retrieve the width of the screen
         float screenWidth = Gdx.graphics.getWidth();
@@ -359,7 +391,20 @@ public EndScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime) {
 
     private float cycle = 0;
 
-
+    /**
+     * Renders the end screen, including the background texture, animated clouds, and vignette effect.
+     * Clears the screen with a black color, enables blending for alpha transparency, and draws various elements in order.
+     * Rendering steps include:
+     *      Clearing the screen to a black color.
+     *      Enabling alpha blending.
+     *      Drawing the background texture while maintaining its aspect ratio.
+     *      If clouds are enabled, animating and drawing them.
+     *      Drawing the vignette texture over the entire screen.
+     *      Updating and drawing the stage's actors.
+     *
+     *
+     * @param delta The time in seconds since the last render.
+     */
     public void render(float delta) {
         // Set the clear color to black and clear the screen.
         Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -412,7 +457,16 @@ public EndScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime) {
     }
 
 
-
+    /**
+     * Handles the resizing of the end screen. Updates the stage's viewport and adjusts the size of background and cloud images.
+     * Steps include:
+     * - Updating the viewport of the stage's processor with the new width and height, and centering the camera.
+     * - Calculating the ratio to maintain the aspect ratio of the background texture.
+     * - Adjusting the width and height of the background texture and clouds image based on the calculated ratio.
+     *
+     * @param width The new width of the screen.
+     * @param height The new height of the screen.
+     */
     @Override
     public void resize(int width, int height) {
         // Update the viewport of the stage's processor with the new width and height, and center the camera.
@@ -428,21 +482,43 @@ public EndScreen(GdxGame game, boolean shouldFadeIn, float fadeInTime) {
         cloudsImage.setSize(newWidth, newHeight);
     }
 
+    /**
+     * This method is currently not used.
+     */
     @Override
     public void pause() {
 
     }
 
+    /**
+     * This method is currently not used.
+     */
     @Override
     public void resume() {
 
     }
 
+    /**
+     * This method is currently not used.
+     */
     @Override
     public void hide() {
 
     }
 
+    /**
+     * Disposes of the resources used by the game to free up memory.
+     * This includes textures, skins, sounds, and shutting down the executor service.
+     * Resources disposed:
+     * - Stage processor
+     * - Background texture
+     * - Vignette texture
+     * - Craftacular skin
+     * - Cooke logo texture
+     * - Clouds texture
+     * - Button click sound
+     * - Executor service
+     */
     @Override
     public void dispose() {
         // Dispose of the processor
