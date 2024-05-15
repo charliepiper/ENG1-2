@@ -137,7 +137,7 @@ public final class GameTime {
      *
      * @param hour The new current hour in the game. It should be within the range [0, {@link GameTime#DAY_LENGTH}].
      */
-    private void setCurrentHour(int hour) {
+    public void setCurrentHour(int hour) {
         currentHour = hour;
         progressBar.setValue(currentHour);
     }

@@ -1,0 +1,33 @@
+import org.junit.Test;
+import uk.ac.york.student.game.activities.Activity;
+import uk.ac.york.student.player.PlayerMetrics;
+
+import static org.junit.Assert.assertEquals;
+
+public class ActivityTest {
+
+    @Test
+    public void testGetEffectStudy() {
+        // Check that STUDY correctly modifies STUDY_LEVEL, ENERGY, HAPPINESS, and HEALTH
+        assertEquals(PlayerMetrics.MetricEffect.INCREASE, Activity.STUDY.getEffect(PlayerMetrics.MetricType.STUDY_LEVEL));
+        assertEquals(PlayerMetrics.MetricEffect.DECREASE, Activity.STUDY.getEffect(PlayerMetrics.MetricType.ENERGY));
+        assertEquals(PlayerMetrics.MetricEffect.DECREASE, Activity.STUDY.getEffect(PlayerMetrics.MetricType.HAPPINESS));
+        assertEquals(PlayerMetrics.MetricEffect.DECREASE, Activity.STUDY.getEffect(PlayerMetrics.MetricType.HEALTH));
+    }
+
+    @Test
+    public void testGetEffectNap() {
+        // Check that nap correctly modifies STUDY_LEVEL, ENERGY, HAPPINESS, and HEALTH
+        assertEquals(PlayerMetrics.MetricEffect.INCREASE, Activity.NAP.getEffect(PlayerMetrics.MetricType.HEALTH));
+    }
+
+    @Test
+    public void testGetEffectSleep() {
+        // Check that sleep correctly modifies STUDY_LEVEL, ENERGY, HAPPINESS, and HEALTH
+        assertEquals(PlayerMetrics.MetricEffect.INCREASE, Activity.SLEEP.getEffect(PlayerMetrics.MetricType.HEALTH));
+        assertEquals(PlayerMetrics.MetricEffect.RESET, Activity.SLEEP.getEffect(PlayerMetrics.MetricType.ENERGY));
+        assertEquals(PlayerMetrics.MetricEffect.RESET, Activity.SLEEP.getEffect(PlayerMetrics.MetricType.STUDY_LEVEL));
+
+    }
+
+}
