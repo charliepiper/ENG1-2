@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="testExample" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-04-23T20:48:57" hostname="charlies-MacBook-Pro-2.local" time="0.003">
-  <properties/>
-  <testcase name="badlogicLogoFileExists" classname="testExample" time="0.003"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

@@ -257,7 +257,7 @@ public class Player extends Actor implements PlayerScore, InputProcessor {
         final float amount = (Movement.BOOST.is ? 2 : 1) * mapScale;
 
         //Collision detection has been added before a move can be completed
-        
+
         //Check whether a collision has occurred
         // Move the sprite up if the UP movement is active and the sprite is not at the top of the map
         if (Movement.UP.is && (sprite.getY() + sprite.getHeight() < maxHeightScaled)) {
@@ -420,10 +420,22 @@ public class Player extends Actor implements PlayerScore, InputProcessor {
      *
      * @return MapObjects from the "gameObjects" layer of the map.
      */
+//    public MapObjects getMapObjects() {
+//        MapLayer gameObjects = map.getLayers().get("gameObjects"); // Get the "gameObjects" layer from the map
+//        return gameObjects.getObjects(); // Return the objects from the "gameObjects" layer
+//    }
+
     public MapObjects getMapObjects() {
         MapLayer gameObjects = map.getLayers().get("gameObjects"); // Get the "gameObjects" layer from the map
-        return gameObjects.getObjects(); // Return the objects from the "gameObjects" layer
+        if (gameObjects != null) {
+            return gameObjects.getObjects(); // Return the objects from the "gameObjects" layer
+        } else {
+            // Handle missing "gameObjects" layer (e.g., log a warning message)
+            //System.err.println("Warning: 'gameObjects' layer not found in the map.");
+            return new MapObjects(); // Return an empty MapObjects or null, depending on your requirements
+        }
     }
+
 
     /**
      * Loads the bounding boxes of the actionable game objects from the map.
