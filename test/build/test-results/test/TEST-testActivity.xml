@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="testActivity" tests="4" skipped="0" failures="0" errors="0" timestamp="2024-05-19T21:01:54" hostname="charlies-MacBook-Pro-2.local" time="0.138">
+  <properties/>
+  <testcase name="testEntertainActivity" classname="testActivity" time="0.086"/>
+  <testcase name="testEatActivity" classname="testActivity" time="0.0"/>
+  <testcase name="testExcerciseActivity" classname="testActivity" time="0.0"/>
+  <testcase name="testBoundaryAbove1" classname="testActivity" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

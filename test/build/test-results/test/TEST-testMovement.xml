@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="testMovement" tests="4" skipped="0" failures="0" errors="0" timestamp="2024-05-19T21:01:54" hostname="charlies-MacBook-Pro-2.local" time="0.049">
+  <properties/>
+  <testcase name="testRIGHT" classname="testMovement" time="0.004"/>
+  <testcase name="testDown" classname="testMovement" time="0.002"/>
+  <testcase name="testLEFT" classname="testMovement" time="0.002"/>
+  <testcase name="testUP" classname="testMovement" time="0.001"/>
+  <system-out><![CDATA[0
+0
+0
+0
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
