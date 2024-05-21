@@ -68,8 +68,13 @@ public final class ActivityMapObject extends MapObject implements ActionMapObjec
      * @param object The MapObject to initialize the ActivityMapObject with.
      */
     public ActivityMapObject(@NotNull MapObject object) {
+
         // Calls the superclass constructor
         super();
+
+        if (object.getName()==null){
+            throw new IllegalArgumentException("Activity name cannot be null");
+        }
 
         // Sets the name of the ActivityMapObject to the name of the given MapObject
         setName(object.getName());
@@ -90,7 +95,17 @@ public final class ActivityMapObject extends MapObject implements ActionMapObjec
         str = properties.get("activityStr", String.class);
 
         // Retrieves the "activityType" property from the properties of the ActivityMapObject, converts it to uppercase, and assigns it to the type field
-        type = Activity.valueOf(properties.get("activityType", String.class).toUpperCase());
+        //type = Activity.valueOf(properties.get("activityType", String.class).toUpperCase());
+
+        //trying changes
+        String activityTypeStr = properties.get("activityType", String.class);
+
+        if (activityTypeStr == null) {
+            throw new IllegalArgumentException("Activity type cannot be null");
+        }
+
+        type = Activity.valueOf(activityTypeStr.toUpperCase());
+        //till here
 
         // Retrieves the "activityTime" property from the properties of the ActivityMapObject and assigns it to the time field
         time = properties.get("activityTime", Integer.class);
