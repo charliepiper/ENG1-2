@@ -26,4 +26,4 @@ There are a few hidden activities around, can you find them?
 
 ## Score
 
-In the current iteration of the game the score and associated grade is printed to terminal.
+The final score for each playthrough is displayed in the end screen - showing the degree grade you recived alongside a leaderboard showing the top 10 scores.
