@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="AssetTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2024-05-22T11:38:28" hostname="charlies-MacBook-Pro-2.local" time="0.137">
+<testsuite name="AssetTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2024-05-22T12:09:30" hostname="charlies-MacBook-Pro-2.local" time="0.133">
   <properties/>
   <testcase name="VignetteExists" classname="AssetTest" time="0.001"/>
   <testcase name="StoneWallExists" classname="AssetTest" time="0.001"/>
-  <testcase name="testCharacter1Exists" classname="AssetTest" time="0.0"/>
-  <testcase name="CloudExists" classname="AssetTest" time="0.0"/>
-  <testcase name="testCharacter2Exists" classname="AssetTest" time="0.0"/>
+  <testcase name="testCharacter1Exists" classname="AssetTest" time="0.001"/>
+  <testcase name="CloudExists" classname="AssetTest" time="0.001"/>
+  <testcase name="testCharacter2Exists" classname="AssetTest" time="0.001"/>
   <testcase name="testBottomUpBlackGradientExists" classname="AssetTest" time="0.0"/>
   <testcase name="testCharacter3Exists" classname="AssetTest" time="0.001"/>
   <testcase name="CloudsFormattedExists" classname="AssetTest" time="0.001"/>
