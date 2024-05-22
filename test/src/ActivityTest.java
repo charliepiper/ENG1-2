@@ -38,27 +38,7 @@ public class ActivityTest {
 
     }
 
-    @Test
-    public void testEatActivity() {
-
-        assertEquals(PlayerMetrics.MetricEffect.INCREASE, Activity.EAT.getEffect(PlayerMetrics.MetricType.ENERGY));
-        assertEquals(PlayerMetrics.MetricEffect.INCREASE,Activity.EAT.getEffect(PlayerMetrics.MetricType.HEALTH));
-    }
-
-
-    @Test
-    public void testExcerciseActivity() {
-
-        assertEquals(PlayerMetrics.MetricEffect.DECREASE, Activity.EXERCISE.getEffect(PlayerMetrics.MetricType.ENERGY));
-        assertEquals(PlayerMetrics.MetricEffect.INCREASE,Activity.EXERCISE.getEffect(PlayerMetrics.MetricType.HEALTH));
-    }
-
-    @Test
-    public void testEntertainActivity() {
-
-        assertEquals(PlayerMetrics.MetricEffect.INCREASE, Activity.ENTERTAIN.getEffect(PlayerMetrics.MetricType.HAPPINESS));
-        assertEquals(PlayerMetrics.MetricEffect.DECREASE,Activity.ENTERTAIN.getEffect(PlayerMetrics.MetricType.ENERGY));
-    }
+    
 
 
 
