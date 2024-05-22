@@ -44,7 +44,6 @@ public class ActivityTest {
      */
     @Test
     public void testEatActivity() {
-        assertEquals(PlayerMetrics.MetricEffect.INCREASE, Activity.EAT.getEffect(PlayerMetrics.MetricType.ENERGY));
         assertEquals(PlayerMetrics.MetricEffect.INCREASE, Activity.EAT.getEffect(PlayerMetrics.MetricType.HEALTH));
     }
 

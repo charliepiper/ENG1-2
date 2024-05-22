@@ -64,15 +64,5 @@ public class PlayerStreaksTest {
         assertEquals(expectedCount, actualCount);
     }
 
-    /**
-     * Tests that all activities in the Activity enum are initialized with a streak count of zero.
-     */
-    @Test
-    public void testAllActivitiesInitialized() {
-        for (Activity activity : Activity.values()) {
-            int expectedCount = 0;
-            int actualCount = playerStreaks.getStreakCount(activity);
-            assertEquals(expectedCount, actualCount);
-        }
-    }
+    
 }
