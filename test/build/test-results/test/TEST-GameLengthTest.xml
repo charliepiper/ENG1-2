@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="GameLengthTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2024-05-22T12:09:30" hostname="charlies-MacBook-Pro-2.local" time="0.24">
+  <properties/>
+  <testcase name="testEndOfDays" classname="GameLengthTest" time="0.023"/>
+  <testcase name="testProgressBarValueAfterHourIncrement" classname="GameLengthTest" time="0.004"/>
+  <testcase name="testEndOfDay" classname="GameLengthTest" time="0.002"/>
+  <testcase name="testIncrementDayBeyondTotalDays" classname="GameLengthTest" time="0.002"/>
+  <testcase name="testProgressBarInitialValue" classname="GameLengthTest" time="0.002"/>
+  <testcase name="testResetHour" classname="GameLengthTest" time="0.001"/>
+  <testcase name="testIncrementHourBeyondDayLength" classname="GameLengthTest" time="0.001"/>
+  <testcase name="testUpdateProgressBarScale" classname="GameLengthTest" time="0.002"/>
+  <testcase name="testInitialDay" classname="GameLengthTest" time="0.001"/>
+  <testcase name="testIncrementDay" classname="GameLengthTest" time="0.001"/>
+  <testcase name="testResetDay" classname="GameLengthTest" time="0.001"/>
+  <testcase name="testInitialHour" classname="GameLengthTest" time="0.001"/>
+  <testcase name="testProgressBarValueAfterDayIncrement" classname="GameLengthTest" time="0.0"/>
+  <testcase name="testIncrementHour" classname="GameLengthTest" time="0.001"/>
+  <system-out><![CDATA[1.0
+1.0
+1.0
+1.0
+1.0
+1.0
+1.0
+1.0
+1.0
+1.0
+1.0
+1.0
+1.0
+1.0
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

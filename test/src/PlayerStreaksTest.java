@@ -6,7 +6,7 @@ import uk.ac.york.student.player.PlayerStreaks;
 
 import static org.junit.Assert.assertEquals;
 
-public class testPlayerStreaks {
+public class PlayerStreaksTest {
 
     private PlayerStreaks playerStreaks;
     private int currentDay;
