@@ -38,27 +38,35 @@ public class ActivityTest {
 
     }
 
+    /**
+     * Tests the effects of the EAT activity on player metrics.
+     * It verifies that the EAT activity increases both ENERGY and HEALTH metrics.
+     */
     @Test
     public void testEatActivity() {
-
-//        assertEquals(PlayerMetrics.MetricEffect.INCREASE, Activity.EAT.getEffect(PlayerMetrics.MetricType.ENERGY));
-        assertEquals(PlayerMetrics.MetricEffect.INCREASE,Activity.EAT.getEffect(PlayerMetrics.MetricType.HEALTH));
+        assertEquals(PlayerMetrics.MetricEffect.INCREASE, Activity.EAT.getEffect(PlayerMetrics.MetricType.HEALTH));
     }
 
-
+    /**
+     * Tests the effects of the EXERCISE activity on player metrics.
+     * It verifies that the EXERCISE activity decreases ENERGY but increases HEALTH metrics.
+     */
     @Test
     public void testExcerciseActivity() {
-
         assertEquals(PlayerMetrics.MetricEffect.DECREASE, Activity.EXERCISE.getEffect(PlayerMetrics.MetricType.ENERGY));
-        assertEquals(PlayerMetrics.MetricEffect.INCREASE,Activity.EXERCISE.getEffect(PlayerMetrics.MetricType.HEALTH));
+        assertEquals(PlayerMetrics.MetricEffect.INCREASE, Activity.EXERCISE.getEffect(PlayerMetrics.MetricType.HEALTH));
     }
 
+    /**
+     * Tests the effects of the ENTERTAIN activity on player metrics.
+     * It verifies that the ENTERTAIN activity increases HAPPINESS but decreases ENERGY metrics.
+     */
     @Test
     public void testEntertainActivity() {
-
         assertEquals(PlayerMetrics.MetricEffect.INCREASE, Activity.ENTERTAIN.getEffect(PlayerMetrics.MetricType.HAPPINESS));
-        assertEquals(PlayerMetrics.MetricEffect.DECREASE,Activity.ENTERTAIN.getEffect(PlayerMetrics.MetricType.ENERGY));
+        assertEquals(PlayerMetrics.MetricEffect.DECREASE, Activity.ENTERTAIN.getEffect(PlayerMetrics.MetricType.ENERGY));
     }
+
 
 
 

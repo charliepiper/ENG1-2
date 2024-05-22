@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="PlayerStreaksTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-05-22T12:09:30" hostname="charlies-MacBook-Pro-2.local" time="0.003">
+<testsuite name="PlayerStreaksTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2024-05-22T13:41:10" hostname="MacBook-Pro-149.local" time="0.009">
   <properties/>
-  <testcase name="testIncrementStreak" classname="PlayerStreaksTest" time="0.003"/>
-  <system-out><![CDATA[STUDY streak 1 daysSTUDY streak 2 days]]></system-out>
+  <testcase name="testGetStreakCount" classname="PlayerStreaksTest" time="0.008"/>
+  <testcase name="testIncrementStreak" classname="PlayerStreaksTest" time="0.0"/>
+  <system-out><![CDATA[SLEEP streak 1 daysSTUDY streak 1 daysSTUDY streak 2 days]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
