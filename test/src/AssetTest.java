@@ -4,8 +4,16 @@ import org.junit.runner.RunWith;
 
 import static org.junit.Assert.assertTrue;
 
+/**
+ * Test class for the Asset class.
+ * This class uses JUnit for testing and GdxTestRunner for setting up a LibGDX headless environment.
+ */
+
 @RunWith(GdxTestRunner.class)
 public class AssetTest {
+    /**
+     * This test class checks if all assets required for the game exist and can be located.
+     */
 
     @Test
     public void testBottomUpBlackGradientExists() {

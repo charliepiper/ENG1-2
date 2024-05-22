@@ -5,7 +5,6 @@ import uk.ac.york.student.player.PlayerMetrics;
 import static org.junit.Assert.assertEquals;
 
 public class ActivityTest {
-
     @Test
     public void testGetEffectStudy() {
         // Check that STUDY correctly modifies STUDY_LEVEL, ENERGY, HAPPINESS, and HEALTH
