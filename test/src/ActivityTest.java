@@ -5,8 +5,15 @@ import uk.ac.york.student.player.PlayerMetrics;
 import static org.junit.Assert.assertEquals;
 
 public class ActivityTest {
-
+    /**
+     * Test class for the Activity class.
+     * This class uses JUnit for testing.
+     */
     private PlayerMetrics playerMetrics;
+
+    /**
+     * Checking effects of activity completion on each metric - directional : increase and decrease
+     */
     @Test
     public void testGetEffectStudy() {
         // Check that STUDY correctly modifies STUDY_LEVEL, ENERGY, HAPPINESS, and HEALTH

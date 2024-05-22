@@ -14,7 +14,6 @@ public class AssetTest {
     /**
      * This test class checks if all assets required for the game exist and can be located.
      */
-
     @Test
     public void testBottomUpBlackGradientExists() {
         assertTrue("BottomUpBlackGradient exists",
