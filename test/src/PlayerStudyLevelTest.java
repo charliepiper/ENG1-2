@@ -1,14 +1,13 @@
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import uk.ac.york.student.game.GameTime;
 import uk.ac.york.student.player.PlayerMetric;
 import uk.ac.york.student.player.PlayerStudyLevel;
 
 import static org.junit.Assert.assertEquals;
 
 @RunWith(GdxTestRunner.class)
-public class testPlayerStudyLevel {
+public class PlayerStudyLevelTest {
     private PlayerStudyLevel playerStudyLevel;
 
     @Before
