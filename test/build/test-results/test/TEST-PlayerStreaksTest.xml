@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="PlayerStreaksTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-05-22T12:09:30" hostname="charlies-MacBook-Pro-2.local" time="0.003">
-  <properties/>
-  <testcase name="testIncrementStreak" classname="PlayerStreaksTest" time="0.003"/>
-  <system-out><![CDATA[STUDY streak 1 daysSTUDY streak 2 days]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
